@@ -1,4 +1,28 @@
-<div style="text-align: center;">
-    <strong>Qui ci va il form di login</strong>!
+<div style="margin-top: 10em; text-align: center;">
+  <div class="form-container" style="display: inline-block; width: 60%;">
+    <form action="/login/result" id="loginForm">
+    <div>
+      <p>Inserisci le tue credenziali per effettuare l'accesso</p>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="username">User Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="username" name="username" placeholder="User Name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="password">Password</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="password" name="password" placeholder="Password">
+      </div>
+    </div>
+    <div class="row" style="text-align: center;">
+      <input id="submit" style="margin-top: 2em; display: inline-block; float: none;" type="submit" value="Login">
+    </div>
+    </form>
+  </div>
 </div>
-
