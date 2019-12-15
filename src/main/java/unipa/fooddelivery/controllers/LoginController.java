@@ -2,18 +2,31 @@ package unipa.fooddelivery.controllers;
 
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class LoginController {
-    
+
+    @RequestMapping(value = "/")
+    public ModelAndView index() {
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("path", "welcome");
+        return mav;
+    }
+
+
     @RequestMapping(value = "/login")
-    public String getLoginView() {
-        return "login";
+    public ModelAndView getLoginView() {
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("path", "login");
+        return mav;
     }
 
     @RequestMapping(value = "/register")
-    public String getRegisterView() {
-        return "register";
+    public ModelAndView getRegisterView() {
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("path", "register");
+        return mav;
     }
 
     @RequestMapping(value = {"/login/result"})
