@@ -26,16 +26,27 @@
 		<!-- Blueprint header -->
 		<header class="bp-header cf">
 			<div class="dummy-logo">
-				<div class="dummy-icon foodicon foodicon--coconut"></div>
-				<h2 class="dummy-heading">Food Delivery</h2>
+				<a href="/">
+					<div class="dummy-icon foodicon foodicon--coconut"></div>				
+					<h2 class="dummy-heading">Food Delivery</h2>
+				</a>
 			</div>
 			<div class="bp-header__main">
-				<span class="bp-header__present">Benvenuto, visitatore</span>
-				<h3 class="bp-header__title">Effettua il login o registrati per accedere al tuo profilo</h3>
-				<nav class="bp-nav">
-					<a class="bp-button" href="/login">Login</a>
-					<a class="bp-button" href="/register">Registrati</a>
-				</nav>
+				<span class="bp-header__present" style="font-size: 16px;"
+					  th:text="'Benvenuto, ' + (${session.user == null} ? 'visitatore' : ${session.user.getUsername()})"></span>
+				<div th:if="(${session.user == null})">
+					<h3 class="bp-header__title">Effettua il login o registrati per accedere al tuo profilo</h3>
+					<nav class="bp-nav">
+						<a class="bp-button" href="/login" style="width: 10em;">Login</a>
+						<a class="bp-button" href="/register" style="width: 10em;">Registrati</a>
+					</nav>
+				</div>
+				<div th:if="(${session.user != null})">
+					<nav class="bp-nav">
+						<a class="bp-button" href="/profile" style="width: 10em;">Profilo</a>
+						<a class="bp-button" href="/logout" style="width: 10em;">Logout</a>
+					</nav>
+				</div>
 			</div>
 		</header>
 		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
@@ -45,17 +56,14 @@
 				<ul data-menu="main" class="menu__level" tabindex="-1" role="menu" aria-label="Scegli cosa ordinare oggi">
 					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-1" aria-owns="submenu-1" href="#">Prenota un tavolo</a></li>
 					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-2" aria-owns="submenu-2" href="#">Ordine a domicilio</a></li>
-
 				</ul>
 				<!-- Submenu 1 -->
 				<ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Pizza</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Italiano</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Cinese</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Giapponese</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Hamburger</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Panini</a></li>
+					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.Category).values()}">
+						<a class="menu__link" href="#" th:text="${category}"></a>
+					</li>
 				</ul>
+
 				<!-- Submenu 1-1 -->
 				<!-- <ul data-menu="submenu-1-1" id="submenu-1-1" class="menu__level" tabindex="-1" role="menu" aria-label="Sale %">
 					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Fair Trade Roots</a></li>
@@ -65,10 +73,9 @@
 				</ul> -->
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" id="submenu-2" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Pizza</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Italiano</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Cinese</a></li>
-					<li class="menu__item" role="menuitem"><a class="menu__link" href="#">Giapponese</a></li>
+					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.Category).values()}">
+						<a class="menu__link" href="#" th:text="${category}"></a>
+					</li>
 				</ul>
 				<!-- Submenu 2-1 -->
 				<!-- <ul data-menu="submenu-2-1" id="submenu-2-1" class="menu__level" tabindex="-1" role="menu" aria-label="Special Selection">
@@ -78,13 +85,12 @@
 				</ul> -->
 			</div>
 		</nav>
-		<div class="content" th:replace="content :: #__${path}__">
+		<div class="content" th:insert="content :: #__${path}__">
 			<!-- Ajax loaded content here -->
 		</div>
 	</div>
 
 	<!-- /view -->
-	<script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
 	<script src="js/classie.js"></script>
 	<script src="js/dummydata.js"></script>
 	<script src="js/main.js"></script>
@@ -128,7 +134,7 @@
 			classie.add(gridWrapper, 'content--loading');
 			setTimeout(function() {
 				classie.remove(gridWrapper, 'content--loading');
-				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+				gridWrapper.innerHTML = 'Qua dovrebbe andarci qualcosa';
 			}, 700);
 		}
 

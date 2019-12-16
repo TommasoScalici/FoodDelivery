@@ -209,13 +209,15 @@ a:hover {
 
 .bp-button {
 	background: #5c5edc;
-	position: relative;
-	display: inline-block;
-	width: 12vmin;
-	height: 4vmin;
-	margin: auto;
+	border: none;
+	color: white;
+	padding: 20px;
 	text-align: center;
-	border-radius: 90%;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 12px;;
 }
 
 .bp-button:hover {
