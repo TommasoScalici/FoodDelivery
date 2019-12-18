@@ -9,7 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import unipa.fooddelivery.models.User;
 
 @Controller
-public class LoginController {
+public class LoginController 
+{
 
     @GetMapping(value = "/")
     public ModelAndView index() {
@@ -30,13 +31,6 @@ public class LoginController {
         session.removeAttribute("user");
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("path", "logout");
-        return mav;
-    }
-
-    @GetMapping(value = "/register")
-    public ModelAndView getRegisterView() {
-        ModelAndView mav = new ModelAndView("index");
-        mav.addObject("path", "register");
         return mav;
     }
 
