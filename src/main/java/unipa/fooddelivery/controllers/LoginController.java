@@ -9,7 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import unipa.fooddelivery.models.User;
 
 @Controller
-public class LoginController {
+public class LoginController 
+{
 
     @GetMapping(value = "/login")
     public ModelAndView getLoginView() {
