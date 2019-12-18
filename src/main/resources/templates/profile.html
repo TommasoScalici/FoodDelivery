@@ -9,16 +9,52 @@
               <label >User Name</label>
             </div>
             <div class="col-25">
-                <label th:text="${session.user.getUsername()})"></label>
+                <label th:text="${session.user.getUsername()}"></label>
               </div>
           </div>
           <div class="row">
             <div class="col-25">
-              <label >Password</label>
+
+
+              <label >Nome</label>
             </div>
             <div class="col-25">
-                <label th:text="${session.user.getPassword()})"></label>
+                <label th:text="${session.user.getName()}"></label>
               </div>
-          </div>
+
+             <label >Cognome</label>
+            </div>
+            <div class="col-25">
+                <label th:text="${session.user.getSurname()}"></label>
+              </div>
+
+              <label >Data di Nascita</label>
+            </div>
+            <div class="col-25">
+                <label th:text="${session.user.getBirthdate()}"></label>
+              </div>
+              
+              <label >Indirizzo</label>
+            </div>
+            <div class="col-25">
+                <label th:text="${session.user.getAddress()}"></label>
+              </div>
+
+              <label >E-mail</label>
+            </div>
+            <div class="col-25">
+                <label th:text="${session.user.getEmail()}"></label>
+              </div>
+
+              <label >Numero di Telefono</label>
+            </div>
+            <div class="col-25">
+                <label th:text="${session.user.getTelephoneNumber()}"></label>
+              </div>
+
+            </div>
+    </div>
+</div>
+
 
          
