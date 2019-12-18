@@ -2,12 +2,12 @@ package unipa.fooddelivery.models;
 
 public enum Category
 {
-    Chinese,
-    Italian,
-    Japanese,
-    Hamburger,
-    Sandwiches,
-    Pizza,
-    Sushi,
-    Sweet,
+    CHINESE,
+    ITALIAN,
+    JAPANESE,
+    HAMBURGER,
+    SANDWICHES,
+    PIZZA,
+    SUSHI,
+    SWEET,
 }  

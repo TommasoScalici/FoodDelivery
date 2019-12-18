@@ -5,11 +5,8 @@ package unipa.fooddelivery.models;
  */
 public class Customer extends User {
 
-    public Customer(long id) {
-        super(id);
-    }
 
-    public Customer(long id, String username, String password) {
-        super(id, username, password);
+    public Customer(String username, String password) {
+        super(username, password);
     }
 }

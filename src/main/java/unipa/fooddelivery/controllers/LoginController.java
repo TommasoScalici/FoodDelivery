@@ -11,21 +11,21 @@ import unipa.fooddelivery.models.User;
 @Controller
 public class LoginController {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
-    public ModelAndView index(HttpSession session) {
+    @GetMapping(value = "/")
+    public ModelAndView index() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("path", "welcome");
         return mav;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/login")
+    @GetMapping(value = "/login")
     public ModelAndView getLoginView() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("path", "login");
         return mav;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/logout")
+    @GetMapping(value = "/logout")
     public ModelAndView getLogoutView(HttpSession session) {
         session.removeAttribute("user");
         ModelAndView mav = new ModelAndView("index");
@@ -33,19 +33,19 @@ public class LoginController {
         return mav;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/register")
+    @GetMapping(value = "/register")
     public ModelAndView getRegisterView() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("path", "register");
         return mav;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/login/result")
+    @PostMapping(value = "/login/result")
     public @ResponseBody ModelAndView getLoginResultView(@RequestParam(value="username") final String username, 
                                                          @RequestParam(value="password") final String password,
                                                          HttpSession session) {
         ModelAndView mav = new ModelAndView("redirect:/");
-        session.setAttribute("user", new User(0, username, password));
+        session.setAttribute("user", new User(username, password));
         return mav;
     }
 }

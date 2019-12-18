@@ -13,12 +13,7 @@ public class Restaurant {
     private String webSite;
     private Category category;
 
-    public Restaurant(long id) {
-        this.id = id;
-    }
-
-    public Restaurant(long id, String name) {
-        this.id = id;
+    public Restaurant(String name) {
         this.name = name;
     }
 

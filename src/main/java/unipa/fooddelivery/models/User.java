@@ -17,12 +17,7 @@ public class User {
     private String telephoneNumber;
     private Date birthdate;
 
-    public User(long id) {
-        this.id = id;
-    }
-
-    public User(long id, String username, String password) {
-        this.id = id;
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }

@@ -1,3 +1,83 @@
-<div style="text-align: center;">
-    <strong>Qui ci va il form di registrazione</strong>!
-</div>
+<div style="margin-top: 10em; text-align: center;">
+    <div class="form-container" style="display: inline-block; width: 60%;">
+      <form action="/register/result" id="registerForm" method="POST">
+      <div>
+        <p>Inserisci i tuoi dati per effettuare la registrazione</p>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="username">User Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="username" name="username" placeholder="User Name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="password" name="password" placeholder="Password">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="name">Nome</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="name" name="name" placeholder="Nome">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="surname">Cognome</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="surname" name="surname" placeholder="Cognome">
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-25">
+          <label for="birthdate">Data di nascita</label>
+        </div>
+        <div class="col-75">
+          <input type="date" id="birthdate" name="birthdate" placeholder="Data di nascita">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="address">Indirizzo</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="address" name="address" placeholder="Via e numero civico">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">E-mail</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="email" name="email" placeholder="Indirizzo E-mail">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="telephonenumber">Numero di telefono</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="telephonenumber" name="telephonenumber" placeholder="Telefono">
+        </div>
+      </div>
+
+      <div class="row" style="text-align: center;">
+        <input id="submit" style="margin-top: 2em; display: inline-block; float: none;" type="submit" value="Registrati">
+      </div>
+
+      </form>
+    </div>
+  </div>
