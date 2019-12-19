@@ -8,9 +8,9 @@ import java.util.*;
 import unipa.fooddelivery.models.*;
 
 public final class DataBase {
-    private static ArrayList<Restaurant> restaurants;
-    private static ArrayList<Customer> customers;
-    private static ArrayList<DeliveryMan> deliveryMen;
+    private static ArrayList<Restaurant> restaurants = new ArrayList<>();
+    private static ArrayList<Customer> customers = new ArrayList<>();
+    private static ArrayList<DeliveryMan> deliveryMen = new ArrayList<>();
 
     public static ArrayList<Customer> getCustomers() {
 
@@ -25,5 +25,5 @@ public final class DataBase {
         return restaurants;
     }
 
-    
+
 }
