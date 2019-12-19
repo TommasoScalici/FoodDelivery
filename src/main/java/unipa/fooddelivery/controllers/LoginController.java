@@ -6,6 +6,7 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import unipa.fooddelivery.DataBase;
 import unipa.fooddelivery.models.User;
 
 @Controller
@@ -31,8 +32,22 @@ public class LoginController
     public @ResponseBody ModelAndView getLoginResultView(@RequestParam(value="username") final String username, 
                                                          @RequestParam(value="password") final String password,
                                                          HttpSession session) {
-        ModelAndView mav = new ModelAndView("redirect:/");
-        session.setAttribute("user", new User(username, password));
-        return mav;
+        var users = DataBase.getInstance().getCustomers();
+        var user = users.stream()
+                        .filter(x -> x.getUsername().equals(username) && x.getPassword().equals(password))
+                        .findFirst();
+
+        if(user.isPresent())
+        {
+            ModelAndView mav = new ModelAndView("redirect:/");
+            session.setAttribute("user", new User(username, password));
+            return mav;
+        }
+        else
+        {
+            var mav = new ModelAndView("index");
+            mav.addObject("path", "loginerror");
+            return mav;
+        }
     }
 }

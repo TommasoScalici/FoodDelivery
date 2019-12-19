@@ -1,29 +1,54 @@
 package unipa.fooddelivery;
 
-/**
- * DataBase
- */
+import java.io.File;
+
+
+
 
 import java.util.*;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import unipa.fooddelivery.models.*;
 
+/**
+ * Class for DataBase mock
+ */
 public final class DataBase {
-    private static ArrayList<Restaurant> restaurants = new ArrayList<>();
-    private static ArrayList<Customer> customers = new ArrayList<>();
-    private static ArrayList<DeliveryMan> deliveryMen = new ArrayList<>();
+    private static DataBase database;
+    private List<Customer> customers;
+    private List<DeliveryMan> deliveryMen;
+    private List<Restaurant> restaurants;
 
-    public static ArrayList<Customer> getCustomers() {
+    private DataBase() {
+        var objectMapper = new ObjectMapper();
+        try {
+            customers = objectMapper.readValue(new File("./src/main/resources/static/json/customers.json"), List.class);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        
+    }
+
+
+    public static DataBase getInstance() {
+        if(database == null)
+            database = new DataBase();
+        
+        return database;
+    }
+
+    public List<Customer> getCustomers() {
 
         return customers;
     }
 
-    public static ArrayList<DeliveryMan> getDeliveryMen() {
+    public List<DeliveryMan> getDeliveryMen() {
         return deliveryMen;
     }
 
-    public static ArrayList<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants() {
         return restaurants;
     }
-
 
 }

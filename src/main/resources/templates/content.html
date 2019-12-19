@@ -1,5 +1,6 @@
-<div id="login" th:replace="login">
+<!-- Views -->
 
+<div id="login" th:replace="login">
 </div>
 
 <div id="logout">
@@ -7,12 +8,19 @@
 </div>
 
 <div id="register" th:replace="register">
-
 </div>
+
+<div id="profile" th:replace="profile">
+</div>
+
+
+
+<!-- Messages -->
 
 <div id="welcome">
     <p style="margin-top: 2em; text-align: center;">Benvenuto in Food Delivery, scegli un'opzione dal menu.</p>
 </div>
 
-<div id="profile" th:replace="profile">
+<div id="loginerror">
+    <p style="margin-top: 2em; text-align: center;">Username o password errati</p>
 </div>

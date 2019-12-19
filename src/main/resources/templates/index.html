@@ -59,7 +59,7 @@
 				</ul>
 				<!-- Submenu 1 -->
 				<ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
-					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.Category).values()}">
+					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.RestaurantCategory).values()}">
 						<a class="menu__link" href="#" th:text="${category}"></a>
 					</li>
 				</ul>
@@ -73,7 +73,7 @@
 				</ul> -->
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" id="submenu-2" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
-					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.Category).values()}">
+					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.RestaurantCategory).values()}">
 						<a class="menu__link" href="#" th:text="${category}"></a>
 					</li>
 				</ul>

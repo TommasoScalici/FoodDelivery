@@ -1,6 +1,6 @@
 package unipa.fooddelivery.models;
 
-public enum Category
+public enum RestaurantCategory
 {
     CHINESE,
     ITALIAN,
