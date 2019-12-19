@@ -35,7 +35,7 @@ public class RegisterController
 
 
         @RequestParam(value="birthdate") 
-        @DateTimeFormat (pattern = "yyyy-mm-dd") final Date birthdate,
+        @DateTimeFormat (pattern = "yyyy-MM-dd") final Date birthdate,
 
         
         @RequestParam(value="address") final String address,
@@ -54,6 +54,9 @@ public class RegisterController
         user.setTelephoneNumber(telephoneNumber);
 
         session.setAttribute("user", user);
+
+        
+
         return mav;
     }
 
