@@ -28,19 +28,18 @@ public class RegisterController {
     }
 
     @PostMapping(value = "/register/result")
-    public @ResponseBody ModelAndView getRegisterResultView(@RequestParam(value = "username") final String username,
-            @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,
-            @RequestParam(value = "surname") final String surname,
+    public @ResponseBody ModelAndView getRegisterResultView(
+        @RequestParam(value = "username") final String username,
+        @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,
+        @RequestParam(value = "surname") final String surname,
+        @RequestParam(value = "birthdate") @DateTimeFormat(pattern = "yyyy-MM-dd") final Date birthdate,
+        @RequestParam(value = "address") final String address, @RequestParam(value = "email") final String email,
+        @RequestParam(value = "telephonenumber") final String telephoneNumber,
+        HttpSession session)
+        throws JsonGenerationException, JsonMappingException, IOException {
 
-            @RequestParam(value = "birthdate") @DateTimeFormat(pattern = "yyyy-MM-dd") final Date birthdate,
-
-            @RequestParam(value = "address") final String address, @RequestParam(value = "email") final String email,
-            @RequestParam(value = "telephonenumber") final String telephoneNumber,
-
-            HttpSession session) throws JsonGenerationException, JsonMappingException, IOException 
-    {
-        ModelAndView mav = new ModelAndView("redirect:/");
-        Customer customer = new Customer(username, password);
+        var mav = new ModelAndView("redirect:/");
+        var customer = new Customer(username, password);
         customer.setAddress(address);
         customer.setBirthdate(birthdate);
         customer.setEmail(email);
@@ -50,11 +49,10 @@ public class RegisterController {
 
         session.setAttribute("user", customer);
 
-        ArrayList<Customer> customers = DataBase.getCustomers();
+        var customers = DataBase.getInstance().getCustomers();
         customers.add(customer);
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File("./src/main/resources/static/json/Database.json"), customers);
-
+        var objectMapper = new ObjectMapper();
+        objectMapper.writeValue(new File("./src/main/resources/static/json/customers.json"), customers);
 
         return mav;
     }

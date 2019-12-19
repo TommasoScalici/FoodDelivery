@@ -11,7 +11,7 @@ public class Restaurant {
     private String email;
     private String telephoneNumber;
     private String webSite;
-    private Category category;
+    private RestaurantCategory category;
 
     public Restaurant(String name) {
         this.name = name;
@@ -22,11 +22,11 @@ public class Restaurant {
         return id;
     }
 
-    public Category getCategory() {
+    public RestaurantCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(RestaurantCategory category) {
         this.category = category;
     }
 
