@@ -47,7 +47,7 @@ public class LoginController
             }
             else
             {
-                var mav = new ModelAndView("index");
+                ModelAndView mav = new ModelAndView("index");
                 mav.addObject("path", "login");
                 mav.addObject("showerror", true);
                 return mav;
