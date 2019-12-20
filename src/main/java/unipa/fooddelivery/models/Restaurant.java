@@ -5,7 +5,7 @@ package unipa.fooddelivery.models;
  */
 public class Restaurant {
 
-    private long id;
+    private double minimumOrderFee;
     private String name;
     private String address;
     private String email;
@@ -17,11 +17,9 @@ public class Restaurant {
         this.name = name;
     }
 
-    // #region getters and setters
-    public long getId() {
-        return id;
-    }
 
+    // #region getters and setters
+    
     public RestaurantCategory getCategory() {
         return category;
     }
@@ -69,6 +67,14 @@ public class Restaurant {
     public void setName(String name) {
         this.name = name;
     }
+
+    public double getMinimumOrderFee() {
+		return minimumOrderFee;
+	}
+
+	public void setMinimumOrderFee(double minimumOrderFee) {
+		this.minimumOrderFee = minimumOrderFee;
+	}
 
     //#endregion
 }

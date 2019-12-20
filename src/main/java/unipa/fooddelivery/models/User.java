@@ -7,7 +7,6 @@ import java.util.*;
  */
 public class User {
 
-    private long id;
     private String username;
     private String password;
     private String name;
@@ -88,10 +87,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public long getId() {
-        return id;
     }
 
     // #endregion
