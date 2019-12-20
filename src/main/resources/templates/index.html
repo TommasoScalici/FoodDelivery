@@ -12,12 +12,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Food Delivery</title>
 	<!-- food icons -->
-	<link rel="stylesheet" type="text/css" href="css/organicfoodicons.css" />
+	<link rel="stylesheet" type="text/css" href="/css/organicfoodicons.css" />
 	<!-- demo styles -->
-	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/css/demo.css" />
 	<!-- menu styles -->
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	<script src="js/modernizr-custom.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/component.css" />
+	<script src="/js/modernizr-custom.js"></script>
 </head>
 
 <body>
@@ -58,11 +58,11 @@
 					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-2" aria-owns="submenu-2" href="#">Ordine a domicilio</a></li>
 				</ul>
 				<!-- Submenu 1 -->
-				<ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
+				<!-- <ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
 					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.RestaurantCategory).values()}">
 						<a class="menu__link" href="#" th:text="${category.displayValue}"></a>
 					</li>
-				</ul>
+				</ul> -->
 
 				<!-- Submenu 1-1 -->
 				<!-- <ul data-menu="submenu-1-1" id="submenu-1-1" class="menu__level" tabindex="-1" role="menu" aria-label="Sale %">
@@ -91,9 +91,9 @@
 	</div>
 
 	<!-- /view -->
-	<script src="js/classie.js"></script>
-	<script src="js/dummydata.js"></script>
-	<script src="js/main.js"></script>
+	<script src="/js/classie.js"></script>
+	<script src="/js/dummydata.js"></script>
+	<script src="/js/main.js"></script>
 	<script>
 	(
 		function() {

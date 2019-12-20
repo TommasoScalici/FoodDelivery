@@ -1,4 +1,4 @@
-<div style="margin-top: 10em; text-align: center;">
+<div style="margin-top: 5em; text-align: center;">
   <div class="form-container" style="display: inline-block; width: 60%;">
     <form action="/login/result" id="loginForm" method="POST">
     <div>
@@ -17,7 +17,7 @@
         <label for="password">Password</label>
       </div>
       <div class="col-75">
-        <input type="text" id="password" name="password" placeholder="Password">
+        <input type="password" id="password" name="password" placeholder="Password">
       </div>
     </div>
     <div class="row" style="text-align: center;">
@@ -27,6 +27,7 @@
   </div>
 
   <div th:if="${showerror == true}">
-    <p style="margin-top: 1em; text-align: center;">Username o password errati</p>
+    <p style="color:rgb(190, 11, 11) ; font-size : 40px; margin-top: 1em; text-align: center;"><strong> Username o password errati</strong></p>
+  
   </div>
 </div>
