@@ -1,15 +1,6 @@
 <div>
 
   <ul class="items">
-<<<<<<< HEAD
-
-    <li class="item">
-      <a class="menu__link" th:href="'/restaurants/' +  ${category} + '/' + ${name}" th:text= "${name}"></a>
-        </li>
-
-    <li class="item">
-      <a class="menu__link" th:href="'/restaurants/' + ${category}" th:text="${category.displayValue}"></a>
-=======
     <li th:each="restaurant : ${restaurants}"  class="item">
       <a th:href="'/restaurants/' + ${category} + '/' + ${restaurant.getId()}">
         <div>
@@ -23,7 +14,6 @@
           </div>
         </div>
       </a>
->>>>>>> f53d7ca55bd3c9c4feadc3ed3f421e186c407e2e
     </li>
 
   </ul>
