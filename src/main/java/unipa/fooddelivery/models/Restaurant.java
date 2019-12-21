@@ -34,7 +34,8 @@ public class Restaurant {
         this.category = category;
     }
 
-    public Menu getMenu() {
+    public Menu getMenu() 
+    {
         return menu;
     }
 
