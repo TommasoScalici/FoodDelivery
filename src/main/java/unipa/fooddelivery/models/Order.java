@@ -19,6 +19,10 @@ public class Order {
 
     public Order() { }
 
+    public void advanceStatus() {
+        
+    }
+
     public double getInvoiceTotalFee() {
         return dishesOrdered.stream().mapToDouble(d -> d.getPrice()).sum();
     }
