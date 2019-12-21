@@ -1,5 +1,18 @@
 <div class="items">
     <div th:each="category : ${T(unipa.fooddelivery.models.DishCategory).values()}">
         <h2 th:text="${category.displayValue}"></h2>
+
+        <ul class="items">
+            <li th:each="dish : ${T(unipa.fooddelivery.Utilities).filterDishesByCategory(dishes, category)}"  class="item">
+                  <div>
+                    <p style="font-size: 18px;" th:text="${dish.getName()}"></p>
+                    <div style="margin-left: 1em; text-align: left;">
+                      <span th:text="'Prezzo: ' + ${dish.getPrice()}"></span><br />
+                      <span th:text="'Allergeni: ' + ${dish.getAllergens()}"></span><br />
+                    </div>
+                  </div>
+              </li>
+        </ul>
+
     </div>    
 </div>
