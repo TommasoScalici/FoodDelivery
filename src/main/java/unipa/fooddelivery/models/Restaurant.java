@@ -7,6 +7,7 @@ import java.util.*;
  */
 public class Restaurant {
 
+    private long id;
     private double minimumOrderFee;
     private String name;
     private String address;
@@ -14,7 +15,6 @@ public class Restaurant {
     private String telephoneNumber;
     private String webSite;
     private RestaurantCategory category;
-    private List<Dish> dishes;
     private List<Dish> dailyMenu;
 
     public Restaurant() { }
@@ -31,9 +31,13 @@ public class Restaurant {
 
 
     // #region getters and setters
-    
-    public List<Dish> getDishes() {
-        return dishes;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<Dish> getDailyMenu() {

@@ -1,1 +1,92 @@
-[{"name":"Lasagne","category":"FIRST","restaurant":{"minimumOrderFee":10.0,"name":"La Dolce Vita","address":null,"email":null,"telephoneNumber":null,"webSite":null,"category":"ITALIAN","dishes":null,"dailyMenu":null},"price":10.0,"allergens":null},{"name":"Margherita","category":"PIZZA","restaurant":{"minimumOrderFee":0.0,"name":"L'Arte Bianca","address":null,"email":null,"telephoneNumber":null,"webSite":null,"category":"PIZZA","dishes":null,"dailyMenu":null},"price":5.0,"allergens":null},{"name":"Sashimi","category":"SECOND","restaurant":{"minimumOrderFee":18.0,"name":"Chan Sushi Bar","address":null,"email":null,"telephoneNumber":null,"webSite":null,"category":"SUSHI","dishes":null,"dailyMenu":null},"price":14.0,"allergens":null}]
+[
+    {
+        "id": 1,
+        "name": "Lasagne",
+        "category": "FIRST",
+        "restaurant": {
+            "id": 1,
+            "minimumOrderFee": 10.0,
+            "name": "La Dolce Vita",
+            "address": null,
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "ITALIAN",
+            "dailyMenu": null
+        },
+        "price": 10.0,
+        "allergens": null
+    },
+    {
+        "id": 2,
+        "name": "Involtini di carne",
+        "category": "SECOND",
+        "restaurant": {
+            "id": 1,
+            "minimumOrderFee": 10.0,
+            "name": "La Dolce Vita",
+            "address": null,
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "ITALIAN",
+            "dailyMenu": null
+        },
+        "price": 10.0,
+        "allergens": null
+    },
+    {
+        "id": 3,
+        "name": "Antipasto caldo",
+        "category": "APPETIZER",
+        "restaurant": {
+            "id": 2,
+            "minimumOrderFee": 0.0,
+            "name": "L'Arte Bianca",
+            "address": null,
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "PIZZA",
+            "dailyMenu": null
+        },
+        "price": 3.0,
+        "allergens": null
+    },
+    {
+        "id": 4,
+        "name": "Margherita",
+        "category": "PIZZA",
+        "restaurant": {
+            "id": 2,
+            "minimumOrderFee": 0.0,
+            "name": "L'Arte Bianca",
+            "address": null,
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "PIZZA",
+            "dailyMenu": null
+        },
+        "price": 5.0,
+        "allergens": ["Glutine", "Lattosio"]
+    },
+    {
+        "id": 5,
+        "name": "Sashimi",
+        "category": "SECOND",
+        "restaurant": {
+            "id": 3,
+            "minimumOrderFee": 18.0,
+            "name": "Chan Sushi Bar",
+            "address": null,
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "SUSHI",
+            "dailyMenu": null
+        },
+        "price": 14.0,
+        "allergens": null
+    }
+]
