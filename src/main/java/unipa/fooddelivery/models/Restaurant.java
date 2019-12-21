@@ -1,5 +1,7 @@
 package unipa.fooddelivery.models;
 
+import java.util.*;
+
 /**
  * Model POJO class for Restaurant
  */
@@ -11,13 +13,15 @@ public class Restaurant {
     private String email;
     private String telephoneNumber;
     private String webSite;
-    private Menu menu;
     private RestaurantCategory category;
+    private List<Dish> dishes;
+    private List<Dish> dailyMenu;
 
     public Restaurant(String name) {
         this.name = name;
     }
 
+    
     public Restaurant(String name, RestaurantCategory category, double minimumOrderFee) {
         this.name = name;
         this.category = category;
@@ -27,20 +31,24 @@ public class Restaurant {
 
     // #region getters and setters
     
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public List<Dish> getDailyMenu() {
+        return dailyMenu;
+    }
+
+    public void setDailyMenu(List<Dish> dailyMenu) {
+        this.dailyMenu = dailyMenu;
+    }
+
     public RestaurantCategory getCategory() {
         return category;
     }
 
     public void setCategory(RestaurantCategory category) {
         this.category = category;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
     }
 
     public String getWebSite() {

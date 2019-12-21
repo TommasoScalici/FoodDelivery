@@ -15,6 +15,18 @@ public class Dish {
 
     public Dish() { }
 
+    public Dish(String name, Restaurant restaurant) {
+        this.name = name;
+        this.restaurant = restaurant;
+    }
+
+    public Dish(String name, Restaurant restaurant, DishCategory category, double price) {
+        this.name = name;
+        this.restaurant = restaurant;
+        this.category = category;
+        this.price = price;
+    }
+
     //#region getters and setters
     public String getName() {
         return name;

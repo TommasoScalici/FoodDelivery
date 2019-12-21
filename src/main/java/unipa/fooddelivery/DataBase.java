@@ -20,7 +20,6 @@ public final class DataBase {
     private List<Customer> customers = new ArrayList<>();
     private List<Dish> dishes = new ArrayList<>();
     private List<DeliveryMan> deliverymen = new ArrayList<>();
-    private List<Menu> menus = new ArrayList<>();
     private List<Order> orders = new ArrayList<>();
     private List<Restaurant> restaurants = new ArrayList<>();
     // #endregion
@@ -44,7 +43,6 @@ public final class DataBase {
             models.put(Customer.class, "customers");
             models.put(Dish.class, "dishes");
             models.put(DeliveryMan.class, "deliverymen");
-            models.put(Menu.class, "menus");
             models.put(Order.class, "orders");
             models.put(Restaurant.class, "restaurants");
         }
@@ -72,11 +70,6 @@ public final class DataBase {
     public List<Dish> getDishes() {
         loadData("dishes", Dish.class);
         return dishes;
-    }
-
-    public List<Menu> getMenus() {
-        loadData("menus", Menu.class);
-        return menus;
     }
 
     public List<Order> getOrders() {
