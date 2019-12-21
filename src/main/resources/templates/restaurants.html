@@ -1,11 +1,13 @@
 <div>
+
   <ul class="items">
+
     <li class="item">
-      <a class="bp-button" href="/restaurants" style="width: 8em;">Ristorante 1</a>
+      <a class="menu__link" th:href="'/restaurants/' +  ${category} + '/' + ${name}" th:text= "${name}"></a>
         </li>
 
     <li class="item">
-      <a class="bp-button" href="/restaurants" style="width: 8em;">Ristorante 2</a>
+      <a class="menu__link" th:href="'/restaurants/' + ${category}" th:text="${category.displayValue}"></a>
     </li>
 
   </ul>
