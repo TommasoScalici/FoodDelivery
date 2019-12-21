@@ -11,10 +11,16 @@ public class Restaurant {
     private String email;
     private String telephoneNumber;
     private String webSite;
+    private Menu menu;
     private RestaurantCategory category;
 
     public Restaurant(String name) {
         this.name = name;
+    }
+
+    public Restaurant(String name, RestaurantCategory category) {
+        this.name = name;
+        this.category = category;
     }
 
 
@@ -26,6 +32,14 @@ public class Restaurant {
 
     public void setCategory(RestaurantCategory category) {
         this.category = category;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public String getWebSite() {
