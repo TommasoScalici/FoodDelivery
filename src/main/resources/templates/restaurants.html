@@ -1,12 +1,18 @@
 <div>
   <ul class="items">
-
-    <li class="item">
-      Ristorante 1
-    </li>
-
-    <li class="item">
-      Ristorante 2
+    <li th:each="restaurant : ${restaurants}"  class="item">
+      <a th:href="'/restaurants/' + ${category} + '/' + ${restaurant.getId()}">
+        <div>
+          <p style="font-size: 18px;" th:text="${restaurant.getName()}"></p>
+          <div style="margin-left: 1em; text-align: left;">
+            <span th:text="'Posizione: ' + ${restaurant.getAddress()}"></span><br />
+            <span th:if="${restaurant.getMinimumOrderFee() > 0}" th:text="'Ordine minimo: ' + 
+                        (${restaurant.getMinimumOrderFee()} % 1 == 0 ? 
+                          ${#numbers.formatDecimal(restaurant.getMinimumOrderFee(), 0, 0)} :
+                          ${#numbers.formatDecimal(restaurant.getMinimumOrderFee(), 0, 2)}) +' €'"></span>
+          </div>
+        </div>
+      </a>
     </li>
 
   </ul>
