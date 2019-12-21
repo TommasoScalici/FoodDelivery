@@ -8,7 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class RestaurantsController {
 
     @GetMapping(value = "/restaurants")
-    public ModelAndView getRestaurantsView() {
+    public ModelAndView getRestaurantsView() 
+    {
         var mav = new ModelAndView("index");
         mav.addObject("path", "restaurants");
         return mav;
