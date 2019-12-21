@@ -18,9 +18,10 @@ public class Restaurant {
         this.name = name;
     }
 
-    public Restaurant(String name, RestaurantCategory category) {
+    public Restaurant(String name, RestaurantCategory category, double minimumOrderFee) {
         this.name = name;
         this.category = category;
+        this.minimumOrderFee = minimumOrderFee;
     }
 
 
