@@ -17,10 +17,11 @@ public class Restaurant {
     private List<Dish> dishes;
     private List<Dish> dailyMenu;
 
+    public Restaurant() { }
+
     public Restaurant(String name) {
         this.name = name;
     }
-
     
     public Restaurant(String name, RestaurantCategory category, double minimumOrderFee) {
         this.name = name;
