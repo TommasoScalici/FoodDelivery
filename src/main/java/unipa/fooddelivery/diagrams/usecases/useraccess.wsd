@@ -2,7 +2,9 @@
 scale 2
 left to right direction
 skinparam packageStyle rect
+
 actor "user"
+
 rectangle "application" {
     user -- (register) : if not registered
     user -- (login) : if not\nalready\nlogged

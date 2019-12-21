@@ -13,7 +13,7 @@ import unipa.fooddelivery.models.*;
 public class RestaurantsController {
 
     @GetMapping(value = "/restaurants/{category}")
-    public ModelAndView getRestaurantsView(@PathVariable RestaurantCategory category) 
+    public ModelAndView getRestaurantsView(@PathVariable final RestaurantCategory category) 
     {
         var mav = new ModelAndView("index");
         var restaurants = DataBase.getInstance().getRestaurants();

@@ -2,11 +2,10 @@
 scale 2
 left to right direction
 skinparam packageStyle rect
+
 actor "customer"
 actor "deliveryman"
 agent "restaurant"
-
-
 
 rectangle "application" {
     (customer) -- (place order)
