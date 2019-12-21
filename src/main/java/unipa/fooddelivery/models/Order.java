@@ -16,16 +16,31 @@ public class Order {
     private DeliveryMan deliveryMan;
     private List<Dish> dishesOrdered;
     private OrderStatus status = OrderStatus.PENDING;
+    private PaymentMethod paymentMethod;
     private float deliveryFee;
+    private boolean isPaid;
 
     public Order() { }
 
+    public Order(Customer customer, DeliveryMan deliveryMan, List<Dish> dishesOrdered) {
+        this.customer = customer;
+        this.deliveryMan = deliveryMan;
+        this.dishesOrdered = dishesOrdered;
+     }
+
     public void advanceStatus() {
-        
+        var nextStatus = status.next();
+        if(nextStatus.isPresent())
+            status = nextStatus.get();
+    }
+
+    public void cancelOrder() {
+        status = OrderStatus.CANCELED;
     }
 
     public double getInvoiceTotalFee() {
-        return dishesOrdered.stream().mapToDouble(d -> d.getPrice()).sum();
+        return dishesOrdered.stream().mapToDouble(d -> d.getPrice()).sum()
+               + deliveryFee;
     }
 
     //#region getters and setters
@@ -68,6 +83,22 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean isPaid) {
+        this.isPaid = isPaid;
     }
 
     public float getDeliveryFee() {
