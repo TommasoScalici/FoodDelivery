@@ -1,6 +1,9 @@
-<div style="margin-top: 5em; text-align: center;">
+<div class="items">
+  
   <div class="form-container" style="display: inline-block; width: 60%;">
+
     <form action="/login/result" id="loginForm" method="POST">
+
     <div>
       <p>Inserisci le tue credenziali per effettuare l'accesso</p>
     </div>
@@ -12,6 +15,7 @@
         <input type="text" id="username" name="username" placeholder="User Name">
       </div>
     </div>
+
     <div class="row">
       <div class="col-25">
         <label for="password">Password</label>
@@ -20,6 +24,7 @@
         <input type="password" id="password" name="password" placeholder="Password">
       </div>
     </div>
+
     <div class="row" style="text-align: center;">
       <input id="submit" style="margin-top: 2em; display: inline-block; float: none;" type="submit" value="Login">
     </div>
@@ -27,7 +32,7 @@
   </div>
 
   <div th:if="${showerror == true}">
-    <p style="color:rgb(190, 11, 11) ; font-size : 40px; margin-top: 1em; text-align: center;"><strong> Username o password errati</strong></p>
-  
+    <p style="color:red ; font-size: 20px; margin-top: 1em; text-align: center;"><strong>Username o password errati</strong></p>
   </div>
+
 </div>

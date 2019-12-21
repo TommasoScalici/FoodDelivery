@@ -9,7 +9,7 @@ public class IndexController {
 
     @GetMapping(value = "/")
     public ModelAndView index() {
-        ModelAndView mav = new ModelAndView("index");
+        var mav = new ModelAndView("index");
         mav.addObject("path", "welcome");
         return mav;
     }

@@ -4,7 +4,7 @@ import javax.servlet.http.*;
 
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.*;
 
 import unipa.fooddelivery.*;
 
@@ -14,7 +14,7 @@ public class LoginController
 
     @GetMapping(value = "/login")
     public ModelAndView getLoginView() {
-        ModelAndView mav = new ModelAndView("index");
+        var mav = new ModelAndView("index");
         mav.addObject("path", "login");
         return mav;
     }
@@ -22,7 +22,7 @@ public class LoginController
     @GetMapping(value = "/logout")
     public ModelAndView getLogoutView(HttpSession session) {
         session.removeAttribute("user");
-        ModelAndView mav = new ModelAndView("index");
+        var mav = new ModelAndView("index");
         mav.addObject("path", "logout");
         return mav;
     }
@@ -31,33 +31,25 @@ public class LoginController
     public @ResponseBody ModelAndView getLoginResultView(@RequestParam(value="username") final String username, 
                                                          @RequestParam(value="password") final String password,
                                                          HttpSession session) {
+
         var users = DataBase.getInstance().getCustomers();
 
-        try {
-            
-            var user = users.stream()
-                            .filter(x -> x.getUsername().equals(username) && x.getPassword().equals(password))
-                            .findFirst();
+        var user = users.stream()
+                        .filter(x -> x.getUsername().equals(username) && x.getPassword().equals(password))
+                        .findFirst();
 
-            if(user.isPresent())
-            {
-                ModelAndView mav = new ModelAndView("redirect:/");
-                session.setAttribute("user", user.get());
-                return mav;
-            }
-            else
-            {
-                ModelAndView mav = new ModelAndView("index");
-                mav.addObject("path", "login");
-                mav.addObject("showerror", true);
-                return mav;
-            }
-        }    
-
-        catch (Exception e) {
-            e.printStackTrace();
+        if(user != null && user.isPresent())
+        {
+            ModelAndView mav = new ModelAndView("redirect:/");
+            session.setAttribute("user", user.get());
+            return mav;
         }
-
-        return null;
+        else
+        {
+            ModelAndView mav = new ModelAndView("index");
+            mav.addObject("path", "login");
+            mav.addObject("showerror", true);
+            return mav;
+        }
     }
 }

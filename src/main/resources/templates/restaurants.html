@@ -1,26 +1,13 @@
-<div th:if="${session.user != null}"  style="margin-top: 10em; text-align: center;">
-    <div class="form-container" style="display: inline-block; width: 60%;">
-        <div>
-            <p>Ristoranti</p>
-          </div>
+<div>
+  <ul class="items">
 
-          <div class="row">
+    <li class="item">
+      Ristorante 1
+    </li>
 
-            <div class="col-25">
-              <label >Nome :</label>
-            </div>
-            <div class="col-25">
-                <label th:text="${session.user.getName()}"></label>
-              </div>
-          </div>
-          <div class="row">
-            <div class="col-25">
-              <label >Indirizzo :</label>
-            </div>
-            <div class="col-25">
-                <label th:text="${session.user.getAddress()}"></label>
-            </div>
-        </div>
+    <li class="item">
+      Ristorante 2
+    </li>
 
-    </div>
+  </ul>
 </div>

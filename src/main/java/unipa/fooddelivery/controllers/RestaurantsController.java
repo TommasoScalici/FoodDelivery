@@ -1,26 +1,16 @@
 package unipa.fooddelivery.controllers;
 
-import java.io.*;
-import java.util.*;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.*;
-
-import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RestaurantsController {
 
     @GetMapping(value = "/restaurants")
-    public ModelAndView getRestaurantsView() throws JsonParseException, JsonMappingException, IOException {
+    public ModelAndView getRestaurantsView() {
         var mav = new ModelAndView("index");
         mav.addObject("path", "restaurants");
-
-        var objectMapper = new ObjectMapper();
-        var restaurants = objectMapper.readValue(new File("./src/main/resources/static/json/restaurants.json"), List.class);
-        mav.addObject("restaurants", restaurants);
         return mav;
     }
 }

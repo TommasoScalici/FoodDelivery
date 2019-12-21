@@ -11,7 +11,7 @@ public class ProfileController {
 
     @GetMapping(value = "/profile")
     public ModelAndView getProfileView(HttpSession session) {
-        ModelAndView mav = new ModelAndView("index");
+        var mav = new ModelAndView("index");
         session.getAttribute("user");
         mav.addObject("path", "profile");
         return mav;

@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
 	<!-- Main container -->
 	<div class="container">
 		<!-- Blueprint header -->
@@ -37,18 +38,19 @@
 				<div th:if="(${session.user == null})">
 					<h3 class="bp-header__title">Effettua il login o registrati per accedere al tuo profilo</h3>
 					<nav class="bp-nav">
-						<a class="bp-button" href="/login" style="width: 10em;">Login</a>
-						<a class="bp-button" href="/register" style="width: 10em;">Registrati</a>
+						<a class="bp-button" href="/login" style="width: 8em;">Login</a>
+						<a class="bp-button" href="/register" style="width: 8em;">Registrati</a>
 					</nav>
 				</div>
 				<div th:if="(${session.user != null})">
 					<nav class="bp-nav">
-						<a class="bp-button" href="/profile" style="width: 10em;">Profilo</a>
-						<a class="bp-button" href="/logout" style="width: 10em;">Logout</a>
+						<a class="bp-button" href="/profile" style="width: 8em;">Profilo</a>
+						<a class="bp-button" href="/logout" style="width: 8em;">Logout</a>
 					</nav>
 				</div>
 			</div>
 		</header>
+
 		<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
 		<nav id="ml-menu" class="menu">
 			<button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
@@ -58,11 +60,11 @@
 					<li class="menu__item" role="menuitem"><a class="menu__link" data-submenu="submenu-2" aria-owns="submenu-2" href="#">Ordine a domicilio</a></li>
 				</ul>
 				<!-- Submenu 1 -->
-				<!-- <ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
+				<ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
 					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.RestaurantCategory).values()}">
-						<a class="menu__link" href="#" th:text="${category.displayValue}"></a>
+						<a class="menu__link" href="/restaurants" th:text="${category.displayValue}"></a>
 					</li>
-				</ul> -->
+				</ul>
 
 				<!-- Submenu 1-1 -->
 				<!-- <ul data-menu="submenu-1-1" id="submenu-1-1" class="menu__level" tabindex="-1" role="menu" aria-label="Sale %">
@@ -103,7 +105,7 @@
 				// initialBreadcrumb : 'all', // initial breadcrumb text
 				backCtrl : false, // show back button
 				// itemsDelayInterval : 60, // delay between each menu item sliding animation
-				onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+				onItemClick: loadData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
 			});
 
 		// mobile menu toggle
@@ -126,33 +128,20 @@
 		// simulate grid content loading
 		var gridWrapper = document.querySelector('.content');
 
-		function loadDummyData(ev, itemName) {
+		function loadData(ev, itemName) {
 			ev.preventDefault();
 
 			closeMenu();
-			gridWrapper.innerHTML = '';
+			gridWrapper.innerHTML = '<ul class="items">Caricamento in corso...</ul>';
 			classie.add(gridWrapper, 'content--loading');
 			setTimeout(function() {
 				classie.remove(gridWrapper, 'content--loading');
-				gridWrapper.innerHTML = 'Qua dovrebbe andarci qualcosa';
+				window.location.replace(ev.toElement.pathname);
 			}, 700);
 		}
-
-		// function doAjaxNavigation(event, className, urlPath) {
-		// 	if(urlPath != "/") {
-		// 		event.preventDefault();
-		// 		$(className).load(urlPath);
-		// 		history.pushState(null, null, urlPath);
-		// 	}
-		// }
-
-		// $(document).ready(function() {
-		// 	$('a').click(function(event) {
-		// 		doAjaxNavigation(event, "#content", this.pathname);
-		// 	});			
-		// });
 	})();
 	</script>
+	
 </body>
 
 </html>

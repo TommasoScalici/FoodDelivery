@@ -7,7 +7,7 @@ import java.util.*;
  * 
  * Il ristorante non figura tra gli attributi, poiché è possibile raggruppare in
  * un ordine piatti da più ristoranti. Ogni piatto ha comunque un attributo che
- * fa riferimento al ristorante a cui appartiene
+ * fa riferimento al ristorante a cui appartiene.
  */
 public class Order {
 
