@@ -39,14 +39,8 @@ public class Restaurant {
         return dailyMenu;
     }
 
-<<<<<<< HEAD
-    public Menu getMenu() 
-    {
-        return menu;
-=======
     public void setDailyMenu(List<Dish> dailyMenu) {
         this.dailyMenu = dailyMenu;
->>>>>>> 0f5b3bb3222fb885fb67f1d1070e6c68c5742ca3
     }
 
     public RestaurantCategory getCategory() {
