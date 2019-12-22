@@ -45,7 +45,7 @@ public class ShoppingCartController {
 
 	@RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
 	public String remove(@PathVariable("id") String id, HttpSession session) {
-		ProductList productModel = new ProductList();
+		ProductList productList = new ProductList();
 		List<Item> cart = (List<Item>) session.getAttribute("cart");
 		int index = this.exists(id, cart);
 		cart.remove(index);
