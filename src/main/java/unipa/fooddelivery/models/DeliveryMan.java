@@ -5,6 +5,8 @@ package unipa.fooddelivery.models;
  */
 public class DeliveryMan extends User {
 
+    private boolean isAvailable;
+
     public DeliveryMan() {
         super();
     }
@@ -12,4 +14,14 @@ public class DeliveryMan extends User {
     public DeliveryMan(String username, String password) {
         super(username, password);
     }
+
+//#region getters and setters    
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+//#endregion
 }

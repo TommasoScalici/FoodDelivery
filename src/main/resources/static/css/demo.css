@@ -225,6 +225,20 @@ a:hover {
 	background: #7c7edc;
 }
 
+.bp-button-mini {
+	background: #5c5edc;
+	border: none;
+	color: white;
+	padding: 8px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin: 2px 2px;
+	width: 2em;
+	border-radius: 50%;
+}
+
 .bp-icon:after {
 	font-family: 'bpicons';
 	font-weight: normal;
@@ -234,7 +248,6 @@ a:hover {
 	text-transform: none;
 	color: #5c5edc;
 	-webkit-font-smoothing: antialiased;
-	speak: none;
 }
 
 .bp-nav .bp-icon:after {
