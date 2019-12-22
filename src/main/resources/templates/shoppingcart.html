@@ -1,0 +1,23 @@
+<div class="items" th:if="${session.shoppingcart != null}" >
+    <div class="form-container" style="display: inline-block; width: 60%;">
+        <div>
+            <p>Dati relativi al carrello</p>
+          </div>
+
+          <div class="row">
+              <div class="col-25">
+               <label >Quantità :</label>
+             </div>
+             <li th:each="item : ${session.shoppingcart}"  class="item">
+                <div>
+                  <p style="font-size: 18px;" th:text="${dish.getName()}"></p>
+                  <div style="margin-left: 1em; text-align: left;">
+                    <span th:text="'Quantità: ' + ${ shoppingcart.get(dish)}"></span><br />
+                  </div>
+                </div>
+            </li>
+          </div>
+
+        </div>
+    </div>
+</div>

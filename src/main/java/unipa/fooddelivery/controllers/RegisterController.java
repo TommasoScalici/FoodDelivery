@@ -29,7 +29,8 @@ public class RegisterController {
         @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,
         @RequestParam(value = "surname") final String surname,
         @RequestParam(value = "birthdate") @DateTimeFormat(pattern = "yyyy-MM-dd") final Date birthdate,
-        @RequestParam(value = "address") final String address, @RequestParam(value = "email") final String email,
+        @RequestParam(value = "address") final String address, 
+        @RequestParam(value = "email") final String email,
         @RequestParam(value = "telephonenumber") final String telephoneNumber,
         HttpSession session) {
 

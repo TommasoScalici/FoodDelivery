@@ -9,10 +9,12 @@ public class Dish {
 
     private long id;
     private String name;
+    private int quantity = 0;
     private DishCategory category;
     private Restaurant restaurant;
     private double price;
     private List<String> allergens;
+   
 
     public Dish() { }
 
@@ -29,6 +31,15 @@ public class Dish {
     }
 
     //#region getters and setters
+
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 
     public long getId() {
         return id;

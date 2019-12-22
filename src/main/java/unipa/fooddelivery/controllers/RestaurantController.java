@@ -2,7 +2,6 @@ package unipa.fooddelivery.controllers;
 
 import java.util.stream.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.*;
@@ -16,7 +15,7 @@ import unipa.fooddelivery.models.*;
 public class RestaurantController {
 
     @GetMapping(value = "/restaurants/{category}")
-    public ModelAndView getRestaurantsView(@PathVariable("category") final RestaurantCategory category, HttpServletRequest request) 
+    public ModelAndView getRestaurantsView(@PathVariable("category") final RestaurantCategory category) 
     {
         var mav = new ModelAndView("index");
         var restaurants = DataBase.getInstance().getRestaurants();
@@ -36,15 +35,16 @@ public class RestaurantController {
     {
         var mav = new ModelAndView("index");
         var dishes = DataBase.getInstance().getDishes();
+
         var dishesFiltered = dishes.stream()
                                    .filter(x -> x.getRestaurant().getId() == id)
                                    .collect(Collectors.toList());
 
+
         mav.addObject("path", "dishes");
         mav.addObject("dishes", dishesFiltered);
 
-        session.setAttribute("ShoppingCart", dishesFiltered);
-
+        
         return mav;
     }
 }

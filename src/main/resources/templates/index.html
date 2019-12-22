@@ -40,12 +40,14 @@
 					<nav class="bp-nav">
 						<a class="bp-button" href="/login" style="width: 8em;">Login</a>
 						<a class="bp-button" href="/register" style="width: 8em;">Registrati</a>
+						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
 					</nav>
 				</div>
 				<div th:if="(${session.user != null})">
 					<nav class="bp-nav">
 						<a class="bp-button" href="/profile" style="width: 8em;">Profilo</a>
 						<a class="bp-button" href="/logout" style="width: 8em;">Logout</a>
+						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
 					</nav>
 				</div>
 			</div>

@@ -69,7 +69,7 @@
             "dailyMenu": null
         },
         "price": 5.0,
-        "allergens": ["Glutine", "Lattosio"]
+        "allergens": ["Lattosio"]
     },
     {
         "id": 5,
