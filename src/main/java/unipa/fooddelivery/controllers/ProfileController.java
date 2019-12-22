@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 @Controller
+@RequestMapping("/profile")
 public class ProfileController {
 
-    @GetMapping(value = "/profile")
+    @GetMapping()
     public ModelAndView getProfileView(HttpSession session) {
         var mav = new ModelAndView("index");
         session.getAttribute("user");

@@ -7,14 +7,17 @@
                   <div>
                     <p style="font-size: 18px;" th:text="${dish.getName()}"></p>
                     <div style="margin-left: 1em; text-align: left;">
+                      <span th:text="'Descrizione: ' + ${dish.getDescription()}"></span><br />
                       <span th:text="'Prezzo: ' + ${dish.getPrice()}"></span><br />
+                      <span th:text="'Ingredienti: ' + ${dish.getIngredients()}"></span><br />
                       <span th:text="'Allergeni: ' + ${dish.getAllergens()}"></span><br />
                     </div>
 
                     <div style="float: right; bottom: auto;">
-                    <button class="bp-button-mini">- </button>
-                    <label>0</label>
-                    <button class="bp-button-mini">+</button>
+                    <a th:href="@{/shoppingcart/sub/{id}(id=${dish.getId()})}" class="bp-button-mini">- </a>
+                    <label th:text="(${session.shoppingcart.get(dish.getId()) == null} ? '0' :
+                                    ${session.shoppingcart.get(dish.getId())})"></label>
+                    <a th:href="@{/shoppingcart/add/{id}(id=${dish.getId()})}" class="bp-button-mini">+</a>
                     </div>
                   </div>
               </li>

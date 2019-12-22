@@ -82,7 +82,7 @@
     {
         "id": 5,
         "name": "Sashimi",
-        "description": null
+        "description": null,
         "category": "SECOND",
         "restaurant": {
             "id": 3,

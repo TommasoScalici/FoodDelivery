@@ -1,4 +1,5 @@
 <div>
+
   <ul class="items">
     <li th:each="restaurant : ${restaurants}"  class="item">
       <a th:href="'/restaurants/' + ${category} + '/' + ${restaurant.getId()}">
