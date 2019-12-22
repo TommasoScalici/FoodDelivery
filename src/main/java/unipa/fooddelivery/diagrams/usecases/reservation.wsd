@@ -1,0 +1,15 @@
+@startuml reservation
+scale 2
+left to right direction
+skinparam packageStyle rect
+
+actor "customer"
+actor "restaurant owner"
+
+rectangle "application" {
+    (customer) --> (place reservation)
+    (place reservation) .> (system) : payment\n10% of total\nas a deposit
+    (system) --> (restaurant owner) : receive notification\nof the reservation
+}
+
+@enduml

@@ -1,11 +1,11 @@
 <div class="items">
 
     <div>
-        <p>Elementi nel carrello</p>
+        <h2>Elementi nel carrello</h2>
     </div>
 
     <div th:if="${shoppingcart.isEmpty()}">
-      <p>Il carrello è vuoto</p>
+      <h3>Il carrello è vuoto</h3>
     </div>
 
     <ul th:if="${!shoppingcart.isEmpty()}" class="items">

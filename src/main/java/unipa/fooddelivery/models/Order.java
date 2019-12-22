@@ -12,6 +12,8 @@ import java.util.*;
 public class Order {
 
     private long id;
+    private Date deliveryDate;
+    private Date orderDate;
     private Customer customer;
     private DeliveryMan deliveryMan;
     private List<Dish> dishesOrdered;
@@ -107,6 +109,22 @@ public class Order {
 
     public void setDeliveryFee(float deliveryFee) {
         this.deliveryFee = deliveryFee;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     //#endregion
