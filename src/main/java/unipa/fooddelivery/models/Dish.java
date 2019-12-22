@@ -9,10 +9,12 @@ public class Dish {
 
     private long id;
     private String name;
+    private String description;
     private DishCategory category;
     private Restaurant restaurant;
     private double price;
     private List<String> allergens;
+    private List<String> ingredients;
 
     public Dish() { }
 
@@ -41,6 +43,22 @@ public class Dish {
     public String getName() {
         return name;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
+    }    
 
     public List<String> getAllergens() {
         return allergens;

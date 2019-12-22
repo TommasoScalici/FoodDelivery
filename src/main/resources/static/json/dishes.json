@@ -2,6 +2,7 @@
     {
         "id": 1,
         "name": "Lasagne",
+        "description": "Lasagne alla bolognese",
         "category": "FIRST",
         "restaurant": {
             "id": 1,
@@ -15,11 +16,13 @@
             "dailyMenu": null
         },
         "price": 10.0,
-        "allergens": null
+        "allergens": null,
+        "ingredients": null
     },
     {
         "id": 2,
         "name": "Involtini di carne",
+        "description": null,
         "category": "SECOND",
         "restaurant": {
             "id": 1,
@@ -33,11 +36,13 @@
             "dailyMenu": null
         },
         "price": 10.0,
-        "allergens": null
+        "allergens": null,
+        "ingredients": null
     },
     {
         "id": 3,
         "name": "Antipasto caldo",
+        "description": "Antipasto caldo di patatine fritte, panelle e crostini",
         "category": "APPETIZER",
         "restaurant": {
             "id": 2,
@@ -51,11 +56,13 @@
             "dailyMenu": null
         },
         "price": 3.0,
-        "allergens": null
+        "allergens": null,
+        "ingredients": null
     },
     {
         "id": 4,
         "name": "Margherita",
+        "description": "Pizza Margherita con impasto napoletano",
         "category": "PIZZA",
         "restaurant": {
             "id": 2,
@@ -69,11 +76,13 @@
             "dailyMenu": null
         },
         "price": 5.0,
-        "allergens": ["Lattosio"]
+        "allergens": ["Lattosio"],
+        "ingredients": ["Salsa di pomodoro", "Mozzarella"]
     },
     {
         "id": 5,
         "name": "Sashimi",
+        "description": null
         "category": "SECOND",
         "restaurant": {
             "id": 3,
@@ -87,6 +96,7 @@
             "dailyMenu": null
         },
         "price": 14.0,
-        "allergens": null
+        "allergens": null,
+        "ingredients": null
     }
 ]
