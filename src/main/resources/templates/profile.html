@@ -1,77 +1,134 @@
 <div class="items" th:if="${session.user != null}" >
-    <div class="form-container" style="display: inline-block; width: 60%;">
-        <div>
-            <h2>Dati relativi all'account</h2>
-          </div>
+  <div class="form-container" style="display: inline-block; width: 60%;">
+    <form action="/profile/update" id="registerForm" method="POST">
+      <div>
+          <h2>Dati relativi all'account</h2>
+      </div>
 
-          <div class="row">
-              <div class="col-25">
-               <label >User Name :</label>
-             </div>
-              <div class="col-25">
-                  <label th:text="${session.user.getUsername()}"></label>
-               </div>
-          </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="registrationtype">Tipo account</label>
+        </div>
+        <div class="col-75">
+          <span>Bisogna gestire il tipo account alla registrazione porco***</span>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-25">
+          <label for="username">User Name</label>
+        </div>
+        <div class="col-75">
+          <label th:text="${session.user.getUsername()}"></label>
+        </div>
+      </div>
 
-          <div class="row">
-            <div class="col-25">
-              <label >Nome: </label>
-            </div>
-            <div class="col-25">
-                <label th:text="${session.user.getName()}"></label>
-              </div>
-          </div>
+      <br />
 
+      <div class="row">
+        <div class="col-25">
+          <label for="name">Nome</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="name" name="name" placeholder="Nome" th:value="${session.user.getName()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="surname">Cognome</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="surname" name="surname" placeholder="Cognome" th:value="${session.user.getSurname()}">
+        </div>
+      </div>
 
-          <div class="row">
-              <div class="col-25">
-                <label >Cognome: </label>
-              </div>
-              <div class="col-25">
-                  <label th:text="${session.user.getSurname()}"></label>
-                </div>
-            </div>
+      <br />
 
-          
-            <div class="row">
-                <div class="col-25">
-                  <label >Data di Nascita: </label>
-                </div>
-                <div class="col-25">
-                    <label th:text="${#dates.format(session.user.getBirthdate(), 'dd/MM/yyyy')}"></label>
-                  </div>
-              </div>
-              
-                <div class="row">
-                    <div class="col-25">
-                      <label >Indirizzo: </label>
-                    </div>
-                    <div class="col-25">
-                        <label th:text="${session.user.getAddress()}"></label>
-                      </div>
-                  </div>
-              
-              
-                  <div class="row">
-                      <div class="col-25">
-                        <label >E-mail: </label>
-                      </div>
-                      <div class="col-25">
-                          <label th:text="${session.user.getEmail()}"></label>
-                        </div>
-                    </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="birthdate">Data di nascita</label>
+        </div>
+        <div class="col-75">
+          <input type="date" id="birthdate" name="birthdate" placeholder="Data di nascita"
+                 th:value="${#dates.format(session.user.getBirthdate(), 'dd/MM/yyyy')}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="email">E-mail</label>
+        </div>
+        <div class="col-75">
+          <input required type="email" id="email" name="email" placeholder="Indirizzo E-mail" th:value="${session.user.getEmail()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="telephonenumber">Numero di telefono</label>
+        </div>
+        <div class="col-75">
+          <input type="tel" id="telephonenumber" name="telephonenumber" placeholder="Telefono" th:value="${session.user.getTelephoneNumber()}">
+        </div>
+      </div>
 
-                    <div class="row">
-                        <div class="col-25">
-                          <label >Numero di Telefono: </label>
-                        </div>
-                        <div class="col-25">
-                            <label th:text="${session.user.getTelephoneNumber()}"></label>
-                          </div>
-                      </div>
-            </div>
-    </div>
+      <br />
+
+      <div class="row">
+        <div class="col-25">
+          <label for="country">Stato</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="country" name="country" placeholder="Stato / Nazione" th:value="${session.user.getAddress().getCountry()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="city">Città</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="city" name="city" placeholder="Città" th:value="${session.user.getAddress().getCity()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="province">Provincia</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="province" name="province" placeholder="Provincia / Comune" th:value="${session.user.getAddress().getProvince()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="street">Indirizzo</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="street" name="street" placeholder="Via / Viale / Piazza / Corso" th:value="${session.user.getAddress().getStreet()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="number">Numero Civico</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="number" name="number" placeholder="Numero Civico" th:value="${session.user.getAddress().getNumber()}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="zip">CAP</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="zip" name="zip" placeholder="CAP / ZIP" th:value="${session.user.getAddress().getZip()}">
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row" style="text-align: center;">
+        <input id="submit" style="margin-top: 2em; display: inline-block; float: none;" type="submit" value="Aggiorna Dati">
+      </div>
+
+    </form>
+  </div>
 </div>
 
 

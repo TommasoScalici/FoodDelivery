@@ -7,10 +7,25 @@
 
       <div class="row">
         <div class="col-25">
+          <label for="registrationtype">Registrati come</label>
+        </div>
+        <div class="col-75">
+          <select required="required" type="text" id="registrationtype" name="registrationtype">
+            <option value="Customer">Cliente</option>
+            <option value="DeliveryMan">Fattorino</option>
+            <option value="RestaurantOwner">Ristoratore</option>
+          </select>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col-25">
           <label for="username">User Name</label>
         </div>
         <div class="col-75">
-          <input type="text" id="username" name="username" placeholder="User Name">
+          <input required type="text" id="username" name="username" placeholder="User Name">
         </div>
       </div>
       <div class="row">
@@ -18,9 +33,11 @@
           <label for="password">Password</label>
         </div>
         <div class="col-75">
-          <input type="password" id="password" name="password" placeholder="Password">
+          <input required type="password" id="password" name="password" placeholder="Password">
         </div>
       </div>
+
+      <br />
 
       <div class="row">
         <div class="col-25">
@@ -39,6 +56,7 @@
         </div>
       </div>
 
+      <br />
 
       <div class="row">
         <div class="col-25">
@@ -48,21 +66,12 @@
           <input type="Date" id="birthdate" name="birthdate" placeholder="Data di nascita">
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-25">
-          <label for="address">Indirizzo</label>
-        </div>
-        <div class="col-75">
-          <input type="text" id="address" name="address" placeholder="Via e numero civico">
-        </div>
-      </div>
       <div class="row">
         <div class="col-25">
           <label for="email">E-mail</label>
         </div>
         <div class="col-75">
-          <input type="text" id="email" name="email" placeholder="Indirizzo E-mail">
+          <input required type="email" id="email" name="email" placeholder="Indirizzo E-mail">
         </div>
       </div>
       <div class="row">
@@ -70,9 +79,62 @@
           <label for="telephonenumber">Numero di telefono</label>
         </div>
         <div class="col-75">
-          <input type="text" id="telephonenumber" name="telephonenumber" placeholder="Telefono">
+          <input type="tel" id="telephonenumber" name="telephonenumber" placeholder="Telefono">
         </div>
       </div>
+
+      <br />
+
+      <div class="row">
+        <div class="col-25">
+          <label for="country">Stato</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="country" name="country" placeholder="Stato / Nazione">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="city">Città</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="city" name="city" placeholder="Città">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="province">Provincia</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="province" name="province" placeholder="Provincia / Comune">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="street">Indirizzo</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="street" name="street" placeholder="Via / Viale / Piazza / Corso">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="number">Numero Civico</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="number" name="number" placeholder="Numero Civico">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="zip">CAP</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="zip" name="zip" placeholder="CAP / ZIP">
+        </div>
+      </div>
+
+      <br />
 
       <div class="row" style="text-align: center;">
         <input id="submit" style="margin-top: 2em; display: inline-block; float: none;" type="submit" value="Registrati">

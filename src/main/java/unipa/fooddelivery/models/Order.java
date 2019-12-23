@@ -19,8 +19,9 @@ public class Order {
     private List<Dish> dishesOrdered;
     private OrderStatus status = OrderStatus.PENDING;
     private PaymentMethod paymentMethod;
-    private float deliveryFee;
+    private double deliveryFee;
     private boolean isPaid;
+
 
     public Order() { }
 
@@ -103,11 +104,11 @@ public class Order {
         this.isPaid = isPaid;
     }
 
-    public float getDeliveryFee() {
+    public double getDeliveryFee() {
         return deliveryFee;
     }
 
-    public void setDeliveryFee(float deliveryFee) {
+    public void setDeliveryFee(double deliveryFee) {
         this.deliveryFee = deliveryFee;
     }
 

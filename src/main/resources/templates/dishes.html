@@ -3,7 +3,7 @@
         <h2 th:text="${category.displayValue}"></h2>
 
         <ul class="items">
-            <li th:each="dish : ${T(unipa.fooddelivery.Utilities).filterDishesByCategory(dishes, category)}"  class="item">
+            <li th:each="dish : ${T(unipa.fooddelivery.Utilities).filterDishesByCategory(dishes, category)}" class="item">
                   <div>
                     <p style="font-size: 18px;" th:text="${dish.getName()}"></p>
                     <div style="margin-left: 1em; text-align: left;">

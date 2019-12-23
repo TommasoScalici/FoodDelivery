@@ -58,7 +58,7 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
-    	return "redirect:"+ referer;
+    	return "redirect:" + referer;
 	}
 
 	@RequestMapping(value = "/sub/{id}")
@@ -80,7 +80,7 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
-    	return "redirect:"+ referer;
+    	return "redirect:" + referer;
 	}
 
 	@RequestMapping(value = "/del/{id}")
@@ -97,6 +97,6 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
-    	return "redirect:"+ referer;
+    	return "redirect:" + referer;
 	}
 }

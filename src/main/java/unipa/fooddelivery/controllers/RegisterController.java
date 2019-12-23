@@ -29,13 +29,20 @@ public class RegisterController {
         @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,
         @RequestParam(value = "surname") final String surname,
         @RequestParam(value = "birthdate") @DateTimeFormat(pattern = "yyyy-MM-dd") final Date birthdate,
-        @RequestParam(value = "address") final String address, 
+        @RequestParam(value = "country") final String country,
+        @RequestParam(value = "city") final String city,
+        @RequestParam(value = "province") final String province,
+        @RequestParam(value = "street") final String street,
+        @RequestParam(value = "number") final String number,
+        @RequestParam(value = "zip") final String zip,
         @RequestParam(value = "email") final String email,
         @RequestParam(value = "telephonenumber") final String telephoneNumber,
         HttpSession session) {
 
         var mav = new ModelAndView("redirect:/");
         var customer = new Customer(username, password);
+        var address = new Address(country, city, province, street, number, zip);
+
         customer.setAddress(address);
         customer.setBirthdate(birthdate);
         customer.setEmail(email);
