@@ -15,9 +15,8 @@ public class Utilities
                      .collect(Collectors.toList());
     }
 
-    public static double getTotal(Enumeration<Dish> dishes, double deliveryFee) {
+    public static double getTotal(Hashtable<Dish, Integer> dishes, double deliveryFee) {
          
-        var dishesList = Collections.list(dishes);
-        return dishesList.stream().mapToDouble(d -> d.getPrice()).sum() + deliveryFee;
+        return dishes.entrySet().stream().mapToDouble(x -> x.getKey().getPrice() * x.getValue()).sum();
     }
 }
