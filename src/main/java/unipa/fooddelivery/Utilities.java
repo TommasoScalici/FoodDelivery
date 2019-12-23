@@ -15,10 +15,8 @@ public class Utilities
                      .collect(Collectors.toList());
     }
 
-
-    public static double getInvoiceTotalFee(List<Dish> dishesOrdered,double deliveryFee) {
+    public static double getInvoiceTotalFee(List<Dish> dishes, double deliveryFee) {
          
-        return dishesOrdered.stream().mapToDouble(d -> d.getPrice()).sum()
-               + deliveryFee;
+        return dishes.stream().mapToDouble(d -> d.getPrice()).sum() + deliveryFee;
     }
 }
