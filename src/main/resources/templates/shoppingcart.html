@@ -17,6 +17,7 @@
                 <span th:text="'Prezzo: ' + ${dish.getPrice()}"></span><br />
                 <span th:text="'Ingredienti: ' + ${dish.getIngredients()}"></span><br />
                 <span th:text="'Allergeni: ' + ${dish.getAllergens()}"></span><br />
+
               </div>
 
               <div style="float: right; bottom: auto;">
@@ -28,4 +29,11 @@
             </div>
         </li>
   </ul>
+
+
+  <div>
+    <span th:text="'Il prezzo è ' + ${T(unipa.fooddelivery.Utilities).getInvoiceTotalFee(shoppingcart, 0.0)}" class="item"></span><br />
+
+  </div>
+
 </div>

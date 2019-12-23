@@ -36,6 +36,7 @@ public class ShoppingCartController {
 		var mav = new ModelAndView("index");
 		mav.addObject("path", "shoppingcart");
 		mav.addObject("shoppingcart", dishes); // Da non confondere con shoppingcart in sessione...
+
 		return mav;
 	}
 
@@ -57,20 +58,9 @@ public class ShoppingCartController {
 			}
 		}
 
-<<<<<<< HEAD
-	@RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
-	public String remove(@PathVariable("id") String id, HttpSession session) {
-		ProductList productList = new ProductList();
-		List<Item> cart = (List<Item>) session.getAttribute("cart");
-		int index = this.exists(id, cart);
-		cart.remove(index);
-		session.setAttribute("cart", cart);
-		return "redirect:/cart/index";
-=======
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
     	return "redirect:"+ referer;
->>>>>>> 61dcb23b7a8058acf8a2cedf51d5fe0876846975
 	}
 
 	@RequestMapping(value = "/sub/{id}")
@@ -92,6 +82,8 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
-    	return "redirect:"+ referer;
+		return "redirect:"+ referer;
+		
+		
 	}
 }
