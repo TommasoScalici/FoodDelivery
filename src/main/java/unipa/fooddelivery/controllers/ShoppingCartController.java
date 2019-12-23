@@ -2,47 +2,62 @@ package unipa.fooddelivery.controllers;
 
 import java.util.*;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
+
+import unipa.fooddelivery.DataBase;
 import unipa.fooddelivery.models.*;
 
-import unipa.fooddelivery.models.Dish;
-import unipa.fooddelivery.models.ProductList;
-
 @Controller
-@RequestMapping(value = "cart")
+@RequestMapping(value = "/shoppingcart")
 public class ShoppingCartController {
 
-	@GetMapping(value = "/index")
-	public String index() {
-		return "cart/index";
+	Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
+
+	@GetMapping()
+	public ModelAndView index(HttpSession session) {
+
+		Hashtable<Dish, Integer> dishes = new Hashtable<>();
+		var dishesFromDB = DataBase.getInstance().getDishes();
+
+		if(session.getAttribute("shoppingcart") == null)
+			session.setAttribute("shoppingcart", dishesIDs);
+			
+		dishesIDs.forEach((k, v) -> {
+			var optionalDish = dishesFromDB.stream().filter(x -> x.getId() == k).findFirst();
+
+			if(optionalDish.isPresent())
+				dishes.put(optionalDish.get(), v);
+		});
+
+		var mav = new ModelAndView("index");
+		mav.addObject("path", "shoppingcart");
+		mav.addObject("shoppingcart", dishes); // Da non confondere con shoppingcart in sessione...
+		return mav;
 	}
 
-	@GetMapping(value = "buy/{id}")
-    public String buy(@PathVariable("id") String id, HttpSession session) 
+	@GetMapping(value = "/add/{id}")
+    public String addDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) 
     {
-		ProductList productList = new ProductList();
-		if (session.getAttribute("cart") == null) {
-			List<Item> cart = new ArrayList<Item>();
-			cart.add(new Item(productList.find(id), 1));
-			session.setAttribute("cart", cart);
-		} else {
-			List<Item> cart = (List<Item>) session.getAttribute("cart");
-			int index = this.exists(id, cart);
-			if (index == -1) {
-				cart.add(new Item(productList.find(id), 1));
-			} else {
-				int quantity = cart.get(index).getQuantity() + 1;
-				cart.get(index).setQuantity(quantity);
-			}
-			session.setAttribute("cart", cart);
-		}
-		return "redirect:/cart/index";
-	}
+		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
 
+		if(optionalDish.isPresent())
+		{
+			var dishId = optionalDish.get().getId();
+
+			if(dishesIDs.get(dishId) == null)
+				dishesIDs.put(dishId, 1);
+			else
+			{
+				var count = dishesIDs.remove(dishId);
+				dishesIDs.put(dishId, ++count);
+			}
+		}
+
+<<<<<<< HEAD
 	@RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
 	public String remove(@PathVariable("id") String id, HttpSession session) {
 		ProductList productList = new ProductList();
@@ -51,15 +66,32 @@ public class ShoppingCartController {
 		cart.remove(index);
 		session.setAttribute("cart", cart);
 		return "redirect:/cart/index";
+=======
+		session.setAttribute("shoppingcart", dishesIDs);
+		var referer = request.getHeader("Referer");
+    	return "redirect:"+ referer;
+>>>>>>> 61dcb23b7a8058acf8a2cedf51d5fe0876846975
 	}
 
-	private int exists(String id, List<Item> cart) {
-		for (int i = 0; i < cart.size(); i++) {
-			if (cart.get(i).getProduct().getId().equalsIgnoreCase(id)) {
-				return i;
+	@RequestMapping(value = "/sub/{id}")
+	public String sub(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
+		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
+
+		if(optionalDish.isPresent())
+		{
+			var dishId = optionalDish.get().getId();
+
+			if(dishesIDs.get(dishId) != null)
+			{
+				var count = dishesIDs.remove(dishId);
+
+				if(count > 1)
+					dishesIDs.put(dishId, --count);
 			}
 		}
-		return -1;
-	}
 
+		session.setAttribute("shoppingcart", dishesIDs);
+		var referer = request.getHeader("Referer");
+    	return "redirect:"+ referer;
+	}
 }

@@ -1,29 +1,29 @@
 package unipa.fooddelivery.controllers;
 
-import java.util.Date;
+import java.util.*;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Controller;
+import org.springframework.format.annotation.*;
+import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.*;
 
 import unipa.fooddelivery.DataBase;
 import unipa.fooddelivery.models.*;
 
 @Controller
-
+@RequestMapping("/register")
 public class RegisterController {
 
-    @GetMapping(value = "/register")
+    @GetMapping()
     public ModelAndView getRegistervView() {
         var mav = new ModelAndView("index");
         mav.addObject("path", "register");
         return mav;
     }
 
-    @PostMapping(value = "/register/result")
+    @PostMapping(value = "/result")
     public @ResponseBody ModelAndView getRegisterResultView(
         @RequestParam(value = "username") final String username,
         @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,

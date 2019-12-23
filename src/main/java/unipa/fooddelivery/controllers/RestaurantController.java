@@ -1,8 +1,9 @@
 package unipa.fooddelivery.controllers;
 
+import java.util.*;
 import java.util.stream.*;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,10 @@ import unipa.fooddelivery.*;
 import unipa.fooddelivery.models.*;
 
 @Controller
+@RequestMapping(value = "/restaurants")
 public class RestaurantController {
 
-    @GetMapping(value = "/restaurants/{category}")
+    @GetMapping(value = "/{category}")
     public ModelAndView getRestaurantsView(@PathVariable("category") final RestaurantCategory category) 
     {
         var mav = new ModelAndView("index");
@@ -29,7 +31,7 @@ public class RestaurantController {
         return mav;
     }
 
-    @GetMapping(value = "/restaurants/{category}/{id}")
+    @GetMapping(value = "/{category}/{id}")
     public ModelAndView getRestaurantMenuView(@PathVariable("category") final RestaurantCategory category,
                                               @PathVariable("id") final long id, HttpSession session) 
     {
@@ -44,6 +46,8 @@ public class RestaurantController {
         mav.addObject("path", "dishes");
         mav.addObject("dishes", dishesFiltered);
 
+        if(session.getAttribute("shoppingcart") == null)
+            session.setAttribute("shoppingcart", new Hashtable<Long, Integer>());
         
         return mav;
     }

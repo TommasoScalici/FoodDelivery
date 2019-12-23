@@ -39,7 +39,7 @@ public final class DataBase {
             *  bisogna aggiornare la lista manualmente altrimenti potrebbe crashare tutto, quindi
             *  !!! FARE ATTENZIONE !!!
             */
-
+ 
             models.put(Customer.class, "customers");
             models.put(Dish.class, "dishes");
             models.put(DeliveryMan.class, "deliverymen");

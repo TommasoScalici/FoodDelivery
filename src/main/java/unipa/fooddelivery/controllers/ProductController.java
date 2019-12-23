@@ -3,8 +3,6 @@ package unipa.fooddelivery.controllers;
 import org.springframework.stereotype.*;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.*;
-
 import unipa.fooddelivery.models.*;
 
 @Controller

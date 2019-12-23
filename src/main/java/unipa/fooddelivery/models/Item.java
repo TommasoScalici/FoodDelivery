@@ -1,7 +1,5 @@
 package unipa.fooddelivery.models;
 
-import java.util.*;
-
 import javax.servlet.http.HttpSession;
 
 
