@@ -81,11 +81,6 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
-<<<<<<< HEAD
-		return "redirect:"+ referer;
-		
-		
-=======
     	return "redirect:" + referer;
 	}
 
@@ -104,6 +99,5 @@ public class ShoppingCartController {
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
     	return "redirect:" + referer;
->>>>>>> 7eb62b892a4ed345c6665bb8a72644b4bdfa4924
 	}
 }
