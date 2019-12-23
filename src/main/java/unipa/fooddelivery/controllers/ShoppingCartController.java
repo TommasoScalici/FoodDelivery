@@ -36,7 +36,6 @@ public class ShoppingCartController {
 		var mav = new ModelAndView("index");
 		mav.addObject("path", "shoppingcart");
 		mav.addObject("shoppingcart", dishes); // Da non confondere con shoppingcart in sessione...
-
 		return mav;
 	}
 
