@@ -1,0 +1,15 @@
+@startuml customeraccess
+scale 2
+left to right direction
+skinparam packageStyle rect
+
+actor "customer"
+
+rectangle "application" {
+    customer -- (check history order)
+    customer -- (check shopping cart)
+    customer -- (can optionally receive\noffers and discounts )
+    customer -- (view profile)
+}
+
+@enduml

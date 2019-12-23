@@ -1,0 +1,13 @@
+@startuml deliverymanaccess
+scale 2
+left to right direction
+skinparam packageStyle rect
+
+actor "restaurant owner"
+
+rectangle "application" {
+    (restaurant owner) -- (update daily menu)
+    (restaurant owner) -- (view reservations)
+}
+
+@enduml

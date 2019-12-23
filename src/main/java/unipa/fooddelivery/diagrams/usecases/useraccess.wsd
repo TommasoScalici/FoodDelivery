@@ -3,14 +3,14 @@ scale 2
 left to right direction
 skinparam packageStyle rect
 
-actor "user"
+actor "generic user"
 
 rectangle "application" {
-    user -- (register) : if not registered
-    user -- (login) : if not\nalready\nlogged
-    user -- (logout) : if logged
-    user -- (view profile) : if logged
-    user -- (view restaurants\nand available menu) : in any case
+    (generic user) -- (register) : if not registered
+    (generic user) -- (login) : if not\nalready\nlogged
+    (generic user) -- (logout) : if logged
+    (generic user) -- (view profile) : if logged
+    (generic user) -- (view restaurants\nand available menu) : in any case
 }
 
 @enduml

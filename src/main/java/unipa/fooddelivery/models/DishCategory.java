@@ -8,6 +8,7 @@ public enum DishCategory
     PIZZA("Pizza"),
     DESSERT("Dolce"),
     FRUITS("Frutta"),
+    BEERS("Birre"),
     DRINKS("Bevande"),
     WINE("Vini");
 

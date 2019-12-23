@@ -5,16 +5,19 @@ skinparam packageStyle rect
 
 actor "customer"
 actor "deliveryman"
+actor "restaurant owner"
 agent "restaurant"
 
 rectangle "application" {
-    (customer) -- (place order)
-    (place order) <.(system) : \naccept and\nassign order\nto delivery man
-    (system).> (order) : put order in pending status
-    (deliveryman).> (order): update order status periodically
-    (deliveryman) <.(order) : \nreceive notification\nof new order to dispatch
-    (deliveryman).> (restaurant) : call restaurant to make order\nthen withdraw
-    (deliveryman).> (customer) : delivery order to the customer\nafter withdrawal
+    (customer) --> (place order)
+    (place order) .> (system) : \naccept and\nassign order\nto delivery man
+    (system) .> (order) : put order in pending status
+    (deliveryman) .> (order): update order status periodically
+    (deliveryman) <. (order) : \nreceive notification\nof new order to dispatch
+    (deliveryman) .> (restaurant) : call restaurant to make order\nthen withdraw
+    (deliveryman) .> (customer) : delivery order to the customer\nafter withdrawal
+    (restaurant) <-- (restaurant owner)
+    (restaurant owner) .> (deliveryman) : \n\n\n\ngive order confirmation
 }
 
 @enduml

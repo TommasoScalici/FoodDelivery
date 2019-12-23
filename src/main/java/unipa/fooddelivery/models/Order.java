@@ -12,13 +12,16 @@ import java.util.*;
 public class Order {
 
     private long id;
+    private Date deliveryDate;
+    private Date orderDate;
     private Customer customer;
     private DeliveryMan deliveryMan;
     private List<Dish> dishesOrdered;
     private OrderStatus status = OrderStatus.PENDING;
     private PaymentMethod paymentMethod;
-    private float deliveryFee;
+    private double deliveryFee;
     private boolean isPaid;
+
 
     public Order() { }
 
@@ -101,12 +104,28 @@ public class Order {
         this.isPaid = isPaid;
     }
 
-    public float getDeliveryFee() {
+    public double getDeliveryFee() {
         return deliveryFee;
     }
 
-    public void setDeliveryFee(float deliveryFee) {
+    public void setDeliveryFee(double deliveryFee) {
         this.deliveryFee = deliveryFee;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     //#endregion

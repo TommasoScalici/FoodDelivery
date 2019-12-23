@@ -10,10 +10,10 @@ public class Restaurant {
     private long id;
     private double minimumOrderFee;
     private String name;
-    private String address;
     private String email;
     private String telephoneNumber;
     private String webSite;
+    private Address address;
     private RestaurantCategory category;
     private List<Dish> dailyMenu;
 
@@ -80,14 +80,6 @@ public class Restaurant {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getName() {
         return name;
     }
@@ -103,6 +95,14 @@ public class Restaurant {
 	public void setMinimumOrderFee(double minimumOrderFee) {
 		this.minimumOrderFee = minimumOrderFee;
 	}
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     //#endregion
 }

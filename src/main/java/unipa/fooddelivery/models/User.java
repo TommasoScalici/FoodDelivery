@@ -12,9 +12,9 @@ public class User {
     private String password;
     private String name;
     private String surname;
-    private String address;
     private String email;
     private String telephoneNumber;
+    private Address address = new Address();
     private Date birthdate;
 
     public User() { }
@@ -59,14 +59,6 @@ public class User {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getSurname() {
         return surname;
     }
@@ -97,6 +89,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     // #endregion

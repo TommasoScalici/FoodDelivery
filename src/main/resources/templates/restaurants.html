@@ -1,16 +1,27 @@
 <div>
 
+  <h1 class="items" th:text="${category.getDisplayValue()}"></h1>
+
   <ul class="items">
     <li th:each="restaurant : ${restaurants}"  class="item">
       <a th:href="'/restaurants/' + ${category} + '/' + ${restaurant.getId()}">
         <div>
           <p style="font-size: 18px;" th:text="${restaurant.getName()}"></p>
           <div style="margin-left: 1em; text-align: left;">
-            <span th:text="'Posizione: ' + ${restaurant.getAddress()}"></span><br />
-            <span th:if="${restaurant.getMinimumOrderFee() > 0}" th:text="'Ordine minimo: ' + 
+            <p th:text="'Posizione: ' + ${restaurant.getAddress().getStreet()} + ', '
+                                         + ${restaurant.getAddress().getNumber()} + ', '
+                                         + ${restaurant.getAddress().getZip()} + ' '
+                                         + ${restaurant.getAddress().getCity()} + ' '
+                                         + ${restaurant.getAddress().getProvince()} + ' '
+                                         + ${restaurant.getAddress().getCountry()}"></p>
+
+            <p th:if="${restaurant.getMinimumOrderFee() > 0}" th:text="'Ordine minimo: ' + 
                         (${restaurant.getMinimumOrderFee()} % 1 == 0 ? 
                           ${#numbers.formatDecimal(restaurant.getMinimumOrderFee(), 0, 0)} :
-                          ${#numbers.formatDecimal(restaurant.getMinimumOrderFee(), 0, 2)}) +' €'"></span>
+                          ${#numbers.formatDecimal(restaurant.getMinimumOrderFee(), 0, 2)}) +' €'"></p>
+
+            <p th:text="'E-mail: ' +  (${restaurant.getEmail()} != null ? ${restaurant.getEmail()} : '')"></p>
+            <p th:text="'Telefono: ' +  (${restaurant.getTelephoneNumber()} != null ? ${restaurant.getTelephoneNumber()} : '')"></p>
           </div>
         </div>
       </a>

@@ -102,6 +102,10 @@ public final class DataBase {
         } 
     }
 
+    /**
+     * This method serialize the mock entity list to JSON. Use it to make changes to database permanent.
+     * @param entityType The entity type you want to serialize.
+     */
     public void saveChangesForEntity(Class<?> entityType) {
         try
         {

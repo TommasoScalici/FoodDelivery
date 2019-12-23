@@ -41,8 +41,7 @@ public class ShoppingCartController {
 	}
 
 	@GetMapping(value = "/add/{id}")
-    public String addDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) 
-    {
+    public String addDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
 		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
 
 		if(optionalDish.isPresent())
@@ -60,11 +59,11 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
-    	return "redirect:"+ referer;
+    	return "redirect:" + referer;
 	}
 
 	@RequestMapping(value = "/sub/{id}")
-	public String sub(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
+	public String subtractDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
 		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
 
 		if(optionalDish.isPresent())
@@ -82,8 +81,29 @@ public class ShoppingCartController {
 
 		session.setAttribute("shoppingcart", dishesIDs);
 		var referer = request.getHeader("Referer");
+<<<<<<< HEAD
 		return "redirect:"+ referer;
 		
 		
+=======
+    	return "redirect:" + referer;
+	}
+
+	@RequestMapping(value = "/del/{id}")
+	public String deleteDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
+		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
+
+		if(optionalDish.isPresent())
+		{
+			var dishId = optionalDish.get().getId();
+
+			if(dishesIDs.get(dishId) != null)
+				dishesIDs.remove(dishId);
+		}
+
+		session.setAttribute("shoppingcart", dishesIDs);
+		var referer = request.getHeader("Referer");
+    	return "redirect:" + referer;
+>>>>>>> 7eb62b892a4ed345c6665bb8a72644b4bdfa4924
 	}
 }

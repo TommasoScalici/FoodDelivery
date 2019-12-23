@@ -7,6 +7,7 @@
     <div>
       <p>Inserisci le tue credenziali per effettuare l'accesso</p>
     </div>
+    
     <div class="row">
       <div class="col-25">
         <label for="username">User Name</label>
@@ -32,7 +33,7 @@
   </div>
 
   <div th:if="${showerror == true}">
-    <p style="color:red ; font-size: 20px; margin-top: 1em; text-align: center;"><strong>Username o password errati</strong></p>
+    <h2 style="color:red;margin-top: 1em; text-align: center;"><strong>Username o password errati</strong></h2>
   </div>
 
 </div>

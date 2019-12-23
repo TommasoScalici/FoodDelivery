@@ -1,0 +1,15 @@
+@startuml deliverymanaccess
+scale 2
+left to right direction
+skinparam packageStyle rect
+
+actor "deliveryman"
+
+rectangle "application" {
+    deliveryman -- (check pending orders)
+    deliveryman -- (update order status)
+    deliveryman -- (take/untake charge of order)
+    deliveryman -- (view profile)
+}
+
+@enduml

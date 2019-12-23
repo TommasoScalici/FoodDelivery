@@ -3,7 +3,14 @@
         "id": 1,
         "minimumOrderFee": 10.0,
         "name": "La Dolce Vita",
-        "address": "Via Giuseppe Giusti, 17, 90144 Palermo PA",
+        "address": {
+            "country": "Italia",
+            "city": "Palermo",
+            "province": "PA",
+            "street": "Via Giuseppe Giusti",
+            "number": "17",
+            "zip": "90144"
+        },
         "email": null,
         "telephoneNumber": null,
         "webSite": null,
@@ -14,7 +21,14 @@
         "id": 2,
         "minimumOrderFee": 0.0,
         "name": "L'Arte Bianca",
-        "address": "Viale Piemonte, 58, 90144 Palermo PA",
+        "address": {
+            "country": "Italia",
+            "city": "Palermo",
+            "province": "PA",
+            "street": "Viale Piemonte",
+            "number": "58",
+            "zip": "90144"
+        },
         "email": null,
         "telephoneNumber": null,
         "webSite": null,
@@ -25,7 +39,14 @@
         "id": 3,
         "minimumOrderFee": 18.0,
         "name": "Chan Sushi Bar",
-        "address": "Via G. Sciuti, 104, 90144 Palermo PA",
+        "address": {
+            "country": "Italia",
+            "city": "Palermo",
+            "province": "PA",
+            "street": "Via G. Sciuti",
+            "number": "104",
+            "zip": "90144"
+        },
         "email": null,
         "telephoneNumber": null,
         "webSite": null,
