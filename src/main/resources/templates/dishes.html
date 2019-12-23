@@ -7,10 +7,10 @@
                   <div>
                     <p style="font-size: 18px;" th:text="${dish.getName()}"></p>
                     <div style="margin-left: 1em; text-align: left;">
-                      <span th:text="'Descrizione: ' + ${dish.getDescription()}"></span><br />
-                      <span th:text="'Prezzo: ' + ${dish.getPrice()}"></span><br />
-                      <span th:text="'Ingredienti: ' + ${dish.getIngredients()}"></span><br />
-                      <span th:text="'Allergeni: ' + ${dish.getAllergens()}"></span><br />
+                      <span th:text="'Descrizione: ' + (${dish.getDescription() != null ? dish.getDescription() : ''})"></span><br />
+                      <span th:text="'Prezzo: ' + (${dish.getPrice()!= null ? dish.getPrice() : ''})"></span><br />
+                      <span th:text="'Ingredienti: ' + (${dish.getIngredients()!= null ? dish.getIngredients() : ''})"></span><br />
+                      <span th:text="'Allergeni: ' + (${dish.getAllergens()!= null ? dish.getAllergens() : ''})"></span><br />
                     </div>
 
                     <div style="float: right; bottom: auto;">

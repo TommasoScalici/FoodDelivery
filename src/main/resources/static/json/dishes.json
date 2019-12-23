@@ -8,7 +8,14 @@
             "id": 1,
             "minimumOrderFee": 10.0,
             "name": "La Dolce Vita",
-            "address": null,
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Via Giuseppe Giusti",
+                "number": "17",
+                "zip": "90144"
+            },
             "email": null,
             "telephoneNumber": null,
             "webSite": null,
@@ -28,7 +35,14 @@
             "id": 1,
             "minimumOrderFee": 10.0,
             "name": "La Dolce Vita",
-            "address": null,
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Via Giuseppe Giusti",
+                "number": "17",
+                "zip": "90144"
+            },
             "email": null,
             "telephoneNumber": null,
             "webSite": null,
@@ -55,7 +69,7 @@
             "category": "PIZZA",
             "dailyMenu": null
         },
-        "price": 3.0,
+        "price": 2.5,
         "allergens": null,
         "ingredients": null
     },
@@ -68,7 +82,14 @@
             "id": 2,
             "minimumOrderFee": 0.0,
             "name": "L'Arte Bianca",
-            "address": null,
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Viale Piemonte",
+                "number": "58",
+                "zip": "90144"
+            },
             "email": null,
             "telephoneNumber": null,
             "webSite": null,
@@ -81,6 +102,60 @@
     },
     {
         "id": 5,
+        "name": "Romana",
+        "description": "Pizza Romana con impasto napoletano",
+        "category": "PIZZA",
+        "restaurant": {
+            "id": 2,
+            "minimumOrderFee": 0.0,
+            "name": "L'Arte Bianca",
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Viale Piemonte",
+                "number": "58",
+                "zip": "90144"
+            },
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "PIZZA",
+            "dailyMenu": null
+        },
+        "price": 6.5,
+        "allergens": ["Lattosio"],
+        "ingredients": ["Salsa di pomodoro", "Mozzarella", "Prosciutto cotto"]
+    },
+    {
+        "id": 6,
+        "name": "Birra media",
+        "description": "Birra media da 40cl",
+        "category": "BEERS",
+        "restaurant": {
+            "id": 2,
+            "minimumOrderFee": 0.0,
+            "name": "L'Arte Bianca",
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Viale Piemonte",
+                "number": "58",
+                "zip": "90144"
+            },
+            "email": null,
+            "telephoneNumber": null,
+            "webSite": null,
+            "category": "PIZZA",
+            "dailyMenu": null
+        },
+        "price": 3.5,
+        "allergens": ["Glutine"],
+        "ingredients": null
+    },
+    {
+        "id": 7,
         "name": "Sashimi",
         "description": null,
         "category": "SECOND",
@@ -88,7 +163,14 @@
             "id": 3,
             "minimumOrderFee": 18.0,
             "name": "Chan Sushi Bar",
-            "address": null,
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Via G. Sciuti",
+                "number": "104",
+                "zip": "90144"
+            },
             "email": null,
             "telephoneNumber": null,
             "webSite": null,
