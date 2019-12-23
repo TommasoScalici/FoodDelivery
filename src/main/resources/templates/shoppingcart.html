@@ -9,7 +9,7 @@
     </div>
 
     <p th:if="${!shoppingcart.isEmpty()}"
-       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getInvoiceTotalFee(#lists.toList(shoppingcart.keys()), 0.0)}"></p>
+       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(shoppingcart.keys(), 0.0) + ' €'}"></p>
 
     <ul th:if="${!shoppingcart.isEmpty()}" class="items">
       <li th:each="dish : ${shoppingcart.keys()}" class="item">

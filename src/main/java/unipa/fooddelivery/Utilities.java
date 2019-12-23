@@ -1,6 +1,6 @@
 package unipa.fooddelivery;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.*;
 
 import unipa.fooddelivery.models.*;
@@ -15,8 +15,9 @@ public class Utilities
                      .collect(Collectors.toList());
     }
 
-    public static double getInvoiceTotalFee(List<Dish> dishes, double deliveryFee) {
+    public static double getTotal(Enumeration<Dish> dishes, double deliveryFee) {
          
-        return dishes.stream().mapToDouble(d -> d.getPrice()).sum() + deliveryFee;
+        var dishesList = Collections.list(dishes);
+        return dishesList.stream().mapToDouble(d -> d.getPrice()).sum() + deliveryFee;
     }
 }
