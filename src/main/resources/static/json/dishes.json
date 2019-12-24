@@ -97,8 +97,13 @@
             "dailyMenu": null
         },
         "price": 5.0,
-        "allergens": ["Lattosio"],
-        "ingredients": ["Salsa di pomodoro", "Mozzarella"]
+        "allergens": [
+            "Lattosio"
+        ],
+        "ingredients": [
+            "Salsa di pomodoro",
+            "Mozzarella"
+        ]
     },
     {
         "id": 5,
@@ -124,8 +129,14 @@
             "dailyMenu": null
         },
         "price": 6.5,
-        "allergens": ["Lattosio"],
-        "ingredients": ["Salsa di pomodoro", "Mozzarella", "Prosciutto cotto"]
+        "allergens": [
+            "Lattosio"
+        ],
+        "ingredients": [
+            "Salsa di pomodoro",
+            "Mozzarella",
+            "Prosciutto cotto"
+        ]
     },
     {
         "id": 6,
@@ -151,7 +162,9 @@
             "dailyMenu": null
         },
         "price": 3.5,
-        "allergens": ["Glutine"],
+        "allergens": [
+            "Glutine"
+        ],
         "ingredients": null
     },
     {
@@ -178,6 +191,33 @@
             "dailyMenu": null
         },
         "price": 14.0,
+        "allergens": null,
+        "ingredients": null
+    },
+    {
+        "id": 8,
+        "name": "Maki",
+        "description": null,
+        "category": "SECOND",
+        "restaurant": {
+            "id": 4,
+            "minimumOrderFee": 15.0,
+            "name": "Ristorante Giapponese Wagashi",
+            "address": {
+                "country": "Italia",
+                "city": "Palermo",
+                "province": "PA",
+                "street": "Piazza Unità d'Italia",
+                "number": "10",
+                "zip": "90144"
+            },
+            "email": null,
+            "telephoneNumber": "091301587",
+            "webSite": null,
+            "category": "JAPANESE",
+            "dailyMenu": null
+        },
+        "price": 8.0,
         "allergens": null,
         "ingredients": null
     }

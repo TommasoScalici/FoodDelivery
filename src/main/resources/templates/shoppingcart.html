@@ -8,8 +8,8 @@
       <h3>Il carrello è vuoto</h3>
     </div>
 
-    <p th:if="${!shoppingcart.isEmpty()}"
-       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(shoppingcart, 0.0) + ' €'}"></p>
+    <h2 th:if="${!shoppingcart.isEmpty()}"
+       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(shoppingcart, 0.0) + ' €'}"></h2>
 
     <ul th:if="${!shoppingcart.isEmpty()}" class="items">
       <li th:each="dish : ${shoppingcart.keys()}" class="item">

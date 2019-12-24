@@ -1,4 +1,7 @@
 <div class="items">
+
+  <h2 style="color: red" class="items" th:if="${session.error != null}">Non puoi effettuare un ordine che coinvolga più di 3 ristoranti!</h2>
+
     <div th:each="category : ${T(unipa.fooddelivery.models.DishCategory).values()}">
         <h2 th:text="${category.displayValue}"></h2>
 
