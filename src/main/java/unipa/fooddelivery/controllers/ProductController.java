@@ -9,7 +9,7 @@ import unipa.fooddelivery.models.*;
 @RequestMapping(value = "product")
 public class ProductController {
 
-	@GetMapping(value = "/dish")
+	@GetMapping(value = "dish")
 	public String index(ModelMap modelMap) {
 		ProductList productList = new ProductList();
 		modelMap.put("products", productList.findAll());

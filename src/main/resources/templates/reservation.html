@@ -1,0 +1,47 @@
+<div class="items">
+
+    <div>
+        <h2>Storico prenotazioni</h2>
+        <br />
+        <h2>Prenotazione in corso</h2>
+    </div>
+
+    <div th:if="${reservation.isEmpty()}">
+      <h3>Non hai nessuna prenotazione in corso</h3>
+    </div>
+
+    <br />
+
+    <h2 style="color: red" class="items" th:if="${!(T(unipa.fooddelivery.controllers.ReservationController)
+                                                  .checkIfBusinessLogicValid(session.reservation))}">
+                                                  Puoi effettuare una prenotazione per un ristorante alla volta!</h2>
+
+    <br />
+
+    <h2 th:if="${!reservation.isEmpty()}" th:text="'Presso: ' + ${restaurant.getName()}"></h2>
+
+    <h2 th:if="${!reservation.isEmpty()}"
+       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(reservation, 0.0) + ' €'}"></h2>
+
+    <ul th:if="${!reservation.isEmpty()}" class="items">
+      <li th:each="dish : ${reservation.keys()}" class="item">
+          <div>
+            <p style="font-size: 18px;" th:text="${dish.getName()}"></p>
+            <div style="margin-left: 1em; text-align: left;">
+              <span th:text="'Descrizione: ' + ${dish.getDescription()}"></span><br />
+              <span th:text="'Prezzo: ' + ${dish.getPrice()}"></span><br />
+              <span th:text="'Ingredienti: ' + ${dish.getIngredients()}"></span><br />
+              <span th:text="'Allergeni: ' + ${dish.getAllergens()}"></span><br />
+            </div>
+
+            <div style="float: right; bottom: auto;">
+            <a th:href="@{/reservation/sub/{id}(id=${dish.getId()})}" class="bp-button-mini">- </a>
+            <label th:text="(${session.reservation.get(dish.getId()) == null} ? '0' :
+                              ${session.reservation.get(dish.getId())})"></label>
+            <a th:href="@{/reservation/add/{id}(id=${dish.getId()})}" class="bp-button-mini">+</a>
+            </div>
+          </div>
+      </li>
+    </ul>
+
+</div>
