@@ -8,6 +8,10 @@
       <h3>Il carrello è vuoto</h3>
     </div>
 
+    <h2 style="color: red" class="items" th:if="${!(T(unipa.fooddelivery.controllers.ShoppingCartController)
+                                                  .checkIfBusinessLogicValid(session.shoppingcart))}">
+                                                  Non puoi effettuare un ordine che coinvolga più di 3 ristoranti!</h2>
+
     <h2 th:if="${!shoppingcart.isEmpty()}"
        th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(shoppingcart, 0.0) + ' €'}"></h2>
 

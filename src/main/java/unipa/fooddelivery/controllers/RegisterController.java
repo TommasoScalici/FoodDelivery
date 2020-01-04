@@ -13,7 +13,7 @@ import unipa.fooddelivery.DataBase;
 import unipa.fooddelivery.models.*;
 
 @Controller
-@RequestMapping("/register")
+@RequestMapping("register")
 public class RegisterController {
 
     @GetMapping()
@@ -23,7 +23,7 @@ public class RegisterController {
         return mav;
     }
 
-    @PostMapping(value = "/result")
+    @PostMapping(value = "result")
     public @ResponseBody ModelAndView getRegisterResultView(
         @RequestParam(value = "username") final String username,
         @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,

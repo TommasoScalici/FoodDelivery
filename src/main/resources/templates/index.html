@@ -40,15 +40,17 @@
 					<nav class="bp-nav">
 						<a class="bp-button" href="/login" style="width: 8em;">Login</a>
 						<a class="bp-button" href="/register" style="width: 8em;">Registrati</a>
+						<a class="bp-button" href="/reservation" style="width: 8em;">Prenotazioni</a>
 						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
 					</nav>
 				</div>
 				<div th:if="(${session.user != null})">
 					<nav class="bp-nav">
-						<a class="bp-button" href="/orders" style="width: 8em;">Ordini</a>
 						<a class="bp-button" href="/profile" style="width: 8em;">Profilo</a>
-						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
 						<a class="bp-button" href="/logout" style="width: 8em;">Logout</a>
+						<a class="bp-button" href="/order" style="width: 8em;">Ordini</a>
+						<a class="bp-button" href="/reservation" style="width: 8em;">Prenotazioni</a>
+						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
 					</nav>
 				</div>
 			</div>
@@ -65,7 +67,7 @@
 				<!-- Submenu 1 -->
 				<ul data-menu="submenu-1" id="submenu-1" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
 					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.RestaurantCategory).values()}">
-						<a class="menu__link" th:href="'/restaurants/' + ${category}" th:text="${category.displayValue}"></a>
+						<a class="menu__link" th:href="'/reservation/restaurants/' + ${category}" th:text="${category.displayValue}"></a>
 					</li>
 				</ul>
 
@@ -79,7 +81,7 @@
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" id="submenu-2" class="menu__level" tabindex="-1" role="menu" aria-label="Tipo cucina">
 					<li class="menu__item" role="menuitem" th:each="category : ${T(unipa.fooddelivery.models.RestaurantCategory).values()}">
-						<a class="menu__link" th:href="'/restaurants/' + ${category}" th:text="${category.displayValue}"></a>
+						<a class="menu__link" th:href="'/order/restaurants/' + ${category}" th:text="${category.displayValue}"></a>
 					</li>
 				</ul>
 				<!-- Submenu 2-1 -->

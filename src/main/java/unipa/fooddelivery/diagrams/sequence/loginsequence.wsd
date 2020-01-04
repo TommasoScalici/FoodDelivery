@@ -1,0 +1,15 @@
+@startuml Login Sequence Diagram
+
+actor User
+participant "Home\nPage"
+participant "Login\nScreen"
+control "User\nValidation"
+database Database
+
+User -> "Home\nPage" : open the app
+"Home\nPage" -> "Login\nScreen" : click on login button
+"Login\nScreen" -> "User\nValidation" : Login(username, password)
+"User\nValidation" -> Database : username: found\npassword: match
+"Login\nScreen" <-- "User\nValidation" : validation failed: show error
+"Home\nPage" <-- Database : validation successful:\nuser welcomed
+@enduml

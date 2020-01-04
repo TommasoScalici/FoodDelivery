@@ -11,22 +11,35 @@ import unipa.fooddelivery.DataBase;
 import unipa.fooddelivery.models.*;
 
 @Controller
-@RequestMapping(value = "shoppingcart")
-public class ShoppingCartController {
+@RequestMapping(value = "reservation")
+public class ReservationController {
 
 	Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
 
 	@GetMapping()
 	public ModelAndView index(HttpSession session) {
 
+        var mav = new ModelAndView("index");
 		Hashtable<Dish, Integer> dishes = getDishesFromIDs(dishesIDs);
 
-		if(session.getAttribute("shoppingcart") == null)
-			session.setAttribute("shoppingcart", dishesIDs);
+		if(session.getAttribute("reservation") == null)
+			session.setAttribute("reservation", dishesIDs);
 
-		var mav = new ModelAndView("index");
-		mav.addObject("path", "shoppingcart");
-		mav.addObject("shoppingcart", dishes); // Da non confondere con shoppingcart in sessione...
+        var previousReservations = DataBase.getInstance().getReservations();
+
+        var anyDish = dishes.entrySet().stream().findFirst();
+
+        if(anyDish.isPresent())
+        {
+            var dish = anyDish.get();
+            var restaurant = dish.getKey().getRestaurant();
+            mav.addObject("restaurant", restaurant);
+        }
+
+		
+		mav.addObject("path", "reservation");
+        mav.addObject("reservation", dishes); // Da non confondere con reservation in sessione...
+        mav.addObject("reservations", previousReservations);
 		return mav;
 	}
 
@@ -47,7 +60,7 @@ public class ShoppingCartController {
 			}
 		}
 
-		session.setAttribute("shoppingcart", dishesIDs);
+		session.setAttribute("reservation", dishesIDs);
 		var referer = request.getHeader("Referer");
 		return "redirect:" + referer;
 	}
@@ -69,7 +82,7 @@ public class ShoppingCartController {
 			}
 		}
 
-		session.setAttribute("shoppingcart", dishesIDs);
+		session.setAttribute("reservation", dishesIDs);
 		var referer = request.getHeader("Referer");
     	return "redirect:" + referer;
 	}
@@ -86,7 +99,7 @@ public class ShoppingCartController {
 				dishesIDs.remove(dishId);
 		}
 
-		session.setAttribute("shoppingcart", dishesIDs);
+		session.setAttribute("reservation", dishesIDs);
 		var referer = request.getHeader("Referer");
     	return "redirect:" + referer;
 	}
@@ -98,7 +111,7 @@ public class ShoppingCartController {
 		return dishes.stream()
 					 .map(x -> x.getKey().getRestaurant().getId())
 					 .distinct()
-					 .count() <= 3;
+					 .count() <= 1;
 	}
 
 	private static Hashtable<Dish, Integer> getDishesFromIDs(Hashtable<Long, Integer> dishesIDs)
