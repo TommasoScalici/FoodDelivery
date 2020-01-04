@@ -8,12 +8,20 @@
       <h3>Il carrello è vuoto</h3>
     </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+   <p th:if="${!shoppingcart.isEmpty()}"
+       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(shoppingcart, 0.0) + ' €'}"></p>
+=======
+>>>>>>> 05fd44e88230586240250268c7efdb230e5df787
     <h2 style="color: red" class="items" th:if="${!(T(unipa.fooddelivery.controllers.ShoppingCartController)
                                                   .checkIfBusinessLogicValid(session.shoppingcart))}">
                                                   Non puoi effettuare un ordine che coinvolga più di 3 ristoranti!</h2>
 
     <h2 th:if="${!shoppingcart.isEmpty()}"
        th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(shoppingcart, 0.0) + ' €'}"></h2>
+>>>>>>> 15b6be742a601c9acf95b1eb7a0877b305fcc9b7
 
     <ul th:if="${!shoppingcart.isEmpty()}" class="items">
       <li th:each="dish : ${shoppingcart.keys()}" class="item">
@@ -35,4 +43,7 @@
           </div>
       </li>
     </ul>
+
+    
+
 </div>
