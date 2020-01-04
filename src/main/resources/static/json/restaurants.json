@@ -52,5 +52,23 @@
         "webSite": null,
         "category": "SUSHI",
         "dailyMenu": null
+    },
+    {
+        "id": 4,
+        "minimumOrderFee": 15.0,
+        "name": "Ristorante Giapponese Wagashi",
+        "address": {
+            "country": "Italia",
+            "city": "Palermo",
+            "province": "PA",
+            "street": "Piazza Unità d'Italia",
+            "number": "10",
+            "zip": "90144"
+        },
+        "email": null,
+        "telephoneNumber": "091301587",
+        "webSite": null,
+        "category": "JAPANESE",
+        "dailyMenu": null
     }
 ]

@@ -15,8 +15,13 @@ public class Utilities
                      .collect(Collectors.toList());
     }
 
+<<<<<<< HEAD
     public static double getTotal(Hashtable<Dish,Integer> dishes, double deliveryFee) 
     {
+=======
+    public static double getTotal(Hashtable<Dish, Integer> dishes, double deliveryFee) {
+         
+>>>>>>> 15b6be742a601c9acf95b1eb7a0877b305fcc9b7
         return dishes.entrySet().stream().mapToDouble(x -> x.getKey().getPrice() * x.getValue()).sum();
     }
 }
