@@ -44,14 +44,14 @@ public class RegisterController {
         var address = new Address(country, city, province, street, number, zip);
         var user = User.getFactory(registrationType);
 
+        user.setUsername(username);
+        user.setPassword(password);
         user.setAddress(address);
         user.setBirthdate(birthdate);
         user.setEmail(email);
         user.setName(name);
         user.setSurname(surname);
         user.setTelephoneNumber(telephoneNumber);
-
-        session.setAttribute("user", user);
 
         switch (registrationType) {
             case "Customer":
@@ -66,10 +66,11 @@ public class RegisterController {
                 DataBase.getInstance().getRestaurantOwners().add((RestaurantOwner)user);
                 DataBase.getInstance().saveChangesForEntity(RestaurantOwner.class);
                 break;
-            default: 
+            default:
                 return mav;
         }
-
+  
+        session.setAttribute("user", user);
         return mav;
     }
 }

@@ -32,7 +32,7 @@ public class LoginController
                                                          @RequestParam(value="password") final String password,
                                                          HttpSession session) {
 
-        var users = DataBase.getInstance().getCustomers();
+        var users = DataBase.getInstance().getAllUsers();
 
         var user = users.stream()
                         .filter(x -> x.getUsername().equals(username) && x.getPassword().equals(password))

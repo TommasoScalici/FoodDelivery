@@ -44,15 +44,20 @@
 						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
 					</nav>
 				</div>
-				<div th:if="(${session.user != null})">
+				<div th:if="(${session.user instanceof T(unipa.fooddelivery.models.Customer)})">
 					<nav class="bp-nav">
-						<a class="bp-button" href="/order" style="width: 8em;">Ordini</a>
-						<a class="bp-button" href="/reservation" style="width: 8em;">Carrello</a>
 						<a class="bp-button" href="/profile" style="width: 8em;">Profilo</a>
 						<a class="bp-button" href="/logout" style="width: 8em;">Logout</a>
 						<a class="bp-button" href="/order" style="width: 8em;">Ordini</a>
 						<a class="bp-button" href="/reservation" style="width: 8em;">Prenotazioni</a>
 						<a class="bp-button" href="/shoppingcart" style="width: 8em;">Carrello</a>
+					</nav>
+				</div>
+				<div th:if="(${session.user instanceof T(unipa.fooddelivery.models.DeliveryMan)})">
+					<nav class="bp-nav">
+						<a class="bp-button" href="/profile" style="width: 8em;">Profilo</a>
+						<a class="bp-button" href="/logout" style="width: 8em;">Logout</a>
+						<a class="bp-button" href="/order" style="width: 8em;">Ordini</a>
 					</nav>
 				</div>
 			</div>

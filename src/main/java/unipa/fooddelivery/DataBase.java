@@ -97,6 +97,16 @@ public final class DataBase {
 
     //#endregion
 
+    public List<User> getAllUsers() {
+        var users = new ArrayList<User>();
+        
+        users.addAll(getCustomers());
+        users.addAll(getDeliverymen());
+        users.addAll(getRestaurantOwners());
+
+        return users;
+    }
+
     private void loadData(String entityName, Class<?> valueType) {
         try
         {
