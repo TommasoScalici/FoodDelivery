@@ -74,17 +74,8 @@ public class ShoppingCartController {
     	return "redirect:" + referer;
 	}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	@RequestMapping(value = "/del/{id}")
-	public String deleteDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) 
-	{
-=======
->>>>>>> 05fd44e88230586240250268c7efdb230e5df787
 	@RequestMapping(value = "del/{id}")
 	public String deleteDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
->>>>>>> 15b6be742a601c9acf95b1eb7a0877b305fcc9b7
 		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
 
 		if(optionalDish.isPresent())
