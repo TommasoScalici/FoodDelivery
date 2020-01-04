@@ -84,7 +84,8 @@ public class ShoppingCartController {
 	}
 
 	@RequestMapping(value = "/del/{id}")
-	public String deleteDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) {
+	public String deleteDish(@PathVariable("id") long id, HttpServletRequest request, HttpSession session) 
+	{
 		var optionalDish = DataBase.getInstance().getDishes().stream().filter(x -> x.getId() == id).findFirst();
 
 		if(optionalDish.isPresent())
