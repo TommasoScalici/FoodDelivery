@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Model POJO class for User
  */
-public class User {
+public abstract class User {
 
     private long id;
     private String username;
@@ -17,10 +17,23 @@ public class User {
     private Address address = new Address();
     private Date birthdate;
 
-    public User() { }
+    // Implementazione di Abstraction Factory, questo metodo restituisce l'istanza concreta di User adatta al contesto
+    public static User getFactory(String type) {
+        switch (type) {
+            case "Customer":
+                return new Customer();
+            case "DeliveryMan":
+                return new DeliveryMan();
+            case "RestaurantOwner":
+                return new RestaurantOwner();
+            default: 
+                return null;
+        }
+    }
 
+    protected User() { }
 
-    public User(String username, String password) {
+    protected User(String username, String password) {
         this.username = username;
         this.password = password;
     }

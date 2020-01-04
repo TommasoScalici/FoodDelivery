@@ -9,7 +9,7 @@
 }/* Made with http://icomoon.io/ */
   
 
-  input[type=date], input[type=password], input[type=text], select, textarea {
+  input[type=date], input[type=email], input[type=password], input[type=text], input[type=tel], select, textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;

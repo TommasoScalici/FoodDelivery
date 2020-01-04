@@ -23,9 +23,9 @@ public final class DataBase {
     private List<Order> orders = new ArrayList<>();
     private List<Reservation> reservations = new ArrayList<>();
     private List<Restaurant> restaurants = new ArrayList<>();
+    private List<RestaurantOwner> restaurantOwners = new ArrayList<>();
     // #endregion
 
-    
     // Implementazione Singleton
 
     private DataBase() { }
@@ -47,6 +47,7 @@ public final class DataBase {
             models.put(Order.class, "orders");
             models.put(Order.class, "reservations");
             models.put(Restaurant.class, "restaurants");
+            models.put(RestaurantOwner.class, "restaurantOwners");
         }
 
         return database;
@@ -87,7 +88,12 @@ public final class DataBase {
     public List<Restaurant> getRestaurants() {
         loadData("restaurants", Restaurant.class);
         return restaurants;
-    } 
+    }
+
+    public List<RestaurantOwner> getRestaurantOwners() {
+        loadData("restaurantOwners", RestaurantOwner.class);
+        return restaurantOwners;
+    }
 
     //#endregion
 

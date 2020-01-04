@@ -37,23 +37,38 @@ public class RegisterController {
         @RequestParam(value = "zip") final String zip,
         @RequestParam(value = "email") final String email,
         @RequestParam(value = "telephonenumber") final String telephoneNumber,
+        @RequestParam(value = "registrationtype") final String registrationType,
         HttpSession session) {
 
         var mav = new ModelAndView("redirect:/");
-        var customer = new Customer(username, password);
         var address = new Address(country, city, province, street, number, zip);
+        var user = User.getFactory(registrationType);
 
-        customer.setAddress(address);
-        customer.setBirthdate(birthdate);
-        customer.setEmail(email);
-        customer.setName(name);
-        customer.setSurname(surname);
-        customer.setTelephoneNumber(telephoneNumber);
+        user.setAddress(address);
+        user.setBirthdate(birthdate);
+        user.setEmail(email);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setTelephoneNumber(telephoneNumber);
 
-        session.setAttribute("user", customer);
+        session.setAttribute("user", user);
 
-        DataBase.getInstance().getCustomers().add(customer);
-        DataBase.getInstance().saveChangesForEntity(Customer.class);
+        switch (registrationType) {
+            case "Customer":
+                DataBase.getInstance().getCustomers().add((Customer)user);
+                DataBase.getInstance().saveChangesForEntity(Customer.class);
+                break;
+            case "DeliveryMan":
+                DataBase.getInstance().getDeliverymen().add((DeliveryMan)user);
+                DataBase.getInstance().saveChangesForEntity(DeliveryMan.class);
+                break;
+            case "RestaurantOwner":
+                DataBase.getInstance().getRestaurantOwners().add((RestaurantOwner)user);
+                DataBase.getInstance().saveChangesForEntity(RestaurantOwner.class);
+                break;
+            default: 
+                return mav;
+        }
 
         return mav;
     }
