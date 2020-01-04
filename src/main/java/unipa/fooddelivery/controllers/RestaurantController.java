@@ -19,6 +19,9 @@ public class RestaurantController {
     @GetMapping(value = "{category}")
     public ModelAndView getRestaurantsView(@PathVariable("category") final RestaurantCategory category, HttpSession session) 
     {
+        if(session.getAttribute("reservation") == null)
+			session.setAttribute("reservation", new Hashtable<Integer, Integer>());
+
         if(session.getAttribute("shoppingcart") == null)
 			session.setAttribute("shoppingcart", new Hashtable<Integer, Integer>());
 
