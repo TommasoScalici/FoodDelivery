@@ -1,6 +1,8 @@
 package unipa.fooddelivery;
 
 import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
 import java.util.stream.*;
 
 import unipa.fooddelivery.models.*;
@@ -39,7 +41,12 @@ public class Utilities
 		return dishes.entrySet()
 					 .stream()
 					 .map(x -> x.getKey().getRestaurant())
-					 .distinct()
+					 .filter(distinctByKey(Restaurant::getId))
 					 .collect(Collectors.toList());
+	}
+
+	public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+		Set<Object> seen = ConcurrentHashMap.newKeySet();
+		return t -> seen.add(keyExtractor.apply(t));
 	}
 }

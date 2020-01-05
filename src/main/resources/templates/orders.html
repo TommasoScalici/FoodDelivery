@@ -5,18 +5,26 @@
     <li th:each="order : ${orders}" class="item2">
         <div>
             <h2>Ordine presso:</h2>
-            <h3>
-                <span th:each="restaurant : ${T(unipa.fooddelivery.Utilities)
-                                            .getRestaurantsFromDishes(order.getDishesOrdered())}"
-                      th:text="${restaurant.getName()} + '\n'"></span>
+            <h3 th:each="restaurant : ${T(unipa.fooddelivery.Utilities)
+                                        .getRestaurantsFromDishes(order.getDishesOrdered())}"
+                th:text="${restaurant.getName()}">
             </h3>
 
-            <div style="margin-left: 1em; text-align: left;">
-              <p>Piatti ordinati: </p>
-              <span th:each="entry : ${order.getDishesOrdered().entrySet()}" th:if="${entry.getValue()} + 'x ' + ${entry.getKey().getName()}"></span>
-  
+            <div style="margin-left: 1em; text-align: left; width: 40%; float: left">
+                <p>Piatti ordinati: </p>
+                <p th:each="entry : ${order.getDishesOrdered().entrySet()}" th:text="${entry.getValue()} + 'x ' + ${entry.getKey().getName()}"></p>
+            </div>
+
+            <div style="margin-left: 1em; text-align: left; width: 40%; float: left">
+                <p th:text="'Metodo di pagamento: ' + ${order.getPaymentMethod().getDisplayValue()}"></p>
+                <p th:text="'Spese di consegna: ' + ${#numbers.formatDecimal(order.getDeliveryFee(), 0, 2) + ' €'}"></p> 
+                <strong><p th:text="'Totale: ' + ${#numbers.formatDecimal(order.getInvoiceTotalFee(), 0, 2) + ' €'}"></p></strong>
+            </div>
+
+            <div style="margin-left: 1em; bottom: auto; text-align: left; clear: both">
               <p th:text="'Effettuato il ' + ${#temporals.format(order.getOrderDate(), 'dd/MM/yyyy HH:mm:ss')}"></p>
               <p th:text="'Ora di consegna prevista: ' +  ${#temporals.format(order.getDeliveryDate(), 'dd/MM/yyyy HH:mm')}"></p>
             </div>
+        </div>
     </li>
 </ul>
