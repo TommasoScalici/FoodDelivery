@@ -1,7 +1,7 @@
 package unipa.fooddelivery.models;
 
 public enum PaymentMethod {
-    CASH("Contanti"),
+    CASH("Contanti alla consegna"),
     CREDITCARD("Carta di credito"),
     PAYPAL("PayPal");
 

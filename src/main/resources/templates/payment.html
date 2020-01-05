@@ -78,7 +78,18 @@
 
         <form action="/payment/result" id="paymentForm" method="POST">
 
-            
+            <div class="row">
+                <div class="col-25">
+                  <label for="paymentmethod">Metodo di pagamento</label>
+                </div>
+                <div class="col-75">
+                  <select required="required" type="text" id="paymentmethod" name="paymentmethod">
+                    <option value="Customer">Cliente</option>
+                    <option value="DeliveryMan">Fattorino</option>
+                    <option value="RestaurantOwner">Ristoratore</option>
+                  </select>
+                </div>
+              </div>
 
         </form>
 

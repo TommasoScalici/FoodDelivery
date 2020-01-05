@@ -1,5 +1,6 @@
 @startuml user
-abstract class User {
+left to right direction
+abstract class User <<Abstract Factory>> {
   -long id
   -String username
   -String password
@@ -17,6 +18,20 @@ abstract class User {
   getters and setters
 }
 
+class Address {
+    -String country
+    -String city
+    -String province
+    -String street
+    -String number
+    -String zip
+    +Address()
+    +Address(String country, String city,
+\t       String province, String number, String zip)
+}
+
+package "User subtypes" {
+
 class Customer {
     +Customer()
     +Customer(String username, String password)
@@ -33,9 +48,12 @@ class RestaurantOwner {
     +RestaurantOwner(String username, String password)
 }
 
+}
+
 hide Customer fields
 hide RestaurantOwner fields
 
+Address *-- User
 Customer <|-- User
 DeliveryMan <|-- User
 RestaurantOwner <|-- User
