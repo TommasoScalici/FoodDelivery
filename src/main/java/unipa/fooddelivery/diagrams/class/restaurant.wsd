@@ -1,0 +1,34 @@
+@startuml user
+left to right direction
+class Restaurant {
+  -long id
+  -double minimumOrderFee
+  -String name
+  -String email
+  -String telephoneNumber
+  -String webSite
+  -Address address
+  -RestaurantCategory category
+  -List<Dish> dailyMenu
+  --
+  +Restaurant {static} getFactory(String type)
+  #Restaurant() 
+  #Restaurant( String name )
+  #Restaurant( String name, RestaurantCategory category, 
+  \t            double minimumOrderFee )
+  ..
+  getters and setters
+}
+
+class RestaurantCategory {
+    -displayValue
+    -List<String> categories
+    --
+    +RestaurantCategory(String displayValue)
+    ..
+    +getDisplayValue()
+}
+
+Restaurant *- RestaurantCategory
+
+@enduml

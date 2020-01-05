@@ -1,0 +1,48 @@
+@startuml Order
+class Order {
+  -long id
+  -LocalDateTime deliveryDate
+  -LocalDateTime orderDate
+  -Customer customer
+  -DeliveryMan deliveryMan
+  -Map<Dish, Integer> dishesOrdered
+  -OrderStatus status
+  -PaymentMethod paymentMethod
+  -boolean isPaid
+  --
+  +Order {static} getFactory(String type)
+  #Order()
+  +advanceStatus()
+  +cancelOrder()
+  +getInvoiceTotalFee()
+  ..
+  getters and setters
+}
+
+class OrderStatus {
+    -String displayValue
+    -List<String> status
+    --
+    +OrderStatus()
+    +OrderStatus(String displayValue)
+    +next()
+    ..
+    +GetDisplayValue()
+
+}
+
+
+class PaymentMethod {
+    -String displayValue
+    -List<String> paymentMethod
+    --
+    +PaymentMethod()
+    +PaymentMethod(String displayValue)
+    ..
+    +GetDisplayValue()
+}
+
+Order *- OrderStatus
+Order *- PaymentMethod
+@enduml
+

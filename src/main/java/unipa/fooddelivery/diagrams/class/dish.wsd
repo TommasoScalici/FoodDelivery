@@ -1,0 +1,32 @@
+@startuml user
+left to right direction
+class Dish {
+  -long id
+  -String name
+  -String description
+  -DishCategory category
+  -Restaurant restaurant
+  -double price
+  -List<String> allergens
+  -List<String> ingredients
+  --
+  +Dish {static} getFactory(String type)
+  #Dish()
+  #Dish( String username, String restaurant)
+  #Dish( String name, Restaurant restaurant, 
+  \t      DishCategory category, double price)
+  ..
+  getters and setters
+}
+
+class DishCategory{
+    -displayValue
+    -List<String> categories
+    --
+    +DishCategory(String displayValue)
+    ..
+    +getDisplayValue()
+}
+
+DishCategory *- Dish
+@enduml

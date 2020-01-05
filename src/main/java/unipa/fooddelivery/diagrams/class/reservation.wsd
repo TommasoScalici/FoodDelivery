@@ -1,0 +1,17 @@
+@startuml Reservation
+left to right direction
+class Reservation {
+  -long id
+  -Customer customer
+  -Restaurant restaurant
+  -Map<Dish, Integer> dishesOrdered
+  -LocalDateTime reservationDate
+  --
+  +Reservation {static} getFactory(String type)
+  #Reservation()
+  +getInvoiceTotalFee()
+  +paymentMethod()
+  ..
+  getters and setters
+}
+@enduml
