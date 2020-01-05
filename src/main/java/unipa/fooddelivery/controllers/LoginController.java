@@ -12,14 +12,14 @@ import unipa.fooddelivery.*;
 public class LoginController 
 {
 
-    @GetMapping(value = "login")
+    @GetMapping("login")
     public ModelAndView getLoginView() {
         var mav = new ModelAndView("index");
         mav.addObject("path", "login");
         return mav;
     }
 
-    @GetMapping(value = "logout")
+    @GetMapping("logout")
     public ModelAndView getLogoutView(HttpSession session) {
         session.removeAttribute("user");
         var mav = new ModelAndView("index");
@@ -27,7 +27,7 @@ public class LoginController
         return mav;
     }
 
-    @PostMapping(value = "login/result")
+    @PostMapping("login/result")
     public @ResponseBody ModelAndView getLoginResultView(@RequestParam(value="username") final String username, 
                                                          @RequestParam(value="password") final String password,
                                                          HttpSession session) {

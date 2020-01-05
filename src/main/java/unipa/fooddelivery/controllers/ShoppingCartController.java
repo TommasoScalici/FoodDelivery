@@ -18,10 +18,12 @@ public class ShoppingCartController {
 	@GetMapping()
 	public ModelAndView getShoppingCartView(HttpSession session) {
 
-		var dishes = Utilities.getDishesFromIDs(dishesIDs);
-
-		if(session.getAttribute("shoppingcart") == null)
+		if(session.getAttribute("shoppingcart") == null) {
+			dishesIDs.clear();
 			session.setAttribute("shoppingcart", dishesIDs);
+		}
+
+		var dishes = Utilities.getDishesFromIDs(dishesIDs);
 
 		var mav = new ModelAndView("index");
 		mav.addObject("path", "shoppingcart");

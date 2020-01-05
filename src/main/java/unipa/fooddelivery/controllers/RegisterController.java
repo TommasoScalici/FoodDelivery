@@ -23,10 +23,11 @@ public class RegisterController {
         return mav;
     }
 
-    @PostMapping(value = "result")
-    public @ResponseBody ModelAndView getRegisterResultView(
+    @PostMapping("result")
+    public @ResponseBody ModelAndView postRegisterResultView(
         @RequestParam(value = "username") final String username,
-        @RequestParam(value = "password") final String password, @RequestParam(value = "name") final String name,
+        @RequestParam(value = "password") final String password,
+        @RequestParam(value = "name") final String name,
         @RequestParam(value = "surname") final String surname,
         @RequestParam(value = "birthdate") @DateTimeFormat(pattern = "yyyy-MM-dd") final Date birthdate,
         @RequestParam(value = "country") final String country,

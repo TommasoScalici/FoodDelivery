@@ -44,6 +44,9 @@
       </li>
     </ul>
 
-    <a th:if="${!reservation.isEmpty()}" class="bp-button" href="/reservation/payment" style="width: 8em;">Procedi al pagamento</a>
+    <a th:if="${!reservation.isEmpty() and
+                (T(unipa.fooddelivery.controllers.ReservationController)
+                .checkIfBusinessLogicValid(session.reservation))}"
+       class="bp-button" href="/reservation/payment" style="width: 8em;">Procedi al pagamento</a>
 
 </div>

@@ -25,9 +25,12 @@ class Address {
     -String street
     -String number
     -String zip
+    --
     +Address()
     +Address(String country, String city,
 \t       String province, String number, String zip)
+   ..
+   getters and setters
 }
 
 package "User subtypes" {

@@ -18,11 +18,14 @@ public class ReservationController {
 	@GetMapping()
 	public ModelAndView getReservationView(HttpSession session) {
 
-        var mav = new ModelAndView("index");
+		if(session.getAttribute("reservation") == null) {
+			dishesIDs.clear();
+			session.setAttribute("reservation", dishesIDs);
+		}
+
 		var dishes = Utilities.getDishesFromIDs(dishesIDs);
 
-		if(session.getAttribute("reservation") == null)
-			session.setAttribute("reservation", dishesIDs);
+        var mav = new ModelAndView("index");
 
         var previousReservations = DataBase.getInstance().getReservations();
 
@@ -111,5 +114,9 @@ public class ReservationController {
 					 .map(x -> x.getKey().getRestaurant().getId())
 					 .distinct()
 					 .count() <= 1;
+	}
+
+	public static void ClearSession() {
+		
 	}
 }
