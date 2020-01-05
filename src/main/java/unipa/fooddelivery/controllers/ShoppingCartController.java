@@ -13,7 +13,7 @@ import unipa.fooddelivery.*;
 @RequestMapping(value = "shoppingcart")
 public class ShoppingCartController {
 
-	Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
+	private Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
 
 	@GetMapping()
 	public ModelAndView getShoppingCartView(HttpSession session) {

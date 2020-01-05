@@ -1,7 +1,8 @@
 <style>
+
     table.center {
-        margin-left:auto; 
-        margin-right:auto;
+        margin-left: auto; 
+        margin-right: auto;
     }
 
     table, th, tr {
@@ -12,17 +13,72 @@
 <div class="items">
     <div class="form-container" style="display: inline-block; width: 60%;">
 
+        <div>
+            <h2>Riepilogo</h2>
+            <h3>Inserisci le ultime informazioni per completare il pagamento</h3>
+        </div>
+        
+        <table class="center" cellpadding="10" th:if="${order != null}">
+            <tr>
+                <th><strong>Piatto</strong></th>
+                <th><strong>Quantità</strong></th>
+                <th><strong>Prezzo</strong></th>
+            </tr>
+
+            <tr th:each="dish : ${order.getDishesOrdered().keys()}">
+                <th th:text="${dish.getName()}"></th>
+                <th th:text="${session.shoppingcart.get(dish.getId())}"></th>
+                <th th:text="${#numbers.formatDecimal(dish.getPrice(), 0, 2)} + ' €'"></th>
+            </tr>
+
+            <tr>
+
+                <th colspan="2" style="text-align: right;"><strong>Spese di consegna</strong></th>
+                <th>
+                    <strong>
+                        <span th:text="${#numbers.formatDecimal(order.getDeliveryFee(), 0, 2) + ' €'}"></span>
+                    </strong>
+                </th>
+            </tr>
+
+            <tr>
+                <th colspan="2" style="text-align: right;"><strong>Totale</strong></th>
+                <th>
+                    <strong>
+                        <span th:text="${#numbers.formatDecimal(order.getInvoiceTotalFee(), 0, 2) + ' €'}"></span>
+                    </strong>
+                </th>
+            </tr>
+        </table>
+
+        <table class="center" cellpadding="10" th:if="${reservation != null}">
+            <tr>
+                <th><strong>Piatto</strong></th>
+                <th><strong>Quantità</strong></th>
+                <th><strong>Prezzo</strong></th>
+            </tr>
+
+            <tr th:each="dish : ${order.getDishesOrdered().keys()}">
+                <th th:text="${dish.getName()}"></th>
+                <th th:text="${session.shoppingcart.get(dish.getId())}"></th>
+                <th th:text="${#numbers.formatDecimal(dish.getPrice(), 0, 2)} + ' €'"></th>
+            </tr>
+
+            </tr>
+
+            <tr>
+                <th colspan="2" style="text-align: right;"><strong>Totale</strong></th>
+                <th>
+                    <strong>
+                        <span th:text="${#numbers.formatDecimal(order.getInvoiceTotalFee(), 0, 2) + ' €'}"></span>
+                    </strong>
+                </th>
+            </tr>
+        </table>
+
         <form action="/payment/result" id="paymentForm" method="POST">
-            <div>
-                <h2>Inserisci le ultime informazioni per completare il pagamento</h2>
-            </div>
+
             
-            <table class="center" th:if="${!shoppingcart.isEmpty()}">
-                <tr th:each="dish : ${shoppingcart.keys()}">
-                    <th th:text="${dish.getName()}"></th>
-                    <th th:text="'  ' + ${dish.getPrice()} + ' €'"></th>
-                </tr>
-            </table>
 
         </form>
 

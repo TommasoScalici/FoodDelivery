@@ -7,11 +7,18 @@ public class Reservation {
     private long id;
     private Customer customer;
     private Restaurant restaurant;
-    private List<Dish> dishesOrdered;
+    private Map<Dish, Integer> dishesOrdered;
     private Date reservationDate;
     private int seatsNumber;
 
     public Reservation() {
+    }
+
+    public double getInvoiceTotalFee() {
+        return dishesOrdered.entrySet()
+                            .stream()
+                            .mapToDouble(x -> x.getKey().getPrice() * x.getValue())
+                            .sum();
     }
 
     // #region getters and setters
@@ -56,11 +63,11 @@ public class Reservation {
         this.seatsNumber = seatsNumber;
     }
 
-    public List<Dish> getDishesOrdered() {
+    public Map<Dish, Integer> getDishesOrdered() {
         return dishesOrdered;
     }
 
-    public void setDishesOrdered(List<Dish> dishesOrdered) {
+    public void setDishesOrdered(Map<Dish, Integer> dishesOrdered) {
         this.dishesOrdered = dishesOrdered;
     }
 

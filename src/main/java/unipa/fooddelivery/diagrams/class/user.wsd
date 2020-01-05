@@ -1,0 +1,40 @@
+@startuml user
+abstract class User {
+  -long id
+  -String username
+  -String password
+  -String name
+  -String surname
+  -String email
+  -String telephoneNumber
+  -Address address
+  -Date birthdate
+  --
+  +User {static} getFactory()
+  #User()
+  #User(String username, String password)
+  ..
+  getters and setters
+}
+
+class Customer {
+}
+
+class DeliveryMan {
+}
+
+class RestaurantOwner {
+}
+
+hide Customer fields
+hide Customer methods
+hide DeliveryMan fields
+hide DeliveryMan methods
+hide RestaurantOwner fields
+hide RestaurantOwner methods
+
+Customer <|-- User
+DeliveryMan <|-- User
+RestaurantOwner <|-- User
+
+@enduml

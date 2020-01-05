@@ -13,7 +13,7 @@ import unipa.fooddelivery.*;
 @RequestMapping(value = "reservation")
 public class ReservationController {
 
-	Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
+	private Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
 
 	@GetMapping()
 	public ModelAndView getReservationView(HttpSession session) {

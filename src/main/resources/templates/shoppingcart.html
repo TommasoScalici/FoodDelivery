@@ -36,6 +36,9 @@
       </li>
     </ul>
 
-    <a th:if="${!shoppingcart.isEmpty()}" class="bp-button" href="/order/payment" style="width: 8em;">Procedi al pagamento</a>
+    <a th:if="${!shoppingcart.isEmpty() and 
+               (T(unipa.fooddelivery.controllers.ShoppingCartController)
+               .checkIfBusinessLogicValid(session.shoppingcart))}"
+       class="bp-button" href="order/payment" style="width: 8em;">Procedi al pagamento</a>
 
 </div>

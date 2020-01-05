@@ -16,7 +16,7 @@ public class Order {
     private Date orderDate;
     private Customer customer;
     private DeliveryMan deliveryMan;
-    private List<Dish> dishesOrdered;
+    private Map<Dish, Integer> dishesOrdered;
     private OrderStatus status = OrderStatus.PENDING;
     private PaymentMethod paymentMethod;
     private double deliveryFee;
@@ -24,12 +24,6 @@ public class Order {
 
 
     public Order() { }
-
-    public Order(Customer customer, DeliveryMan deliveryMan, List<Dish> dishesOrdered) {
-        this.customer = customer;
-        this.deliveryMan = deliveryMan;
-        this.dishesOrdered = dishesOrdered;
-     }
 
     public void advanceStatus() {
         var nextStatus = status.next();
@@ -42,8 +36,10 @@ public class Order {
     }
 
     public double getInvoiceTotalFee() {
-        return dishesOrdered.stream().mapToDouble(d -> d.getPrice()).sum()
-               + deliveryFee;
+        return dishesOrdered.entrySet()
+                            .stream()
+                            .mapToDouble(x -> x.getKey().getPrice() * x.getValue())
+                            .sum() + deliveryFee;
     }
 
     //#region getters and setters
@@ -72,11 +68,11 @@ public class Order {
         this.deliveryMan = deliveryMan;
     }
 
-    public List<Dish> getDishesOrdered() {
+    public Map<Dish, Integer> getDishesOrdered() {
         return dishesOrdered;
     }
 
-    public void setDishesOrdered(List<Dish> dishesOrdered) {
+    public void setDishesOrdered(Map<Dish, Integer> dishesOrdered) {
         this.dishesOrdered = dishesOrdered;
     }
 
