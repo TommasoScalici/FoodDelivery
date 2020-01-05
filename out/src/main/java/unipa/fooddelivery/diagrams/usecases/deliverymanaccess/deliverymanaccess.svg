@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="690px" preserveAspectRatio="none" style="width:744px;height:690px;" version="1.1" viewBox="0 0 744 690" width="744px" zoomAndPan="magnify"><defs><filter height="300%" id="fp7ehrb13oo2t" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="4.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="8.0" dy="8.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--cluster application--><rect fill="#FFFFFF" filter="url(#fp7ehrb13oo2t)" height="620" style="stroke: #000000; stroke-width: 3.0;" width="470" x="252" y="48"/><text fill="#000000" font-family="sans-serif" font-size="28" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="154" x="410" y="81.0664">application</text><ellipse cx="486.8535" cy="159.5707" fill="#FEFECE" filter="url(#fp7ehrb13oo2t)" rx="168.8535" ry="38.5707" style="stroke: #A80036; stroke-width: 3.0;"/><text fill="#000000" font-family="sans-serif" font-size="28" lengthAdjust="spacingAndGlyphs" textLength="274" x="349.8535" y="170.1801">check pending orders</text><ellipse cx="487.0798" cy="306.416" fill="#FEFECE" filter="url(#fp7ehrb13oo2t)" rx="158.0798" ry="36.416" style="stroke: #A80036; stroke-width: 3.0;"/><text fill="#000000" font-family="sans-serif" font-size="28" lengthAdjust="spacingAndGlyphs" textLength="248" x="363.0798" y="317.0253">update order status</text><ellipse cx="486.7949" cy="458.359" fill="#FEFECE" filter="url(#fp7ehrb13oo2t)" rx="202.7949" ry="45.359" style="stroke: #A80036; stroke-width: 3.0;"/><text fill="#000000" font-family="sans-serif" font-size="28" lengthAdjust="spacingAndGlyphs" textLength="352" x="310.7949" y="468.9684">take/untake charge of order</text><ellipse cx="486.9949" cy="603.9034" fill="#FEFECE" filter="url(#fp7ehrb13oo2t)" rx="104.9949" ry="30.9034" style="stroke: #A80036; stroke-width: 3.0;"/><text fill="#000000" font-family="sans-serif" font-size="28" lengthAdjust="spacingAndGlyphs" textLength="140" x="416.9949" y="614.5128">view profile</text><!--entity deliveryman--><ellipse cx="88" cy="317" fill="#FEFECE" filter="url(#fp7ehrb13oo2t)" rx="16" ry="16" style="stroke: #A80036; stroke-width: 4.0;"/><path d="M88,333 L88,387 M62,349 L114,349 M88,387 L62,417 M88,387 L114,417 " fill="none" filter="url(#fp7ehrb13oo2t)" style="stroke: #A80036; stroke-width: 4.0;"/><text fill="#000000" font-family="sans-serif" font-size="28" lengthAdjust="spacingAndGlyphs" textLength="152" x="12" y="460.0664">deliveryman</text><!--link deliveryman to check pending orders--><path d="M160.168,296.33 C182.4188,273.454 208.4572,250.53 236,234 C272.542,212.07 316.036,196.246 356.368,185.01 " fill="none" id="deliveryman-check pending orders" style="stroke: #A80036; stroke-width: 2.0;"/><!--link deliveryman to update order status--><path d="M164.2964,367.704 C220.836,356.826 299.808,341.632 365.234,329.044 " fill="none" id="deliveryman-update order status" style="stroke: #A80036; stroke-width: 2.0;"/><!--link deliveryman to take/untake charge of order--><path d="M164.2964,396.296 C211.6742,405.41 274.802,417.556 332.512,428.66 " fill="none" id="deliveryman-take/untake charge of order" style="stroke: #A80036; stroke-width: 2.0;"/><!--link deliveryman to view profile--><path d="M153.9858,467.228 C177.262,493.222 205.4346,519.728 236,538 C282.83,565.9956 341.576,582.2972 390.246,591.6926 " fill="none" id="deliveryman-view profile" style="stroke: #A80036; stroke-width: 2.0;"/><!--
+@startuml deliverymanaccess
+scale 2
+left to right direction
+skinparam packageStyle rect
+
+actor "deliveryman"
+
+rectangle "application" {
+    deliveryman - - (check pending orders)
+    deliveryman - - (update order status)
+    deliveryman - - (take/untake charge of order)
+    deliveryman - - (view profile)
+}
+
+@enduml
+
+PlantUML version 1.2019.09(Mon Aug 26 18:19:51 CEST 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0-25-microsoft-b00
+Operating System: Windows 10
+OS Version: 10.0
+Default Encoding: Cp1252
+Language: it
+Country: IT
+--></g></svg>
