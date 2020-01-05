@@ -10,7 +10,7 @@ abstract class User {
   -Address address
   -Date birthdate
   --
-  +User {static} getFactory()
+  +User {static} getFactory(String type)
   #User()
   #User(String username, String password)
   ..
@@ -18,20 +18,23 @@ abstract class User {
 }
 
 class Customer {
+    +Customer()
+    +Customer(String username, String password)
 }
 
 class DeliveryMan {
+    -boolean isAvailable
+    +DeliveryMan()
+    +DeliveryMan(String username, String password)
 }
 
 class RestaurantOwner {
+    +RestaurantOwner()
+    +RestaurantOwner(String username, String password)
 }
 
 hide Customer fields
-hide Customer methods
-hide DeliveryMan fields
-hide DeliveryMan methods
 hide RestaurantOwner fields
-hide RestaurantOwner methods
 
 Customer <|-- User
 DeliveryMan <|-- User
