@@ -21,7 +21,7 @@
     <h2 th:if="${!reservation.isEmpty()}" th:text="'Presso: ' + ${restaurant.getName()}"></h2>
 
     <h2 th:if="${!reservation.isEmpty()}"
-       th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(reservation, 0.0) + ' €'}"></h2>
+        th:text="'Il totale è: ' + ${T(unipa.fooddelivery.Utilities).getTotal(reservation, 0.0) + ' €'}"></h2>
 
     <ul th:if="${!reservation.isEmpty()}" class="items">
       <li th:each="dish : ${reservation.keys()}" class="item">
@@ -43,5 +43,7 @@
           </div>
       </li>
     </ul>
+
+    <a th:if="${!reservation.isEmpty()}" class="bp-button" href="/reservation/payment" style="width: 8em;">Procedi al pagamento</a>
 
 </div>

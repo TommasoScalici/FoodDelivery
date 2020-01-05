@@ -10,7 +10,7 @@
           <label for="registrationtype">Tipo account</label>
         </div>
         <div class="col-75">
-          <span>Bisogna gestire il tipo account alla registrazione porco***</span>
+          <label th:text="${session.user.getClass().getSimpleName()}"></label>
         </div>
       </div>
 

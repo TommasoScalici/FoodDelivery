@@ -7,8 +7,7 @@ import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
-import unipa.fooddelivery.DataBase;
-import unipa.fooddelivery.models.*;
+import unipa.fooddelivery.*;
 
 @Controller
 @RequestMapping(value = "reservation")
@@ -17,10 +16,10 @@ public class ReservationController {
 	Hashtable<Long, Integer> dishesIDs = new Hashtable<>();
 
 	@GetMapping()
-	public ModelAndView index(HttpSession session) {
+	public ModelAndView getReservationView(HttpSession session) {
 
         var mav = new ModelAndView("index");
-		Hashtable<Dish, Integer> dishes = getDishesFromIDs(dishesIDs);
+		var dishes = Utilities.getDishesFromIDs(dishesIDs);
 
 		if(session.getAttribute("reservation") == null)
 			session.setAttribute("reservation", dishesIDs);
@@ -107,25 +106,10 @@ public class ReservationController {
 
 	public static boolean checkIfBusinessLogicValid(Hashtable<Long, Integer> dishesIDs)
 	{
-		var dishes = getDishesFromIDs(dishesIDs).entrySet();
+		var dishes = Utilities.getDishesFromIDs(dishesIDs).entrySet();
 		return dishes.stream()
 					 .map(x -> x.getKey().getRestaurant().getId())
 					 .distinct()
 					 .count() <= 1;
-	}
-
-	private static Hashtable<Dish, Integer> getDishesFromIDs(Hashtable<Long, Integer> dishesIDs)
-	{
-		Hashtable<Dish, Integer> dishes = new Hashtable<>();
-		var dishesFromDB = DataBase.getInstance().getDishes();
-			
-		dishesIDs.forEach((k, v) -> {
-			var optionalDish = dishesFromDB.stream().filter(x -> x.getId() == k).findFirst();
-
-			if(optionalDish.isPresent())
-				dishes.put(optionalDish.get(), v);
-		});
-
-		return dishes;
 	}
 }

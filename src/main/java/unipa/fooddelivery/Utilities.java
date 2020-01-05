@@ -19,4 +19,19 @@ public class Utilities
          
         return dishes.entrySet().stream().mapToDouble(x -> x.getKey().getPrice() * x.getValue()).sum();
     }
+
+    public static Hashtable<Dish, Integer> getDishesFromIDs(Hashtable<Long, Integer> dishesIDs)
+	{
+		Hashtable<Dish, Integer> dishes = new Hashtable<>();
+		var dishesFromDB = DataBase.getInstance().getDishes();
+			
+		dishesIDs.forEach((k, v) -> {
+			var optionalDish = dishesFromDB.stream().filter(x -> x.getId() == k).findFirst();
+
+			if(optionalDish.isPresent())
+				dishes.put(optionalDish.get(), v);
+		});
+
+		return dishes;
+	}
 }
