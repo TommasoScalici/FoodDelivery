@@ -1,6 +1,12 @@
 package unipa.fooddelivery.models;
 
+import java.time.*;
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.*;
+
+import unipa.fooddelivery.*;
 
 /**
  * Model POJO class for Order
@@ -12,10 +18,12 @@ import java.util.*;
 public class Order {
 
     private long id;
-    private Date deliveryDate;
-    private Date orderDate;
+    private LocalDateTime deliveryDate;
+    private LocalDateTime orderDate;  
     private Customer customer;
     private DeliveryMan deliveryMan;
+
+    @JsonSerialize(keyUsing = CustomMapDishKeySerializer.class)
     private Map<Dish, Integer> dishesOrdered;
     private OrderStatus status = OrderStatus.PENDING;
     private PaymentMethod paymentMethod;
@@ -35,6 +43,7 @@ public class Order {
         status = OrderStatus.CANCELED;
     }
 
+    @JsonIgnore()
     public double getInvoiceTotalFee() {
         return dishesOrdered.entrySet()
                             .stream()
@@ -108,19 +117,19 @@ public class Order {
         this.deliveryFee = deliveryFee;
     }
 
-    public Date getDeliveryDate() {
+    public LocalDateTime getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
+    public void setDeliveryDate(LocalDateTime deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 
-    public Date getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 

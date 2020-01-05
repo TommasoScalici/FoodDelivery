@@ -1,0 +1,22 @@
+<ul class="items">
+
+    <h2>Storico ordini</h2>
+
+    <li th:each="order : ${orders}" class="item2">
+        <div>
+            <h2>Ordine presso:</h2>
+            <h3>
+                <span th:each="restaurant : ${T(unipa.fooddelivery.Utilities)
+                                            .getRestaurantsFromDishes(order.getDishesOrdered())}"
+                      th:text="${restaurant.getName()} + '\n'"></span>
+            </h3>
+
+            <div style="margin-left: 1em; text-align: left;">
+              <p>Piatti ordinati: </p>
+              <span th:each="entry : ${order.getDishesOrdered().entrySet()}" th:if="${entry.getValue()} + 'x ' + ${entry.getKey().getName()}"></span>
+  
+              <p th:text="'Effettuato il ' + ${#temporals.format(order.getOrderDate(), 'dd/MM/yyyy HH:mm:ss')}"></p>
+              <p th:text="'Ora di consegna prevista: ' +  ${#temporals.format(order.getDeliveryDate(), 'dd/MM/yyyy HH:mm')}"></p>
+            </div>
+    </li>
+</ul>

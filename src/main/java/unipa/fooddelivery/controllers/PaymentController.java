@@ -6,7 +6,7 @@ import java.util.*;
 import javax.servlet.http.*;
 
 import org.springframework.format.annotation.*;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.format.annotation.DateTimeFormat.*;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
@@ -63,25 +63,36 @@ public class PaymentController {
 
     @PostMapping("order/result")
     public @ResponseBody ModelAndView postOrderPaymentResultView(
-        @RequestParam(value = "paymentmethod") final String paymentMethod,
-        @RequestParam(value = "deliverydate") @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm") final Date deliveryDate,
+        @RequestParam(value = "paymentmethod") final PaymentMethod paymentMethod,
+        @RequestParam(value = "deliverydate") @DateTimeFormat(iso = ISO.DATE_TIME) final LocalDateTime deliveryDate,
         HttpSession session
     ) {
         session.removeAttribute("shoppingcart");
         
+        order.setPaymentMethod(paymentMethod);
+        order.setDeliveryDate(deliveryDate);
+        order.setOrderDate(LocalDateTime.now());
+
+        DataBase.getInstance().getOrders().add(order);
+        DataBase.getInstance().saveChangesForEntity(Order.class);
+
         var mav = new ModelAndView("index");
-        mav.addObject("path", "reservationsuccess");
+        mav.addObject("path", "ordersuccess");
         return mav;
     }
 
     @PostMapping("reservation/result")
     public @ResponseBody ModelAndView postReservationPaymentResultView(
-        @RequestParam(value = "paymentmethod") final String paymentMethod,
+        @RequestParam(value = "paymentmethod") final PaymentMethod paymentMethod,
         @RequestParam(value = "reservationdate") @DateTimeFormat(iso = ISO.DATE_TIME) final LocalDateTime reservationDate,
         @RequestParam(value = "seatsnumber") final int seatsNumber,
         HttpSession session
     ) {
         session.removeAttribute("reservation");
+
+        reservation.setPaymentMethod(paymentMethod);
+        reservation.setReservationDate(reservationDate);
+        reservation.setSeatsNumber(seatsNumber);
 
         var mav = new ModelAndView("index");
         mav.addObject("path", "reservationsuccess");

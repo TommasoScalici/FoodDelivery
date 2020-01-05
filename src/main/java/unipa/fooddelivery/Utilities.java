@@ -34,4 +34,12 @@ public class Utilities
 
 		return dishes;
 	}
+
+	public static List<Restaurant> getRestaurantsFromDishes(Map<Dish, Integer> dishes) {
+		return dishes.entrySet()
+					 .stream()
+					 .map(x -> x.getKey().getRestaurant())
+					 .distinct()
+					 .collect(Collectors.toList());
+	}
 }

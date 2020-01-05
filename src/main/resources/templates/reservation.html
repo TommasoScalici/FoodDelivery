@@ -1,10 +1,6 @@
 <div class="items">
 
-    <div>
-        <h2>Storico prenotazioni</h2>
-        <br />
-        <h2>Prenotazione in corso</h2>
-    </div>
+    <h2>Prenotazione in corso</h2>
 
     <div th:if="${reservation.isEmpty()}">
       <h3>Non hai nessuna prenotazione in corso</h3>
@@ -48,5 +44,11 @@
                 (T(unipa.fooddelivery.controllers.ReservationController)
                 .checkIfBusinessLogicValid(session.reservation))}"
        class="bp-button" href="/reservation/payment" style="width: 8em;">Procedi al pagamento</a>
+
+
+      <br />
+      <br />
+
+      <h2>Storico prenotazioni</h2>
 
 </div>

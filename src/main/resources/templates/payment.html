@@ -80,7 +80,7 @@
                 </th>
             </tr>
             <tr>
-                <th colspan="2" style="text-align: right;"><strong>Acconto da pagere (10% sul totale)</strong></th>
+                <th colspan="2" style="text-align: right;"><strong>Acconto da pagare (10% sul totale)</strong></th>
                 <th>
                     <strong>
                         <span th:text="${#numbers.formatDecimal(reservation.getInvoiceTotalFee() * 10 / 100, 0, 2) + ' €'}"></span>
@@ -115,7 +115,7 @@
                 </div>
             </div>
 
-            <div th:if="${reservation != null}" class="row">
+            <div class="row">
                 <div class="col-25">
                     <label for="deliverydate">Data e ora di consegna</label>
                 </div>
@@ -146,7 +146,7 @@
                 </div>
             </div>
 
-            <div th:if="${reservation != null}" class="row">
+            <div class="row">
                 <div class="col-25">
                     <label for="seatsnumber">Numero di posti da prenotare</label>
                 </div>
@@ -157,7 +157,7 @@
                 </div>
             </div>
 
-            <div th:if="${reservation != null}" class="row">
+            <div class="row">
                 <div class="col-25">
                     <label for="reservationdate">Data e ora di prenotazione</label>
                 </div>

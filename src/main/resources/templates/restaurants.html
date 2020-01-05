@@ -11,7 +11,7 @@
                                                 Puoi effettuare una prenotazione per un ristorante alla volta!</h2>
 
   <ul class="items">
-    <li th:each="restaurant : ${restaurants}"  class="item">
+    <li th:each="restaurant : ${restaurants}" class="item">
       <a th:href="${category} + '/' + ${restaurant.getId()}">
         <div>
           <p style="font-size: 18px;" th:text="${restaurant.getName()}"></p>

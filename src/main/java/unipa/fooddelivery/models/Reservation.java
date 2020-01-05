@@ -1,5 +1,6 @@
 package unipa.fooddelivery.models;
 
+import java.time.*;
 import java.util.*;
 
 public class Reservation {
@@ -8,7 +9,8 @@ public class Reservation {
     private Customer customer;
     private Restaurant restaurant;
     private Map<Dish, Integer> dishesOrdered;
-    private Date reservationDate;
+    private PaymentMethod paymentMethod;
+    private LocalDateTime reservationDate;
     private int seatsNumber;
 
     public Reservation() {
@@ -39,6 +41,14 @@ public class Reservation {
         this.customer = customer;
     }
 
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -47,11 +57,11 @@ public class Reservation {
         this.restaurant = restaurant;
     }
 
-    public Date getReservationDate() {
+    public LocalDateTime getReservationDate() {
         return reservationDate;
     }
 
-    public void setReservationDate(Date reservationDate) {
+    public void setReservationDate(LocalDateTime reservationDate) {
         this.reservationDate = reservationDate;
     }
 

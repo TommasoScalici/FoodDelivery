@@ -11,7 +11,6 @@ import unipa.fooddelivery.*;
 @Controller
 public class LoginController 
 {
-
     @GetMapping("login")
     public ModelAndView getLoginView() {
         var mav = new ModelAndView("index");

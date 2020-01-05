@@ -5,6 +5,8 @@ import java.lang.reflect.*;
 import java.util.*;
 
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.json.*;
+import com.fasterxml.jackson.databind.module.*;
 
 import unipa.fooddelivery.models.*;
 
@@ -14,6 +16,7 @@ import unipa.fooddelivery.models.*;
 public final class DataBase {
     private final static String jsonPath = "./src/main/resources/static/json/";
     private final static Hashtable<Class<?>, String> models = new Hashtable<>();
+    private static ObjectMapper mapper;
     private static DataBase database;
 
     // #region mocked entities
@@ -35,6 +38,16 @@ public final class DataBase {
         {
             database = new DataBase();
 
+            var builder = JsonMapper.builder();
+            var module = new SimpleModule();
+            module.addKeyDeserializer(Dish.class, new CustomMapDishKeyDeserializer());
+            
+            builder.addModule(module);
+            builder.findAndAddModules();
+
+            mapper = builder.build();
+
+
             /* Hashtable che mappa le classi di modello / POJO ai rispettivi file JSON che fanno da mock al database.
             *  L'inserimento è fatto hard-coded per semplicità, se si aggiungono nuovi modelli o se ne alterano i nomi
             *  bisogna aggiornare la lista manualmente altrimenti potrebbe crashare tutto, quindi
@@ -45,7 +58,7 @@ public final class DataBase {
             models.put(Dish.class, "dishes");
             models.put(DeliveryMan.class, "deliverymen");
             models.put(Order.class, "orders");
-            models.put(Order.class, "reservations");
+            models.put(Reservation.class, "reservations");
             models.put(Restaurant.class, "restaurants");
             models.put(RestaurantOwner.class, "restaurantOwners");
         }
@@ -82,6 +95,7 @@ public final class DataBase {
     }
 
     public List<Reservation> getReservations() {
+        loadData("reservations", Reservation.class);
         return reservations;
     }
 
@@ -111,12 +125,11 @@ public final class DataBase {
         try
         {
             var file = new File(jsonPath + entityName + ".json");
-            var objectMapper = new ObjectMapper();
 
             // Volevo farla semplice, ma Java fa schifo e sono costretto a usare la Reflection
 
-            var javaType = objectMapper.getTypeFactory().constructCollectionType(List.class, valueType);
-            var json = objectMapper.readValue(file, javaType);
+            var javaType = mapper.getTypeFactory().constructCollectionType(List.class, valueType);
+            var json = mapper.readValue(file, javaType);
             var field = this.getClass().getDeclaredField(entityName);
             field.setAccessible(true);
             field.set(this, json);
@@ -149,8 +162,8 @@ public final class DataBase {
             
             var entityName = models.get(entityType);
             var file = new File(jsonPath + entityName + ".json");
-            var objectMapper = new ObjectMapper();
-            objectMapper.writeValue(file, fieldToSave.get(this));
+
+            mapper.writeValue(file, fieldToSave.get(this));
         }
         catch (Exception e) {
             e.printStackTrace();
