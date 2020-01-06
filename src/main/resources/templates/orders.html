@@ -19,6 +19,7 @@
                 <p th:text="'Metodo di pagamento: ' + ${order.getPaymentMethod().getDisplayValue()}"></p>
                 <p th:text="'Spese di consegna: ' + ${#numbers.formatDecimal(order.getDeliveryFee(), 0, 2) + ' €'}"></p> 
                 <strong><p th:text="'Totale: ' + ${#numbers.formatDecimal(order.getInvoiceTotalFee(), 0, 2) + ' €'}"></p></strong>
+                <strong><p th:text="'Stato: ' + ${order.getStatus().getDisplayValue()}"></p></strong>
             </div>
 
             <div style="margin-left: 1em; bottom: auto; text-align: left; clear: both">

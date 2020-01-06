@@ -31,8 +31,7 @@ enum DishCategory{
     -String displayValue
     --
     +DishCategory(String displayValue)
-    ..
-    +getDisplayValue()
+    +String getDisplayValue()
 }
 
 DishCategory *- Dish
