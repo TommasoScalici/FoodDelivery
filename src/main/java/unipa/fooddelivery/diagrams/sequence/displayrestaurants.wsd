@@ -12,6 +12,7 @@ HomePage -> RestaurantController: click on menu and choose\nreservation or order
 
 activate RestaurantController
 RestaurantController -> RestaurantController : the controller\nprocess the request
+HomePage x-- RestaurantController : go back to home\nand display error message\nif something goes wrong
 RestaurantController -> DB : the controller forwards\n the request to the DB
 deactivate RestaurantController
 
