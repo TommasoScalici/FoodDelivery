@@ -1,0 +1,29 @@
+@startuml register
+
+actor "Restaurant\nOwner" as Owner
+participant "Home\nPage" as HomePage
+participant "Settings\nScreen" as Settings
+participant "Update\nRestaurant\nScreen" as UpdateScreen
+participant "Restaurant\nController" as RestaurantController
+database Database
+
+Owner -> HomePage: open the app
+HomePage -> Settings: click on\nsettings button
+Settings -> UpdateScreen: click on update\nRestaurant button
+UpdateScreen -> RestaurantController: update items
+
+activate RestaurantController
+RestaurantController -> RestaurantController: the controller\nprocess the request
+UpdateScreen x-- RestaurantController: display error message and\n go back on update screen
+RestaurantController -> Database: \n  update restaurant in DB
+deactivate RestaurantController
+
+activate Database
+Database -> Database: process request
+UpdateScreen x-- Database: show error related to DB
+UpdateScreen <-- Database: successful update
+deactivate Database
+
+
+
+@enduml
