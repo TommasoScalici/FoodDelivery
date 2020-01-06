@@ -6,11 +6,11 @@ class Reservation {
   -Restaurant restaurant
   -Map<Dish, Integer> dishesOrdered
   -LocalDateTime reservationDate
+  -String displayValue
   --
   +Reservation {static} getFactory(String type)
   #Reservation()
   +getInvoiceTotalFee()
-  +paymentMethod()
   ..
   getters and setters
 }
