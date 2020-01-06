@@ -1,4 +1,4 @@
-@startuml Order
+@startuml order
 class Order {
   -long id
   -LocalDateTime deliveryDate
@@ -10,39 +10,42 @@ class Order {
   -PaymentMethod paymentMethod
   -boolean isPaid
   --
-  +Order {static} getFactory(String type)
-  #Order()
+  +Order()
   +advanceStatus()
   +cancelOrder()
-  +getInvoiceTotalFee()
+  +double getInvoiceTotalFee()
   ..
   getters and setters
 }
 
-class OrderStatus {
+enum OrderStatus {
+    ACCEPTED("Accettato e in preparazione"),
+    CANCELED("Annullato"),
+    DELIVERED("Consegnato"),
+    PENDING("In attesa di accettazione"), 
+    TOCOLLECTPOINT("Il fattorino sta andando a ritirare il tuo ordine"),
+    TODESTINATION("Il fattorino sta per consegnare il tuo ordine"),
+    WAITING("Il fattorino è sul luogo di ritiro, in attesa che l'ordine sia pronto");
     -String displayValue
-    -List<String> status
     --
-    +OrderStatus()
-    +OrderStatus(String displayValue)
-    +next()
-    ..
-    +getDisplayValue()
+    -OrderStatus(String displayValue)
+    +Optional<OrderStatus> next()
+    +String getDisplayValue()
 
 }
 
 
-class PaymentMethod {
+enum PaymentMethod {
+    CASH("Contanti alla consegna")
+    CREDITCARD("Carta di credito")
+    PAYPAL("PayPal")
     -String displayValue
-    -List<String> paymentMethod
     --
-    +PaymentMethod()
-    +PaymentMethod(String displayValue)
-    ..
-    +GetDisplayValue()
+    -PaymentMethod(String displayValue)
+    +String getDisplayValue()
 }
 
-Order *- OrderStatus
-Order *- PaymentMethod
+OrderStatus *-- Order
+PaymentMethod *-- Order
 @enduml
 

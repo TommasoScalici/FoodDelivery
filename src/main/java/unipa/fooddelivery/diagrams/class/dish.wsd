@@ -1,4 +1,4 @@
-@startuml user
+@startuml dish
 left to right direction
 class Dish {
   -long id
@@ -30,9 +30,9 @@ enum DishCategory{
     WINE("Vini")
     -String displayValue
     --
-    +DishCategory(String displayValue)
+    -DishCategory(String displayValue)
     +String getDisplayValue()
 }
 
-DishCategory *- Dish
+DishCategory *-- Dish
 @enduml

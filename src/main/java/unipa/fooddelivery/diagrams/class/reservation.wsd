@@ -1,17 +1,28 @@
-@startuml Reservation
-left to right direction
+@startuml reservation
 class Reservation {
   -long id
   -Customer customer
   -Restaurant restaurant
   -Map<Dish, Integer> dishesOrdered
+  -PaymentMethod paymentMethod
   -LocalDateTime reservationDate
-  -String displayValue
   --
-  +Reservation {static} getFactory(String type)
-  #Reservation()
-  +getInvoiceTotalFee()
+  +Reservation()
+  +double getInvoiceTotalFee()
   ..
   getters and setters
 }
+
+enum PaymentMethod {
+    CASH("Contanti alla consegna")
+    CREDITCARD("Carta di credito")
+    PAYPAL("PayPal")
+    -String displayValue
+    --
+    -PaymentMethod(String displayValue)
+    +String getDisplayValue()
+}
+
+PaymentMethod *-- Reservation
+
 @enduml

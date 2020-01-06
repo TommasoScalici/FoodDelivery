@@ -1,0 +1,201 @@
+@startuml classdiagram
+left to right direction
+
+class Address {
+    -String country
+    -String city
+    -String province
+    -String street
+    -String number
+    -String zip
+    --
+    +Address()
+    +Address(String country, String city,
+\t       String province, String number, String zip)
+   ..
+   getters and setters
+}
+
+abstract class User <<Abstract Factory>> {
+  -long id
+  -String username
+  -String password
+  -String name
+  -String surname
+  -String email
+  -String telephoneNumber
+  -Address address
+  -Date birthdate
+  --
+  +User {static} getFactory(String type)
+  #User()
+  #User(String username, String password)
+  ..
+  getters and setters
+}
+
+package "User subtypes" {
+
+    class Customer {
+        +Customer()
+        +Customer(String username, String password)
+    }
+
+    class DeliveryMan {
+        -boolean isAvailable
+        +DeliveryMan()
+        +DeliveryMan(String username, String password)
+    }
+
+    class RestaurantOwner {
+        +RestaurantOwner()
+        +RestaurantOwner(String username, String password)
+    }
+
+}
+
+class Dish {
+  -long id
+  -String name
+  -String description
+  -DishCategory category
+  -Restaurant restaurant
+  -double price
+  -List<String> allergens
+  -List<String> ingredients
+  --
+  #Dish()
+  #Dish(String username, String restaurant)
+  #Dish(String name, Restaurant restaurant, 
+  \t DishCategory category, double price)
+  ..
+  getters and setters
+}
+
+class Restaurant {
+  -long id
+  -double minimumOrderFee
+  -String name
+  -String email
+  -String telephoneNumber
+  -String webSite
+  -Address address
+  -RestaurantCategory category
+  -List<Dish> dailyMenu
+  --
+  +Restaurant() 
+  +Restaurant(String name)
+  +Restaurant(String name, RestaurantCategory category, 
+  \t           double minimumOrderFee )
+  ..
+  getters and setters
+}
+
+class Reservation {
+  -long id
+  -Customer customer
+  -Restaurant restaurant
+  -Map<Dish, Integer> dishesOrdered
+  -PaymentMethod paymentMethod
+  -LocalDateTime reservationDate
+  --
+  +Reservation()
+  +double getInvoiceTotalFee()
+  ..
+  getters and setters
+}
+
+class Order {
+  -long id
+  -LocalDateTime deliveryDate
+  -LocalDateTime orderDate
+  -Customer customer
+  -DeliveryMan deliveryMan
+  -Map<Dish, Integer> dishesOrdered
+  -OrderStatus status
+  -PaymentMethod paymentMethod
+  -boolean isPaid
+  --
+  +Order()
+  +advanceStatus()
+  +cancelOrder()
+  +double getInvoiceTotalFee()
+  ..
+  getters and setters
+}
+
+enum DishCategory{
+    APPETIZER("Antipasto")
+    FIRST("Primo")
+    SECOND("Secondo")
+    PIZZA("Pizza")
+    DESSERT("Dolce")
+    FRUITS("Frutta")
+    BEERS("Birre")
+    DRINKS("Bevande")
+    WINE("Vini")
+    -String displayValue
+    --
+    -DishCategory(String displayValue)
+    +String getDisplayValue()
+}
+
+enum RestaurantCategory {
+    CHINESE("Cinese")
+    ITALIAN("Italiano")
+    JAPANESE("Giapponese")
+    HAMBURGER("Hamburger")
+    SANDWICHES("Panini")
+    PIZZA("Pizza")
+    SUSHI("Sushi")
+    SWEET("Dolci")
+    -String displayValue
+    --
+    -RestaurantCategory(String displayValue)
+    +String getDisplayValue()
+}
+
+enum OrderStatus {
+    ACCEPTED("Accettato e in preparazione"),
+    CANCELED("Annullato"),
+    DELIVERED("Consegnato"),
+    PENDING("In attesa di accettazione"), 
+    TOCOLLECTPOINT("Il fattorino sta andando a ritirare il tuo ordine"),
+    TODESTINATION("Il fattorino sta per consegnare il tuo ordine"),
+    WAITING("Il fattorino è sul luogo di ritiro, in attesa che l'ordine sia pronto");
+    -String displayValue
+    --
+    -OrderStatus(String displayValue)
+    +Optional<OrderStatus> next()
+    +String getDisplayValue()
+
+}
+
+enum PaymentMethod {
+    CASH("Contanti alla consegna")
+    CREDITCARD("Carta di credito")
+    PAYPAL("PayPal")
+    -String displayValue
+    --
+    -PaymentMethod(String displayValue)
+    +String getDisplayValue()
+}
+
+hide Customer fields
+hide RestaurantOwner fields
+
+Address *-- Restaurant
+Address *-- User
+Customer <|-- User
+DeliveryMan <|-- User
+RestaurantOwner <|-- User
+DishCategory *-- Dish
+RestaurantCategory *-- Restaurant
+Dish *-- Order
+Dish *-- Reservation
+Dish *-- Restaurant
+Order *- OrderStatus
+Order *-- PaymentMethod
+Reservation *-- PaymentMethod
+
+@enduml

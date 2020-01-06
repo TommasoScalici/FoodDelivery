@@ -1,5 +1,5 @@
-@startuml user
-left to right direction
+@startuml restaurant
+
 class Restaurant {
   -long id
   -double minimumOrderFee
@@ -11,24 +11,45 @@ class Restaurant {
   -RestaurantCategory category
   -List<Dish> dailyMenu
   --
-  +Restaurant {static} getFactory(String type)
-  #Restaurant() 
-  #Restaurant( String name )
-  #Restaurant( String name, RestaurantCategory category, 
-  \t            double minimumOrderFee )
+  +Restaurant() 
+  +Restaurant(String name)
+  +Restaurant(String name, RestaurantCategory category, 
+  \t           double minimumOrderFee )
   ..
   getters and setters
 }
 
-class RestaurantCategory {
-    -String displayValue
-    -List<String> categories
+class Address {
+    -String country
+    -String city
+    -String province
+    -String street
+    -String number
+    -String zip
     --
-    +RestaurantCategory(String displayValue)
-    ..
-    +getDisplayValue()
+    +Address()
+    +Address(String country, String city,
+\t       String province, String number, String zip)
+   ..
+   getters and setters
 }
 
-Restaurant *- RestaurantCategory
+enum RestaurantCategory {
+    CHINESE("Cinese")
+    ITALIAN("Italiano")
+    JAPANESE("Giapponese")
+    HAMBURGER("Hamburger")
+    SANDWICHES("Panini")
+    PIZZA("Pizza")
+    SUSHI("Sushi")
+    SWEET("Dolci")
+    -String displayValue
+    --
+    -RestaurantCategory(String displayValue)
+    +String getDisplayValue()
+}
+
+Address *-- Restaurant
+RestaurantCategory *-- Restaurant
 
 @enduml

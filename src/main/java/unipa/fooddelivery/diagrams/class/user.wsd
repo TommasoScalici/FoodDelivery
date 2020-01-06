@@ -35,21 +35,21 @@ class Address {
 
 package "User subtypes" {
 
-class Customer {
-    +Customer()
-    +Customer(String username, String password)
-}
+    class Customer {
+        +Customer()
+        +Customer(String username, String password)
+    }
 
-class DeliveryMan {
-    -boolean isAvailable
-    +DeliveryMan()
-    +DeliveryMan(String username, String password)
-}
+    class DeliveryMan {
+        -boolean isAvailable
+        +DeliveryMan()
+        +DeliveryMan(String username, String password)
+    }
 
-class RestaurantOwner {
-    +RestaurantOwner()
-    +RestaurantOwner(String username, String password)
-}
+    class RestaurantOwner {
+        +RestaurantOwner()
+        +RestaurantOwner(String username, String password)
+    }
 
 }
 
