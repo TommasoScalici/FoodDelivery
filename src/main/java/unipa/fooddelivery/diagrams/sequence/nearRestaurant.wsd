@@ -1,0 +1,15 @@
+@startuml nearRestaurant
+
+actor User 
+participant "Home\nPage" as Home
+participant "Find Restaurants\nScreen" as Find
+control "City\nValidation" as City
+database Database as DB
+
+User -> Home: open the app
+Home -> Find: click on Find button
+Find -> City: FindRestaurants(city)
+City -> DB: city: found
+Find <-- City: validation failed: show error
+Find <-- DB: showRestaurants(city)
+@enduml
