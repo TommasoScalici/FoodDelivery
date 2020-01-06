@@ -20,7 +20,7 @@ class Dish {
 }
 
 class DishCategory{
-    -displayValue
+    -String displayValue
     -List<String> categories
     --
     +DishCategory(String displayValue)

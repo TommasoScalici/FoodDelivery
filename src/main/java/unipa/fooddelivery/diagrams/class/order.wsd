@@ -27,7 +27,7 @@ class OrderStatus {
     +OrderStatus(String displayValue)
     +next()
     ..
-    +GetDisplayValue()
+    +getDisplayValue()
 
 }
 

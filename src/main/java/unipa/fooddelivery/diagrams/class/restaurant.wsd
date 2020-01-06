@@ -21,7 +21,7 @@ class Restaurant {
 }
 
 class RestaurantCategory {
-    -displayValue
+    -String displayValue
     -List<String> categories
     --
     +RestaurantCategory(String displayValue)
