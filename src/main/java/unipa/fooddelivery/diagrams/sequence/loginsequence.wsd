@@ -9,7 +9,13 @@ database Database
 User -> HomePage : open the app
 HomePage -> LoginScreen : click on login button
 LoginScreen -> UserController : insert username \nand password
-UserController -> Database : username: found\npassword: match
-LoginScreen x-- UserController : validation failed\n show error
+
+activate UserController
+UserController -> UserController: controller process the request
+LoginScreen x-- UserController: \n  show error message
+UserController -> Database : \n   check username\n   and password
+deactivate UserController
+
+LoginScreen x-- Database: validation failed 
 HomePage <-- Database : validation successful:\nuser welcomed
 @enduml

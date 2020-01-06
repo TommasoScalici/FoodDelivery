@@ -14,6 +14,8 @@ UserController -> UserController: the controller\nprocess the request
 RegistrationScreen x-- UserController: display error message and\n  go back on registration screen
 UserController -> Database: the controller inserts\n  user on DB
 deactivate UserController
+
+RegistrationScreen x-- Database : \n     show error
 HomePage <-- Database: successful registration
 
 @enduml

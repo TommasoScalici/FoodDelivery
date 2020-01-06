@@ -4,7 +4,7 @@ actor "Restaurant\nOwner" as Owner
 participant "Home\nPage" as HomePage
 participant "Settings\nScreen" as Settings
 participant "Update\nRestaurant\nScreen" as UpdateScreen
-participant "Restaurant\nController" as RestaurantController
+control "Restaurant\nController" as RestaurantController
 database Database
 
 Owner -> HomePage: open the app
