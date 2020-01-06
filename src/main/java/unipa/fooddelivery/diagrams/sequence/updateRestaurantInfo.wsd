@@ -10,7 +10,7 @@ database Database
 Owner -> HomePage: open the app
 HomePage -> Settings: click on\nsettings button
 Settings -> UpdateScreen: click on update\nRestaurant button
-UpdateScreen -> RestaurantController: update items
+UpdateScreen -> RestaurantController: update info
 
 activate RestaurantController
 RestaurantController -> RestaurantController: the controller\nprocess the request
