@@ -3,7 +3,7 @@
 actor User 
 participant "Home\nPage" as HomePage
 participant "Restaurant\nView" as RestaurantView
-participant "Restaurant\nController" as RestaurantController
+control "Restaurant\nController" as RestaurantController
 database Database as DB
 
 
