@@ -3,6 +3,7 @@
 actor User 
 participant "Home\nPage" as Home
 participant "Find Restaurants\nScreen" as Find
+participant "Restaurant"
 control "City\nValidation" as City
 database Database as DB
 
@@ -12,4 +13,5 @@ Find -> City: FindRestaurants(city)
 City -> DB: city: found
 Find <-- City: validation failed: show error
 Find <-- DB: showRestaurants(city)
+Find -> "Restaurant": click on a Restaurant
 @enduml
