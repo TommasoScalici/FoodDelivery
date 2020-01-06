@@ -10,18 +10,25 @@ class Dish {
   -List<String> allergens
   -List<String> ingredients
   --
-  +Dish {static} getFactory(String type)
   #Dish()
-  #Dish( String username, String restaurant)
-  #Dish( String name, Restaurant restaurant, 
-  \t      DishCategory category, double price)
+  #Dish(String username, String restaurant)
+  #Dish(String name, Restaurant restaurant, 
+  \t DishCategory category, double price)
   ..
   getters and setters
 }
 
-class DishCategory{
+enum DishCategory{
+    APPETIZER("Antipasto")
+    FIRST("Primo")
+    SECOND("Secondo")
+    PIZZA("Pizza")
+    DESSERT("Dolce")
+    FRUITS("Frutta")
+    BEERS("Birre")
+    DRINKS("Bevande")
+    WINE("Vini")
     -String displayValue
-    -List<String> categories
     --
     +DishCategory(String displayValue)
     ..
