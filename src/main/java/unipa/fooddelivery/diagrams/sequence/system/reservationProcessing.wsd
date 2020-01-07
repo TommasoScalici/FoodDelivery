@@ -20,17 +20,20 @@ deactivate paymentController
 activate reservationController
 reservationController -> reservationController : process request
 paymentController x-- reservationController : undo payment
-system <-- paymentController : order cancelled
+system <-- paymentController : reservation cancelled
 reservationController -> db : \n save reservation\n on database
 deactivate reservationController
 
 activate db
 db -> db : process request
-db -> ReservationView : \n order saved
-reservationController x-- db : order not saved
+db -> ReservationView : \n reservation saved
+reservationController x-- db : reservation not saved
 paymentController x-- reservationController : undo payment
-system x-- paymentController : order cancelled
+system x-- paymentController : reservation cancelled
 deactivate db
+ 
+paymentController <-- ReservationView : confirm payment
+system <-- paymentController : reservation successfully completed
 
 ReservationView -> ReservationView : show reservation
 system x-- ReservationView : error

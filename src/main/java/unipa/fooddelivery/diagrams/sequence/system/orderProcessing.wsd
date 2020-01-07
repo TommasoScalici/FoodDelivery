@@ -36,10 +36,10 @@ db -> orderView : \n order saved
 orderController x-- db : order not saved
 deactivate db
 
-paymentController <-- orderController : confirm payment
-system <-- paymentController : order successfully completed
 paymentController x-- orderController : undo payment
 system x-- paymentController : order not completed
+paymentController <-- orderView : confirm payment
+system <-- paymentController : order successfully completed
 orderView -> orderView : show order
 system x-- orderView : error
 
