@@ -1,4 +1,4 @@
-@startuml
+@startuml displayReservations
 
 actor "Restaurant\nOwner" as RestaurantOwner
 participant "Home\nPage" as HomePage
