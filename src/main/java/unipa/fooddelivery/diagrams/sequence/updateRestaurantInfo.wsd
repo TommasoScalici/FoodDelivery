@@ -1,4 +1,4 @@
-@startuml register
+@startuml updateRegister
 
 actor "Restaurant\nOwner" as Owner
 participant "Home\nPage" as HomePage

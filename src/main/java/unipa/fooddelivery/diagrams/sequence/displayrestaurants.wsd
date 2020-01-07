@@ -16,7 +16,13 @@ HomePage x-- RestaurantController : go back to home\nand display error message\n
 RestaurantController -> DB : the controller forwards\n the request to the DB
 deactivate RestaurantController
 
+activate DB
+DB <- DB: process the request
+HomePage <-- DB: show error message
 RestaurantController <-- DB : retrieve a restaurants list\nof the chosen category from db
+deactivate DB
+
+
 activate RestaurantController
 RestaurantController -> RestaurantController : the controller\nprocess the data
 HomePage x-- RestaurantController : go back to home\nand display error message\nif something goes wrong

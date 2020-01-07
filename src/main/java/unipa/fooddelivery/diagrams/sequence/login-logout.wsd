@@ -1,4 +1,4 @@
-@startuml Login Sequence Diagram
+@startuml login-logout
 
 actor User
 participant "Home\nPage" as HomePage
