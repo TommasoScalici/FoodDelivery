@@ -18,9 +18,11 @@ deactivate RestaurantController
 
 activate Database
 Database -> Database: process request
-UpdateScreen x-- Database: show error related to DB
-UpdateScreen <-- Database: successful update
+RestaurantController x-- Database: update not saved
+RestaurantController <-- Database: update saved
 deactivate Database
+UpdateScreen x-- RestaurantController : error
+UpdateScreen <-- RestaurantController : successful update
 
 
 

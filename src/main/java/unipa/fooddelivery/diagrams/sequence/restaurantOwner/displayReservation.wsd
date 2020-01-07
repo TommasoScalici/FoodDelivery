@@ -12,13 +12,14 @@ ReservationsScreen -> ReservationController: request to display reservations
 
 activate ReservationController
 ReservationController -> ReservationController: process the request
-ReservationsScreen x-- ReservationController: show error message
+ReservationsScreen x-- ReservationController: error
 ReservationController -> Database: \n  request to acquire\n  elements from DB
 deactivate ReservationController
 
 activate Database
 Database -> Database: process the request
-HomePage x-- Database: show error message
+ReservationController x-- Database: elements not acquired
+ReservationsScreen x-- ReservationController : error
 ReservationController <- Database: elements acquired
 deactivate Database
 

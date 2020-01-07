@@ -38,7 +38,8 @@ deactivate db
 
 paymentController x-- orderController : undo payment
 system x-- paymentController : order not completed
-paymentController <-- orderView : confirm payment
+orderController <-- orderView : 
+paymentController <-- orderController : confirm payment
 system <-- paymentController : order successfully completed
 orderView -> orderView : show order
 system x-- orderView : error

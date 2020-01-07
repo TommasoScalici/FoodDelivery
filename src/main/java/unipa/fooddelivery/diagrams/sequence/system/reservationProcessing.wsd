@@ -32,7 +32,8 @@ paymentController x-- reservationController : undo payment
 system x-- paymentController : reservation cancelled
 deactivate db
  
-paymentController <-- ReservationView : confirm payment
+reservationController <-- ReservationView : confirm reservation
+paymentController <-- reservationController : confirm payment
 system <-- paymentController : reservation successfully completed
 
 ReservationView -> ReservationView : show reservation
