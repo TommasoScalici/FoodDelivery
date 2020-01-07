@@ -4,8 +4,8 @@ actor system
 control "Shopping Cart\nController" as shopController
 control "Payment\nController" as paymentController
 control "Order\nController" as orderController
-participant "Order\nView" as orderView
 Database database as db
+participant "Order\nView" as orderView
 
 system -> shopController: acquire item from\nthe shopping cart
 
@@ -31,7 +31,8 @@ deactivate orderController
 
 activate db
 db -> db : process request
-orderController <-- db : order saved
+db -> orderView : \n order saved
+
 orderController x-- db : order not saved
 deactivate db
 
@@ -39,5 +40,7 @@ paymentController <-- orderController : confirm payment
 system <-- paymentController : order successfully completed
 paymentController x-- orderController : undo payment
 system x-- paymentController : order not completed
+orderView -> orderView : show order
+system x-- orderView : error
 
 @enduml 

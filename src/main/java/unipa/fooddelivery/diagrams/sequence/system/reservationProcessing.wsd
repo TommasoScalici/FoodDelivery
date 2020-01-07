@@ -1,0 +1,40 @@
+@startuml reservationProcessing
+
+actor system
+participant "In-Session\nDishes*" as dishes
+control "Payment\nController" as paymentController
+control "Reservation\nController" as reservationController
+Database Database as db
+participant "Reservation\nView" as ReservationView
+
+system -> dishes : acquire items\nfrom session
+system x-- dishes : error
+dishes -> paymentController : request to make payment
+
+activate paymentController
+paymentController -> paymentController : process request
+system x-- paymentController : error
+paymentController -> reservationController : \n request to create\n reservation
+deactivate paymentController
+
+activate reservationController
+reservationController -> reservationController : process request
+paymentController x-- reservationController : undo payment
+system <-- paymentController : order cancelled
+reservationController -> db : \n save reservation\n on database
+deactivate reservationController
+
+activate db
+db -> db : process request
+db -> ReservationView : \n order saved
+reservationController x-- db : order not saved
+paymentController x-- reservationController : undo payment
+system x-- paymentController : order cancelled
+deactivate db
+
+ReservationView -> ReservationView : show reservation
+system x-- ReservationView : error
+
+
+
+@enduml
