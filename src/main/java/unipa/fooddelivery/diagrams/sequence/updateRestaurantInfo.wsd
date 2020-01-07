@@ -2,14 +2,12 @@
 
 actor "Restaurant\nOwner" as Owner
 participant "Home\nPage" as HomePage
-participant "Settings\nScreen" as Settings
 participant "Update\nRestaurant\nScreen" as UpdateScreen
 control "Restaurant\nController" as RestaurantController
 database Database
 
 Owner -> HomePage: open the app
-HomePage -> Settings: click on\nsettings button
-Settings -> UpdateScreen: click on update\nRestaurant button
+HomePage -> UpdateScreen: click on update info button
 UpdateScreen -> RestaurantController: update info
 
 activate RestaurantController

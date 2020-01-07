@@ -7,7 +7,7 @@ control "User\nController" as UserController
 database Database
 
 User -> HomePage : open the app
-HomePage -> LoginScreen : click on login button
+HomePage -> LoginScreen : (if not logged)\nclick on login button
 LoginScreen -> UserController : insert username \nand password
 
 activate UserController
