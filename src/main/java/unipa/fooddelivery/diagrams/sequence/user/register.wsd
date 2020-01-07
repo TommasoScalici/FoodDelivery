@@ -3,17 +3,17 @@
 actor User
 participant "Home\nPage" as HomePage
 participant "Registration\nScreen" as RegistrationScreen
-participant "User\nController" as UserController
+participant "Login\nController" as LoginController
 database Database
 
 User -> HomePage: open the app
 HomePage -> RegistrationScreen: click on register button
-RegistrationScreen -> UserController: insert credentials
-activate UserController
-UserController -> UserController: the controller\nprocess the request
-RegistrationScreen x-- UserController: display error message and\n  go back on registration screen
-UserController -> Database: the controller inserts\n  user on DB
-deactivate UserController
+RegistrationScreen -> LoginController: insert credentials
+activate LoginController
+LoginController -> LoginController: the controller\nprocess the request
+RegistrationScreen x-- LoginController: display error message and\n  go back on registration screen
+LoginController -> Database: the controller inserts\n  user on DB
+deactivate LoginController
 
 activate Database
 RegistrationScreen x-- Database : \n     show error
