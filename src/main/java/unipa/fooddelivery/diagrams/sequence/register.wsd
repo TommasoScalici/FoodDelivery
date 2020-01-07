@@ -15,7 +15,9 @@ RegistrationScreen x-- UserController: display error message and\n  go back on r
 UserController -> Database: the controller inserts\n  user on DB
 deactivate UserController
 
+activate Database
 RegistrationScreen x-- Database : \n     show error
 HomePage <-- Database: successful registration
+deactivate Database
 
 @enduml

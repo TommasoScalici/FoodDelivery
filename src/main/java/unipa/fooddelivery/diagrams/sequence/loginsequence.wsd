@@ -11,11 +11,24 @@ HomePage -> LoginScreen : click on login button
 LoginScreen -> UserController : insert username \nand password
 
 activate UserController
-UserController -> UserController: controller process the request
+UserController -> UserController: process the request
 LoginScreen x-- UserController: \n  show error message
 UserController -> Database : \n   check username\n   and password
 deactivate UserController
 
-LoginScreen x-- Database: validation failed 
+
+activate Database
+Database -> Database: \n process\n the request
+LoginScreen x-- Database: \n    validation failed 
 HomePage <-- Database : validation successful:\nuser welcomed
+deactivate Database
+
+HomePage -> UserController: \n(if logged)\nclick on logout button
+
+activate UserController
+UserController -> UserController: process the request
+HomePage <-- UserController: \n successful logout
+HomePage x-- UserController: \n  show error message
+deactivate UserController
+
 @enduml
