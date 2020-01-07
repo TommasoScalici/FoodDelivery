@@ -1,4 +1,4 @@
-@startuml updateRegister
+@startuml updateRestaurantInfo&items
 
 actor "Restaurant\nOwner" as Owner
 participant "Home\nPage" as HomePage
@@ -7,12 +7,12 @@ control "Restaurant\nController" as RestaurantController
 database Database
 
 Owner -> HomePage: open the app
-HomePage -> UpdateScreen: click on update info button
-UpdateScreen -> RestaurantController: update info
+HomePage -> UpdateScreen: click on update info/items button
+UpdateScreen -> RestaurantController: update info/items
 
 activate RestaurantController
 RestaurantController -> RestaurantController: the controller\nprocess the request
-UpdateScreen x-- RestaurantController: display error message and\n go back on update screen
+UpdateScreen x-- RestaurantController: error
 RestaurantController -> Database: \n  update restaurant in DB
 deactivate RestaurantController
 
