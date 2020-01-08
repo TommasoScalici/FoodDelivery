@@ -17,7 +17,7 @@ public abstract class User {
     private Address address = new Address();
     private Date birthdate;
 
-    // Implementazione di Abstraction Factory, questo metodo restituisce l'istanza concreta di User adatta al contesto
+    // Implementazione di Abstract Factory, questo metodo restituisce l'istanza concreta di User adatta al contesto
     public static User getFactory(String type) {
         switch (type) {
             case "Customer":
