@@ -1,0 +1,47 @@
+@startuml orderProcessing
+
+actor system
+control "Shopping Cart\nController" as shopController
+control "Payment\nController" as paymentController
+control "Order\nController" as orderController
+Database database as db
+participant "Order\nView" as orderView
+
+system -> shopController: acquire item from\nthe shopping cart
+
+activate shopController
+shopController -> shopController: process request
+system x-- shopController: error
+system <-- shopController: items acquired
+deactivate shopController
+
+system -> paymentController: request to make   payment
+
+activate paymentController
+paymentController -> paymentController: process request
+system x-- paymentController: error
+paymentController -> orderController: request to create order
+deactivate paymentController
+
+activate orderController
+orderController -> orderController: process the request
+system x-- orderController: error
+orderController -> db: save order on db
+deactivate orderController
+
+activate db
+db -> db : process request
+db -> orderView : \n order saved
+
+orderController x-- db : order not saved
+deactivate db
+
+paymentController x-- orderController : undo payment
+system x-- paymentController : order not completed
+orderController <-- orderView : 
+paymentController <-- orderController : confirm payment
+system <-- paymentController : order successfully completed
+orderView -> orderView : show order
+system x-- orderView : error
+
+@enduml 

@@ -1,0 +1,34 @@
+@startuml login-logout
+
+actor User
+participant "Home\nPage" as HomePage
+participant "Login\nScreen" as LoginScreen
+control "Login\nController" as LoginController
+database Database
+
+User -> HomePage : open the app
+HomePage -> LoginScreen : (if not logged)\nclick on login button
+LoginScreen -> LoginController : insert username \nand password
+
+activate LoginController
+LoginController -> LoginController: process the request
+LoginScreen x-- LoginController: \n  show error message
+LoginController -> Database : \n   check username\n   and password
+deactivate LoginController
+
+
+activate Database
+Database -> Database: \n process\n the request
+LoginScreen x-- Database: \n    validation failed 
+HomePage <-- Database : validation successful:\nuser welcomed
+deactivate Database
+
+HomePage -> LoginController: \n(if logged)\nclick on logout button
+
+activate LoginController
+LoginController -> LoginController: process the request
+HomePage <-- LoginController: \n successful logout
+HomePage x-- LoginController: \n  show error message
+deactivate LoginController
+
+@enduml

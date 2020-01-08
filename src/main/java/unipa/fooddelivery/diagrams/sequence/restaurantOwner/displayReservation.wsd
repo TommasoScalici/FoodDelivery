@@ -1,0 +1,28 @@
+@startuml displayReservations
+
+actor "Restaurant\nOwner" as RestaurantOwner
+participant "Home\nPage" as HomePage
+participant "Customer\nReservations\nScreen" as ReservationsScreen
+control "Reservation\nController" as ReservationController
+Database Database
+
+RestaurantOwner -> HomePage: open the app
+HomePage -> ReservationsScreen: click on\nCustomer Reservations button
+ReservationsScreen -> ReservationController: request to display reservations
+
+activate ReservationController
+ReservationController -> ReservationController: process the request
+ReservationsScreen x-- ReservationController: error
+ReservationController -> Database: \n  request to acquire\n  elements from DB
+deactivate ReservationController
+
+activate Database
+Database -> Database: process the request
+ReservationController x-- Database: elements not acquired
+ReservationsScreen x-- ReservationController : error
+ReservationController <- Database: elements acquired
+deactivate Database
+
+ReservationsScreen <-- ReservationController: display reservations\nmade by customers
+
+@enduml
