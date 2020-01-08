@@ -6,29 +6,46 @@ participant "Login\nScreen" as LoginScreen
 control "Login\nController" as LoginController
 database Database
 
-User -> HomePage : open the app
-HomePage -> LoginScreen : (if not logged)\nclick on login button
-LoginScreen -> LoginController : insert username \nand password
+activate User
+    User -> HomePage : open the app
 
-activate LoginController
-LoginController -> LoginController: process the request
-LoginScreen x-- LoginController: \n  show error message
-LoginController -> Database : \n   check username\n   and password
-deactivate LoginController
+    activate HomePage
+    HomePage -> LoginScreen : (if not logged)\nclick on login button
+    deactivate HomePage
+
+    activate LoginScreen
+
+        LoginScreen -> LoginController : insert username \nand password
+        activate LoginController
+        LoginController -> LoginController: process the request
+        LoginScreen x-- LoginController: \n  show error message
+
+        activate Database
+            Database -> Database: \n process\n the request
+            LoginController -> Database : \n   check username\n   and password
+        deactivate LoginController
+        LoginScreen x-- Database: \n    validation failed 
+
+    deactivate LoginScreen
+        deactivate Database
 
 
-activate Database
-Database -> Database: \n process\n the request
-LoginScreen x-- Database: \n    validation failed 
-HomePage <-- Database : validation successful:\nuser welcomed
-deactivate Database
+    activate HomePage
+    HomePage <-- Database : validation successful:\nuser welcomed
+    deactivate HomePage
 
-HomePage -> LoginController: \n(if logged)\nclick on logout button
+    HomePage -> LoginController: \n(if logged)\nclick on logout button
+    activate HomePage
 
-activate LoginController
-LoginController -> LoginController: process the request
-HomePage <-- LoginController: \n successful logout
-HomePage x-- LoginController: \n  show error message
-deactivate LoginController
+        activate LoginController
+            LoginController -> LoginController: process the request
+        alt 
+        HomePage <-- LoginController: \n successful logout
+        HomePage x-- LoginController: \n  show error message
+        end
+        deactivate LoginController
+    deactivate HomePage
+deactivate User
+
 
 @enduml
