@@ -18,20 +18,25 @@ activate User
         LoginScreen -> LoginController : insert username \nand password
         activate LoginController
         LoginController -> LoginController: process the request
-        LoginScreen x-- LoginController: \n  show error message
+        alt error
+            LoginScreen x-- LoginController: \n  show error message
 
-        activate Database
-            Database -> Database: \n process\n the request
+            activate Database
+                Database -> Database: \n process\n the request
+        else success
             LoginController -> Database : \n   check username\n   and password
-        deactivate LoginController
-        LoginScreen x-- Database: \n    validation failed 
+            deactivate LoginController
+            alt error
+                LoginScreen x-- Database: \n    validation failed 
 
     deactivate LoginScreen
-        deactivate Database
 
-
+            else success
     activate HomePage
     HomePage <-- Database : validation successful:\nuser welcomed
+            end
+        end
+            deactivate Database
     deactivate HomePage
 
     HomePage -> LoginController: \n(if logged)\nclick on logout button
@@ -39,10 +44,13 @@ activate User
 
         activate LoginController
             LoginController -> LoginController: process the request
-        alt 
+
+        alt success
         HomePage <-- LoginController: \n successful logout
+        else error
         HomePage x-- LoginController: \n  show error message
         end
+
         deactivate LoginController
     deactivate HomePage
 deactivate User
