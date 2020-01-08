@@ -7,6 +7,6 @@ public class DataBaseTest {
 
     @Test
     public void dataBaseTest() {
-        Assertions.assertTrue(true);
+        Assertions.assertNotNull(DataBase.getInstance(), "Singleton instance should not be null!");
     }
 }
