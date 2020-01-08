@@ -3,6 +3,8 @@ package unipa.fooddelivery.controllers;
 import unipa.fooddelivery.*;
 import unipa.fooddelivery.models.*;
 
+import java.util.stream.*;
+
 import javax.servlet.http.*;
 
 import org.springframework.stereotype.*;
@@ -17,14 +19,17 @@ public class OrderController {
     public ModelAndView getOrdersView(HttpSession session) {
 
         var mav = new ModelAndView("index");
-        var user = session.getAttribute("user");
+        var user = (User)session.getAttribute("user");
 
         if(!(user instanceof Customer) || !(user instanceof DeliveryMan))
         {
-            // Qui in teoria dovrebbe dare errore, ma come?
+            // Qui in teoria dovremmo restituire un 403 Forbidden
         }
             
-        var orders = DataBase.getInstance().getOrders();
+        var orders = DataBase.getInstance().getOrders()
+                             .stream()
+                             .filter(x -> x.getCustomer().getId() == user.getId())
+                             .collect(Collectors.toList());
 
         
         mav.addObject("path", "orders");

@@ -1,0 +1,28 @@
+@startuml updateUserInfo
+
+actor User
+participant "Home\nPage" as homePage 
+participant "Update\nInfo\nScreen" as updateScreen
+control "Profile\nController" as profileController
+database Database as db
+
+User -> homePage : open the app
+homePage -> updateScreen : click on\nupdate info button
+updateScreen -> profileController : update info
+
+activate profileController
+profileController -> profileController : process request
+updateScreen x-- profileController : error
+profileController -> db : \n save updates
+deactivate profileController
+
+activate db
+db -> db : process request
+profileController x-- db : updates not saved
+updateScreen x-- profileController : error
+profileController <-- db : updates saved
+updateScreen x-- profileController : successful update
+deactivate db
+
+
+@enduml

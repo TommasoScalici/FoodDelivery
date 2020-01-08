@@ -1,0 +1,30 @@
+@startuml register
+
+actor User
+participant "Home\nPage" as HomePage
+participant "Registration\nScreen" as RegistrationScreen
+participant "Login\nController" as LoginController
+database Database
+
+activate User
+    activate HomePage
+        User -> HomePage: open the app
+        HomePage -> RegistrationScreen: click on register button
+    deactivate HomePage
+
+    activate RegistrationScreen
+        RegistrationScreen -> LoginController: insert credentials
+        activate LoginController
+        LoginController -> LoginController: the controller\nprocess the request
+        RegistrationScreen x-- LoginController: display error message and\n  go back on registration screen
+        LoginController -> Database: the controller inserts\n  user on DB
+        deactivate LoginController
+
+        activate Database
+        RegistrationScreen x-- Database : \n     show error
+    deactivate RegistrationScreen
+    HomePage <-- Database: successful registration
+    deactivate Database
+deactivate User
+
+@enduml

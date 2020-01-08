@@ -1,0 +1,34 @@
+@startuml shoppingcart
+
+actor system
+control "Shopping Cart\nController" as shopController
+
+activate system
+
+    system -> shopController: insert item in\nthe shopping cart
+
+    activate shopController
+    shopController -> shopController : process request
+    alt error
+    system x-- shopController : error
+    else success
+    system <-- shopController : item added successfully
+    deactivate shopController
+deactivate system
+    end
+
+
+    system -> shopController : \n(if shopping cart is not empty)\nRemove item
+activate system
+    activate shopController
+    shopController -> shopController : process request
+    alt error
+    system x-- shopController : error
+    else success
+    system <-- shopController : item removed successfully
+    deactivate shopController
+deactivate system
+    end
+
+
+@enduml

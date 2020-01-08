@@ -1,0 +1,13 @@
+@startuml shoppingCart
+scale 2
+left to right direction
+skinparam packageStyle rect
+
+actor "customer"
+
+rectangle "shoppingCart" {
+    (customer) -- (insert dish)
+    (customer) -- (remove dish)
+}
+
+@enduml

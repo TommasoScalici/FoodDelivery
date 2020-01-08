@@ -48,7 +48,8 @@ public final class DataBase {
             mapper = builder.build();
 
 
-            /* Hashtable che mappa le classi di modello / POJO ai rispettivi file JSON che fanno da mock al database.
+            /* Hashtable che mappa le classi di modello / POJO ai rispettivi
+            *  file JSON che costituiscono il database non relazionale.
             *  L'inserimento è fatto hard-coded per semplicità, se si aggiungono nuovi modelli o se ne alterano i nomi
             *  bisogna aggiornare la lista manualmente altrimenti potrebbe crashare tutto, quindi
             *  !!! FARE ATTENZIONE !!!
@@ -71,7 +72,7 @@ public final class DataBase {
 
     //#region getters
 
-    // In questi metodi, i dati vengono caricati effettivamente dal mock DB solo quando vengono richiesti
+    // In questi metodi, i dati vengono caricati effettivamente dal DB solo quando vengono richiesti
     // I campi vengono dunque usati come dei virtual proxy, per poi effettuara un lazy loading
 
     public List<Customer> getCustomers() {
@@ -125,8 +126,6 @@ public final class DataBase {
         try
         {
             var file = new File(jsonPath + entityName + ".json");
-
-            // Volevo farla semplice, ma Java fa schifo e sono costretto a usare la Reflection
 
             var javaType = mapper.getTypeFactory().constructCollectionType(List.class, valueType);
             var json = mapper.readValue(file, javaType);
