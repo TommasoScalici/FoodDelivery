@@ -7,41 +7,54 @@ control "Order\nController" as orderController
 Database database as db
 participant "Order\nView" as orderView
 
-system -> shopController: acquire item from\nthe shopping cart
+activate system
+    system -> shopController: acquire item from\nthe shopping cart
 
-activate shopController
-shopController -> shopController: process request
-system x-- shopController: error
-system <-- shopController: items acquired
-deactivate shopController
+    activate shopController
+    shopController -> shopController: process request
+    alt error
+    system x-- shopController: error
+    else success
+    shopController --> paymentController: items acquired\nrequest to make payment
+    activate paymentController
+    deactivate shopController
+    end
 
-system -> paymentController: request to make   payment
+    system -> paymentController: request to make   payment
 
-activate paymentController
-paymentController -> paymentController: process request
-system x-- paymentController: error
-paymentController -> orderController: request to create order
-deactivate paymentController
+    paymentController -> paymentController: process request
+    alt error
+    system x-- paymentController: error
+    else success
+    paymentController -> orderController: request to create order
+    end
+    activate orderController
+    orderController -> orderController: process the request
+    alt error
+    system x-- orderController: error
+    else success
+    orderController -> db: save order on db
+    end
+    activate db
+    db -> db : process request
+    alt success
+    db -> orderView : \n order saved
+    else error
+    orderController x-- db : order not saved
+    deactivate db
 
-activate orderController
-orderController -> orderController: process the request
-system x-- orderController: error
-orderController -> db: save order on db
-deactivate orderController
-
-activate db
-db -> db : process request
-db -> orderView : \n order saved
-
-orderController x-- db : order not saved
-deactivate db
-
-paymentController x-- orderController : undo payment
-system x-- paymentController : order not completed
-orderController <-- orderView : 
-paymentController <-- orderController : confirm payment
-system <-- paymentController : order successfully completed
-orderView -> orderView : show order
-system x-- orderView : error
+    paymentController x-- orderController : undo payment
+    system x-- paymentController : order not completed
+    end
+    orderController <-- orderView : 
+    deactivate orderController
+    paymentController <-- orderController : confirm payment
+    deactivate paymentController
+    system <-- paymentController : order successfully completed
+    alt success
+    orderView -> orderView : show order
+    else error
+    system x-- orderView : error
+    end
 
 @enduml 

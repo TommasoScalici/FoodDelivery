@@ -6,26 +6,39 @@ participant "Restaurant\nView" as RestaurantView
 control "Restaurant\nController" as RestaurantController
 database Database as DB
 
+activate User
+    User -> HomePage : open the app
+    activate HomePage
+        HomePage -> RestaurantController: click on menu and choose\nreservation or order\nthen a restaurant category
 
-User -> HomePage : open the app
-HomePage -> RestaurantController: click on menu and choose\nreservation or order\nthen a restaurant category
+        activate RestaurantController
+        RestaurantController -> RestaurantController : the controller\nprocess the request
 
-activate RestaurantController
-RestaurantController -> RestaurantController : the controller\nprocess the request
-HomePage x-- RestaurantController : go back to home\nand display error message\nif something goes wrong
-RestaurantController -> DB : the controller forwards\n the request to the DB
-deactivate RestaurantController
+        alt error
+        HomePage x-- RestaurantController : go back to home\nand display error message\nif something goes wrong
+        else success
+        RestaurantController -> DB : the controller forwards\n the request to the DB
+        end
+        activate DB
+        DB <- DB: process the request
 
-activate DB
-DB <- DB: process the request
-HomePage <-- DB: show error message
-RestaurantController <-- DB : retrieve a restaurants list\nof the chosen category from db
-deactivate DB
+        alt error 
+        HomePage x-- DB: show error message
+        else success
+        RestaurantController <-- DB : retrieve a restaurants list\nof the chosen category from db
+        end
+        deactivate DB
 
-
-activate RestaurantController
-RestaurantController -> RestaurantController : the controller\nprocess the data
-HomePage x-- RestaurantController : go back to home\nand display error message\nif something goes wrong
-RestaurantView <-- RestaurantController: finally display restaurants list\nto the User
-deactivate RestaurantController
+            RestaurantController -> RestaurantController : the controller\nprocess the data
+                    alt error      
+                    HomePage x-- RestaurantController : go back to home\nand display error message\nif something goes wrong
+                    else success
+              
+    deactivate HomePage
+    activate RestaurantView
+        RestaurantView <-- RestaurantController: finally display restaurants list\nto the User
+        deactivate RestaurantController
+    deactivate RestaurantView
+deactivate User
+                    end
 @enduml

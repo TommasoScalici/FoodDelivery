@@ -7,38 +7,59 @@ control "Reservation\nController" as reservationController
 Database Database as db
 participant "Reservation\nView" as ReservationView
 
-system -> dishes : acquire items\nfrom session
-system x-- dishes : error
-dishes -> paymentController : request to make payment
+activate system
+activate dishes
+    system -> dishes : acquire items\nfrom session
+    alt error
+    system x-- dishes : error
+    else success
+    dishes -> paymentController : request to make payment
+    end
 
-activate paymentController
-paymentController -> paymentController : process request
-system x-- paymentController : error
-paymentController -> reservationController : \n request to create\n reservation
-deactivate paymentController
+    activate paymentController
+    paymentController -> paymentController : process request
+    alt error
+    system x-- paymentController : error
+    else success
+    paymentController -> reservationController : \n request to create\n reservation
+    end
 
-activate reservationController
-reservationController -> reservationController : process request
-paymentController x-- reservationController : undo payment
-system <-- paymentController : reservation cancelled
-reservationController -> db : \n save reservation\n on database
-deactivate reservationController
+    activate reservationController
+    reservationController -> reservationController : process request
+    alt error
+    paymentController x-- reservationController : undo payment
+    system x-- paymentController : reservation cancelled
+    else success
+    reservationController -> db : \n save reservation\n on database
+    end
 
-activate db
-db -> db : process request
-db -> ReservationView : \n reservation saved
-reservationController x-- db : reservation not saved
-paymentController x-- reservationController : undo payment
-system x-- paymentController : reservation cancelled
-deactivate db
- 
-reservationController <-- ReservationView : confirm reservation
-paymentController <-- reservationController : confirm payment
-system <-- paymentController : reservation successfully completed
+    activate db
+    db -> db : process request
+    alt success
+    db -> ReservationView : \n reservation saved
+    else error
+    reservationController x-- db : reservation not saved
+    deactivate db
+    paymentController x-- reservationController : undo payment
+    system x-- paymentController : reservation cancelled
+    end
+    
+    alt success
+    reservationController <-- ReservationView : confirm reservation
 
-ReservationView -> ReservationView : show reservation
-system x-- ReservationView : error
+    paymentController <-- reservationController : confirm payment
+    deactivate reservationController
+    system <-- paymentController : reservation successfully completed
+    deactivate paymentController
 
+alt success
+    ReservationView -> ReservationView : show reservation
+else error
+    system x-- ReservationView : error
+end
+
+deactivate dishes
+deactivate system
 
 
 @enduml
